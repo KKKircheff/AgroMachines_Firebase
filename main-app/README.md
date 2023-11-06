@@ -19,3 +19,4 @@ pnpm add -S react-countup
 pnpm add -S react-render-if-visible  
 pnpm add -S react-scroll
 pnpm add -S @types/react-scroll@latest --save-dev
+pnpm add -S react-device-detect

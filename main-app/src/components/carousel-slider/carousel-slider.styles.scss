@@ -1,0 +1,14 @@
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
+.carousel-slider-wrapper {
+    img {
+        object-fit: cover;
+        height: 33vw;
+    }
+}
+
+//  !!!!! ---touchscreen zoom activate
+.slick-slider {
+    touch-action: auto;
+}

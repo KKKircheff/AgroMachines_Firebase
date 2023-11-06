@@ -1,0 +1,80 @@
+[debug] [2023-11-03T11:52:29.307Z] ----------------------------------------------------------------------
+[debug] [2023-11-03T11:52:29.311Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\kkk\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-11-03T11:52:29.312Z] CLI Version:   12.4.5
+[debug] [2023-11-03T11:52:29.313Z] Platform:      win32
+[debug] [2023-11-03T11:52:29.313Z] Node Version:  v18.15.0
+[debug] [2023-11-03T11:52:29.315Z] Time:          Fri Nov 03 2023 12:52:29 GMT+0100 (Central European Standard Time)
+[debug] [2023-11-03T11:52:29.315Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-11-03T11:52:29.330Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-11-03T11:52:29.331Z] > authorizing via signed-in user (kiretokk@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\myProjects\AgroMachines_Firebase
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2023-11-03T11:53:07.864Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2023-11-03T11:53:08.879Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2023-11-03T11:53:08.879Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project agro-machines-nl (Agro-Machines) 
+[info] 
+=== Firestore Setup
+[debug] [2023-11-03T11:53:11.003Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/agro-machines-nl/services/firestore.googleapis.com [none]
+[debug] [2023-11-03T11:53:11.003Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/agro-machines-nl/services/firestore.googleapis.com x-goog-quota-user=projects/agro-machines-nl
+[debug] [2023-11-03T11:53:12.533Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/agro-machines-nl/services/firestore.googleapis.com 200
+[debug] [2023-11-03T11:53:12.534Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/agro-machines-nl/services/firestore.googleapis.com [omitted]
+[debug] [2023-11-03T11:53:12.536Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/agro-machines-nl/databases/(default) [none]
+[debug] [2023-11-03T11:53:12.866Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/agro-machines-nl/databases/(default) 200
+[debug] [2023-11-03T11:53:12.867Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/agro-machines-nl/databases/(default) {"name":"projects/agro-machines-nl/databases/(default)","uid":"9bdf0991-51b2-4ff0-b29f-98e91a12e102","createTime":"2023-11-03T11:51:09.793309Z","updateTime":"2023-11-03T11:51:09.793309Z","locationId":"europe-west3","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2023-11-03T11:51:09.793309Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"h","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","etag":"IIHMmrHip4IDMJ3Avfbhp4ID"}
+[debug] [2023-11-03T11:53:12.868Z] database_type: FIRESTORE_NATIVE
+[debug] [2023-11-03T11:53:12.871Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-11-03T11:53:12.872Z] > authorizing via signed-in user (kiretokk@gmail.com)
+[debug] [2023-11-03T11:53:12.873Z] [iam] checking project agro-machines-nl for permissions ["firebase.projects.get"]
+[debug] [2023-11-03T11:53:12.875Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/agro-machines-nl:testIamPermissions [none]
+[debug] [2023-11-03T11:53:12.876Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/agro-machines-nl:testIamPermissions x-goog-quota-user=projects/agro-machines-nl
+[debug] [2023-11-03T11:53:12.876Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/agro-machines-nl:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2023-11-03T11:53:13.783Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/agro-machines-nl:testIamPermissions 200
+[debug] [2023-11-03T11:53:13.785Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/agro-machines-nl:testIamPermissions {"permissions":["firebase.projects.get"]}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2023-11-03T11:53:20.664Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/agro-machines-nl/releases pageSize=10&pageToken=
+[debug] [2023-11-03T11:53:21.665Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/agro-machines-nl/releases 200
+[debug] [2023-11-03T11:53:21.666Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/agro-machines-nl/releases {"releases":[{"name":"projects/agro-machines-nl/releases/cloud.firestore","rulesetName":"projects/agro-machines-nl/rulesets/66394114-5704-41e2-aa57-a60344d6fe4b","createTime":"2023-11-03T11:51:16.528667Z","updateTime":"2023-11-03T11:51:16.528667Z"},{"name":"projects/agro-machines-nl/releases/firebase.storage/agro-machines-nl.appspot.com","rulesetName":"projects/agro-machines-nl/rulesets/954b9070-8d39-4653-8c3f-252cc5680644","createTime":"2023-11-03T11:52:05.907402Z","updateTime":"2023-11-03T11:52:05.907402Z"}]}
+[debug] [2023-11-03T11:53:21.667Z] Found ruleset: projects/agro-machines-nl/rulesets/66394114-5704-41e2-aa57-a60344d6fe4b
+[debug] [2023-11-03T11:53:21.670Z] >>> [apiv2][query] GET https://firebaserules.googleapis.com/v1/projects/agro-machines-nl/rulesets/66394114-5704-41e2-aa57-a60344d6fe4b [none]
+[debug] [2023-11-03T11:53:22.501Z] <<< [apiv2][status] GET https://firebaserules.googleapis.com/v1/projects/agro-machines-nl/rulesets/66394114-5704-41e2-aa57-a60344d6fe4b 200
+[debug] [2023-11-03T11:53:22.502Z] <<< [apiv2][body] GET https://firebaserules.googleapis.com/v1/projects/agro-machines-nl/rulesets/66394114-5704-41e2-aa57-a60344d6fe4b [omitted]
+[info] 
+[info] Firestore indexes allow you to perform complex queries while
+[info] maintaining performance that scales with the size of the result
+[info] set. You can keep index definitions in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2023-11-03T11:53:30.249Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/agro-machines-nl/databases/(default)/collectionGroups/-/indexes [none]
+[debug] [2023-11-03T11:53:30.252Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/agro-machines-nl/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* [none]
+[debug] [2023-11-03T11:53:30.582Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/agro-machines-nl/databases/(default)/collectionGroups/-/indexes 200
+[debug] [2023-11-03T11:53:30.582Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/agro-machines-nl/databases/(default)/collectionGroups/-/indexes {}
+[debug] [2023-11-03T11:53:31.096Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/agro-machines-nl/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* 200
+[debug] [2023-11-03T11:53:31.097Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/agro-machines-nl/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false OR ttlConfig:* {"fields":[{"name":"projects/agro-machines-nl/databases/(default)/collectionGroups/__default__/fields/*","indexConfig":{"indexes":[{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"ASCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","order":"DESCENDING"}],"state":"READY"},{"queryScope":"COLLECTION","fields":[{"fieldPath":"*","arrayConfig":"CONTAINS"}],"state":"READY"}]}}]}
+[info] 
+=== Hosting Setup
