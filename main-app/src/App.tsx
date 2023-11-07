@@ -1,10 +1,10 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import './App.scss';
+import { Routes, Route } from 'react-router-dom';
 import AOS from 'aos';
 import Layout from './Layout/Layout.component';
 
 import Home from './routes/home/home.component';
-import { Routes, Route } from 'react-router-dom';
 // import { Item } from './application-data/navbar-config';
 // import { items } from './application-data/navbar-config';
 

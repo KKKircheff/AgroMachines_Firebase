@@ -10,7 +10,7 @@ import SlickPreviousArrow from '../../utils/slick-img-slider-arrows&dots/SlickPr
 import SlickDots from '../../utils/slick-img-slider-arrows&dots/SlickDots';
 import './carousel-slider.styles.scss';
 
-const bodyScroll = require('body-scroll-toggle');
+// const bodyScroll = require('body-scroll-toggle');
 
 type SliderProps = {
     url: string[];
@@ -40,7 +40,7 @@ const CarouselSlider = ({ url, isClicked, setIsClicked, setPopUpUrl }: SliderPro
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         setPopUpUrl(url[sliderIndex])
         setIsClicked(true);
-        bodyScroll.disable();
+        // bodyScroll.disable();
     }
 
     const renderImages: () => JSX.Element[] = () => {

@@ -8,7 +8,6 @@ import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } f
 
 import './navigation.styles.scss';
 
-import { Outlet } from 'react-router-dom';
 interface NavigationProps {
     items: Item[];
 }
@@ -135,7 +134,6 @@ const Navigation = ({ items }: NavigationProps) => {
                     className={['menu', isToggled && 'active', closeSubMenu && 'closed'].filter(Boolean).join(' ')}
                 >{renderItems()}</ul>
             </nav>
-            <Outlet />
         </div>
     )
 }
