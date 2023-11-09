@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 // import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
@@ -44,7 +44,7 @@ const CarouselSlider = ({ url, isClicked, setIsClicked, setPopUpUrl }: SliderPro
     }
 
     const renderImages: () => JSX.Element[] = () => {
-        return url.map((imageUrl, index) => {
+        return url.map((imageUrl) => {
             return (
                 <div key={imageUrl}
                     className='slider-image-container'

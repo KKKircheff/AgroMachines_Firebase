@@ -33,12 +33,14 @@ const ProductCard = ({ url, mainTitle, title, subtitle, content, price, imgSide 
             <div className={`product-card ${imgSide}`}>
                 <div className="carousel-wrapper">
                     {/* <img src="https://i.ibb.co/CM58BDr/img-reel-1.jpg" alt="" /> */}
-                    <CarouselSlider
-                        url={url}
-                        isClicked={isClicked}
-                        setIsClicked={setIsClicked}
-                        setPopUpUrl={setPopUpUrl}
-                    />
+                    <Suspense fallback={<div>...</div>}>
+                        <CarouselSlider
+                            url={url}
+                            isClicked={isClicked}
+                            setIsClicked={setIsClicked}
+                            setPopUpUrl={setPopUpUrl}
+                        />
+                    </Suspense>
                 </div>
 
                 <div className="content-section" >

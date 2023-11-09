@@ -1,8 +1,13 @@
-import React from 'react'
+
 import Button from '../button/button.component'
 import headerImage from '../../images-application/header-image.jpg'
 import './header-home-page.style.scss'
 import { Link } from 'react-scroll'
+
+// type Button = {
+//     children: React.ReactNode,
+//     buttonType?: 'primary' | 'inverted'
+// }
 
 const HeaderHomePage = () => {
 
@@ -20,7 +25,7 @@ const HeaderHomePage = () => {
                     duration={2000}
                 >
                     <Button id='header-button'
-                        buttonType={''}
+                        buttonType={'primary'}
                         data-aos="fade-right"
                         data-aos-delay="200"
                         data-aos-anchor=".left-side"

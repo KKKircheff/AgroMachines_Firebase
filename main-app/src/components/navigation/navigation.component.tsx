@@ -4,7 +4,7 @@ import { Item } from '../../application-data/navbar-config';
 import { useState } from 'react';
 import { FaAngleDown } from 'react-icons/fa'
 import { HiOutlinePhone } from 'react-icons/hi';
-import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+import { Link as ScrollLink } from 'react-scroll'
 
 import './navigation.styles.scss';
 
@@ -36,7 +36,7 @@ const Navigation = ({ items }: NavigationProps) => {
     const renderItems = () => items.map((item, index) => (
         <li key={index}>
             {item.url
-                ? <Link
+                ? <ScrollLink
                     activeClass="active"
                     to={item.url}
                     spy={false}
@@ -44,7 +44,7 @@ const Navigation = ({ items }: NavigationProps) => {
                     offset={item.offset}
                     duration={calculateDuration}
                     onClick={() => closeMenu(true)}>{item.name}
-                </Link>
+                </ScrollLink>
                 : <span onClick={toggleSubMenu}>
                     {item.name}
                     <FaAngleDown className='submenu-dropdown-icon' />
@@ -59,9 +59,9 @@ const Navigation = ({ items }: NavigationProps) => {
         <ul className="sub-menu">
             {children.map((child, index) => (
                 <li key={index}>
-                    <Link to={child.url!} onClick={() => closeMenu(true)}>
+                    <ScrollLink to={child.url!} onClick={() => closeMenu(true)}>
                         {child.name}
-                    </Link>
+                    </ScrollLink>
                 </li>
             ))}
         </ul>
@@ -101,26 +101,26 @@ const Navigation = ({ items }: NavigationProps) => {
 
 
     return (
-        <div ref={rootRef} className='main-wrapper'>
-            <div className='under-navigation-layer'></div>
+        <div ref={rootRef} className='wrapper'>
+            <div className='wrapper__under-navigation-layer'></div>
             <nav className={
                 isTransparentNavbar
                     ? 'main-navbar active'
                     : 'main-navbar'}
             >
-                <div className="container">
-                    <div className={['menu-logo-section', isToggled && 'active', closeSubMenu && 'closed'].filter(Boolean).join(' ')}>
-                        <h1>agro</h1>
-                        <h1>machines</h1>
+                <div className="main-navbar__head">
+                    <div className={['main-navbar__head-logo', isToggled && 'active', closeSubMenu && 'closed'].filter(Boolean).join(' ')}>
+                        <p>agro</p>
+                        <p>machines</p>
                     </div>
-                    <div className={['phone-number-container', isToggled && 'translate-down', closeSubMenu && 'closed'].filter(Boolean).join(' ')}>
+                    <div className={['main-navbar__head-phone-number', isToggled && 'translate-down', closeSubMenu && 'closed'].filter(Boolean).join(' ')}>
                         <p><span><HiOutlinePhone /></span> +359 876 962484</p>
                     </div>
                     <div
                         className={
                             isToggled
-                                ? 'hamburger close'
-                                : 'hamburger'
+                                ? 'main-navbar__head-hamburger close'
+                                : 'main-navbar__head-hamburger'
                         }
                         onClick={() => setIsToggled(!isToggled)}
                     >
@@ -131,7 +131,7 @@ const Navigation = ({ items }: NavigationProps) => {
                     </div>
                 </div>
                 <ul
-                    className={['menu', isToggled && 'active', closeSubMenu && 'closed'].filter(Boolean).join(' ')}
+                    className={['main-navbar__menu-items', isToggled && 'active', closeSubMenu && 'closed'].filter(Boolean).join(' ')}
                 >{renderItems()}</ul>
             </nav>
         </div>
