@@ -12,8 +12,8 @@ import { Link } from 'react-scroll'
 const HeaderHomePage = () => {
 
     return (
-        <div id='header-home-page-wrapper' className="header-home-page-wrapper">
-            <div className="left-side" >
+        <div id='header-home-page-wrapper' className="home-hero">
+            <div className="home-hero__left-side" >
                 <h1 data-aos="fade-right">ПОЛИВНИ СИСТЕМИ </h1>
                 <h1 data-aos="fade-right" data-aos-delay="100">ВТОРА УПОТРЕБА</h1>
                 <h1 data-aos="fade-right" data-aos-delay="200">ОТ НИДЕРЛАНДИЯ</h1>
