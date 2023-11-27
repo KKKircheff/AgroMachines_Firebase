@@ -21,3 +21,6 @@ pnpm add -S react-scroll
 pnpm add -S @types/react-scroll@latest --save-dev
 pnpm add -S react-device-detect
 pnpm add -S react-photo-album
+pnpm add -S primereact
+pnpm add -S primeicons
+pnpm add -S primeflex
