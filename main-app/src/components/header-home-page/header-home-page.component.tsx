@@ -34,7 +34,7 @@ const HeaderHomePage = () => {
                     </Button>
                 </Link>
             </div>
-            <div className="right-side" data-aos="fade-left">
+            <div className="home-hero__right-side" data-aos="fade-left">
                 <img src={headerImage} alt="поливна макара" />
             </div>
         </div>
