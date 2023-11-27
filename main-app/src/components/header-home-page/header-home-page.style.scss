@@ -6,9 +6,9 @@
     justify-content: space-between;
     box-sizing: border-box;
     background-color: $color-secondary-2-2;
+    position: relative;
 
     &__left-side {
-        // background-color: green;
         position: absolute;
         display: flex;
         flex-direction: column;
@@ -26,37 +26,71 @@
             padding: 0;
             margin: 0;
         }
+
+        Button {
+            width: 80px;
+            margin-top: 12vw;
+        }
     }
 
 
-    Button {
-        width: 80px;
-        margin-top: 12vw;
-    }
-}
-
-.right-side {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: flex-end;
-
-    img {
+    &__right-side {
+        display: flex;
+        flex-direction: row;
         width: 100%;
-        max-width: 720px;
-        object-fit: contain;
+        justify-content: flex-end;
+
+        img {
+            width: 100%;
+            max-width: 720px;
+            object-fit: contain;
+        }
     }
+
+
 }
+
 
 @media (min-width: 720px) {
     .home-hero {
-        .left-side {
-            margin-top: calc(1rem + 5%);
+        &__left-side {
+
+            margin-top: 100px;
+
+            h1 {
+                line-height: 4rem;
+            }
+
+            Button {
+                width: 200px;
+                margin-top: calc(4rem + 1.5vw);
+            }
+        }
+    }
+}
+
+@media (min-width: 1360px) {
+    .home-hero {
+        &__left-side {
+
+            margin-top: 100px;
+
+            h1 {
+                line-height: 6rem;
+            }
+
+
         }
 
-        Button {
-            width: 200px;
-            margin-top: calc(4rem + 1.5vw);
+
+        &__right-side {
+
+            img {
+                max-width: 1200px;
+                max-height: 600px;
+                object-fit: cover;
+            }
+
         }
     }
 }
