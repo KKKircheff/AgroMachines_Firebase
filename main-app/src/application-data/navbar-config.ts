@@ -7,7 +7,7 @@ export interface Item {
 }
 
 export const items: Item[] = [
-    { name: 'за нас', url: 'main-wrapper', offset: 0, contentPosition: 1 },
+    {name: 'за нас', url: 'main-wrapper', offset: 0, contentPosition: 1},
     {
         name: 'актуални оферти',
         url: 'product-card-wrapper',
@@ -26,5 +26,24 @@ export const items: Item[] = [
         url: 'contact-form-container',
         offset: -100,
         contentPosition: 5,
+    },
+];
+
+export const itemsPrime = [
+    {
+        label: 'Videos',
+        icon: 'pi pi-fw pi-video',
+    },
+    {
+        label: 'Users',
+        icon: 'pi pi-fw pi-users',
+    },
+    {
+        label: 'Events',
+        icon: 'pi pi-fw pi-calendar',
+    },
+    {
+        label: 'Settings',
+        icon: 'pi pi-fw pi-cog',
     },
 ];

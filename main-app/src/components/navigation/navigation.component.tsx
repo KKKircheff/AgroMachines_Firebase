@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Item } from '../../application-data/navbar-config';
+import logo from '../../../public/logo-am.webp'
+
 // import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { FaAngleDown } from 'react-icons/fa'
@@ -110,8 +112,7 @@ const Navigation = ({ items }: NavigationProps) => {
             >
                 <div className="main-navbar__head">
                     <div className={['main-navbar__head-logo', isToggled && 'active', closeSubMenu && 'closed'].filter(Boolean).join(' ')}>
-                        <p>agro</p>
-                        <p>machines</p>
+                        <img src={logo} alt="" className="" />
                     </div>
                     <div className={['main-navbar__head-phone-number', isToggled && 'translate-down', closeSubMenu && 'closed'].filter(Boolean).join(' ')}>
                         <p><span><HiOutlinePhone /></span> +359 876 962484</p>

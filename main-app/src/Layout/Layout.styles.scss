@@ -1,0 +1,35 @@
+.primeNavigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.p-megamenu-button {
+    width: 40px;
+    height: 40px;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+
+}
+
+.p-icon {
+    color: greenyellow;
+
+    &--active {
+        transform: scale(150%);
+        background: green;
+
+
+    }
+
+    &--notactive {
+        background: yellow;
+        transform: scale(100%);
+        opacity: 1;
+    }
+
+}
