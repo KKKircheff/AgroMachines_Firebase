@@ -1,6 +1,7 @@
 import FormInputField from '../form-input-field/form-input-field.component'
 import FormTextArea from "../form-text-area-field/form-text-area.component";
-import Button from "../button/button.component"
+// import Button from "../button/button.component"
+import { Button } from 'primereact/button';
 import { useState } from "react";
 
 import './contact-form.style.scss'
@@ -225,7 +226,9 @@ export default function ContatForm() {
 
                 <div className="buttons-container">
                     {/* <Button type='submit' buttonType={'primary'}>изпрати</Button> */}
-                    <Button onClick={() => handleSubmit()} buttonType={'primary'}>изпрати</Button>
+                    {/* <Button onClick={() => handleSubmit()} buttonType={'primary'}>изпрати</Button> */}
+                    <Button label="изпрати" onClick={() => handleSubmit()} />
+
                 </div>
                 {!isFormValid && <div className="form-error-message">{errorMessage}</div>}
             </div>
