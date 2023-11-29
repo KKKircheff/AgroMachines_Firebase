@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Item } from '../../application-data/navbar-config';
-import logo from '../../../public/logo-am.webp'
+import logo from '../../assets/images/logo-am.webp'
 
 // import { Link } from 'react-router-dom';
 import { useState } from 'react';

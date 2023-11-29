@@ -1,35 +1,27 @@
-.primeNavigation {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    z-index: 2;
-}
-
 .p-megamenu-button {
     width: 40px;
     height: 40px;
 
-    svg {
-        width: 20px;
-        height: 20px;
+    &::after {
+        content: '+';
+        transform: rotate(0deg);
+        font-size: 0px;
     }
-
-}
-
-.p-icon {
-    color: greenyellow;
 
     &--active {
-        transform: scale(150%);
-        background: green;
 
+        svg {
+            width: 0;
+            height: 0;
+        }
 
+        &::after {
+            content: '+';
+            transform: rotate(45deg);
+            transition: transform .1s;
+            padding: 0;
+            margin-left: 3px;
+            font-size: 36px;
+        }
     }
-
-    &--notactive {
-        background: yellow;
-        transform: scale(100%);
-        opacity: 1;
-    }
-
 }

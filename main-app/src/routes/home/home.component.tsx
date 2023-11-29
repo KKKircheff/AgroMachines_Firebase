@@ -9,6 +9,7 @@ import ProductCard from '../../components/product-card/product-card.component';
 import FooterHomePage from '../../components/footer-home-page/footer-home-page.component';
 import { productsData } from '../../application-data/products-data';
 const HistoryGallery = lazy(() => import('../../components/history-gallery/history-gallery.component'))
+import Gallery from '../gallery/Gallery.component';
 
 const Home = () => {
 
@@ -30,9 +31,10 @@ const Home = () => {
             <HeaderHomePage />
             <InfoSection />
             {/* {productCards && <div id='product-card-wrapper'>{productCards}</div>} */}
-            <Suspense fallback={<div>...</div>}>
+            {/* <Suspense fallback={<div>...</div>}>
                 <HistoryGallery />
-            </Suspense>
+            </Suspense> */}
+            <Gallery />
             <ContatForm />
             <FooterHomePage />
         </div>
