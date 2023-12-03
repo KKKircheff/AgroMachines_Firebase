@@ -4,13 +4,9 @@ import "aos/dist/aos.css";
 import { Suspense, lazy } from 'react';
 import HeaderHomePage from '../../components/header-home-page/header-home-page.component';
 import InfoSection from '../../components/info-section/info-section.component';
-import ContatForm from '../../components/contact-form/contact-form.component';
 import ProductCard from '../../components/product-card/product-card.component';
 import FooterHomePage from '../../components/footer-home-page/footer-home-page.component';
 import { productsData } from '../../application-data/products-data';
-const HistoryGallery = lazy(() => import('../../components/history-gallery/history-gallery.component'))
-import Gallery from '../gallery/Gallery.component';
-import LogosSlider from '../../components/logos-carousel-slider/LogosSlider.component';
 
 const Home = () => {
 
