@@ -5,6 +5,10 @@ import AOS from 'aos';
 import Layout from './Layout/Layout.component';
 
 import Home from './routes/home/home.component';
+import Offers from "./routes/offers/Offers.component";
+import Gallery from "./routes/gallery/Gallery.component";
+import Contact from "./routes/contact/Contact.component";
+
 // import { Item } from './application-data/navbar-config';
 // import { items } from './application-data/navbar-config';
 
@@ -39,6 +43,9 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Home />} />
+                        <Route path={`/offers`} element={<Offers />} />
+                        <Route path={`/gallery`} element={<Gallery />} />
+                        <Route path={`/contact`} element={<Contact />} />
                         <Route path={`/*`} element={<Home />} />
                     </Route>
                 </Routes>

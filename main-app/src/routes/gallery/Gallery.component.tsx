@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import PhotoAlbum from "react-photo-album";
+import FooterHomePage from '../../components/footer-home-page/footer-home-page.component';
 
 // import { useEffect } from 'react';
 // import { getImageSize} from 'react-image-size';
@@ -87,6 +88,7 @@ const Gallery = () => {
                     />
                     : <div></div>}
             </div>
+            <FooterHomePage />
         </div>
     )
 }

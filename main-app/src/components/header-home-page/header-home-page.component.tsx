@@ -1,6 +1,6 @@
 // import Button from '../button/button.component'
 import { Button } from 'primereact/button'
-import headerImage from '../../images-application/header-image.jpg'
+import headerImage from '../../images-application/header-image.webp'
 import './header-home-page.style.scss'
 import { Link } from 'react-scroll'
 

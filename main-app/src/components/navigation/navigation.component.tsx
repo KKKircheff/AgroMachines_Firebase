@@ -2,11 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import { Item } from '../../application-data/navbar-config';
 import logo from '../../assets/images/logo-am.webp'
 
-// import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { FaAngleDown } from 'react-icons/fa'
 import { HiOutlinePhone } from 'react-icons/hi';
-import { Link as ScrollLink } from 'react-scroll'
+import { Link } from 'react-router-dom';
 
 import './navigation.styles.scss';
 
@@ -30,23 +29,13 @@ const Navigation = ({ items }: NavigationProps) => {
         event.currentTarget.classList.toggle('toggled');
     }
 
-    const calculateDuration = () => {
-        return (1500);
-    }
-
-
     const renderItems = () => items.map((item, index) => (
         <li key={index}>
             {item.url
-                ? <ScrollLink
-                    activeClass="active"
+                ? <Link
                     to={item.url}
-                    spy={false}
-                    smooth={true}
-                    offset={item.offset}
-                    duration={calculateDuration}
                     onClick={() => closeMenu(true)}>{item.name}
-                </ScrollLink>
+                </Link>
                 : <span onClick={toggleSubMenu}>
                     {item.name}
                     <FaAngleDown className='submenu-dropdown-icon' />
@@ -61,9 +50,9 @@ const Navigation = ({ items }: NavigationProps) => {
         <ul className="sub-menu">
             {children.map((child, index) => (
                 <li key={index}>
-                    <ScrollLink to={child.url!} onClick={() => closeMenu(true)}>
+                    <Link to={child.url!} onClick={() => closeMenu(true)}>
                         {child.name}
-                    </ScrollLink>
+                    </Link>
                 </li>
             ))}
         </ul>

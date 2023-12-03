@@ -10,6 +10,7 @@ import FooterHomePage from '../../components/footer-home-page/footer-home-page.c
 import { productsData } from '../../application-data/products-data';
 const HistoryGallery = lazy(() => import('../../components/history-gallery/history-gallery.component'))
 import Gallery from '../gallery/Gallery.component';
+import LogosSlider from '../../components/logos-carousel-slider/LogosSlider.component';
 
 const Home = () => {
 
@@ -30,12 +31,13 @@ const Home = () => {
         <div className='home-wrapper'>
             <HeaderHomePage />
             <InfoSection />
-            {/* {productCards && <div id='product-card-wrapper'>{productCards}</div>} */}
+            {productCards && <div id='product-card-wrapper'>{productCards}</div>}
             {/* <Suspense fallback={<div>...</div>}>
                 <HistoryGallery />
             </Suspense> */}
-            <Gallery />
-            <ContatForm />
+            {/* <LogosSlider /> */}
+            {/* <Gallery /> */}
+            {/* <ContatForm /> */}
             <FooterHomePage />
         </div>
     )
