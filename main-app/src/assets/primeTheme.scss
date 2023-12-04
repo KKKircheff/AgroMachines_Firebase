@@ -74,6 +74,28 @@
     box-sizing: border-box
 }
 
+.u-c-w {
+    width: 100%;
+    margin: 0px;
+    padding: 20px 7vw;
+    box-sizing: border-box;
+}
+
+@media only screen and (min-width: 720px) {
+    .u-c-w {
+        box-sizing: border-box;
+        overflow: hidden;
+        width: 100%;
+        padding: 80px 80px 40px 80px;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .u-c-w {
+        padding: 80px 150px 40px 150px;
+    }
+}
+
 .p-component {
     font-family: Kanit, sans-serif;
     font-size: 1rem;

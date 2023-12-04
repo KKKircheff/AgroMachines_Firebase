@@ -174,63 +174,65 @@ export default function ContatForm() {
     }
 
     return (
-        <div id='contact-form-container' className="contact-form-container" data-aos="fade-int">
-            <h2>Контакт с нас</h2>
-            <p>ако имате въпрос относно някой от нашите продукти или имате нужда от съдействие в Нидерландия за закупуване на земеделска техника</p>
-            <div>
-                <FormInputField
-                    label='Имена'
-                    type='text'
-                    name='name'
-                    autoComplete='off'
-                    onChange={handleChange}
-                    value={formValues.name}
-                />
+        <div className='u-c-w' style={{ background: 'white' }}>
+            <div id='contact-form-container' className="contact-form-container" data-aos="fade-int">
+                <h2>Контакт с нас</h2>
+                <p>ако имате въпрос относно някой от нашите продукти или имате нужда от съдействие в Нидерландия за закупуване на земеделска техника</p>
+                <div>
+                    <FormInputField
+                        label='Имена'
+                        type='text'
+                        name='name'
+                        autoComplete='off'
+                        onChange={handleChange}
+                        value={formValues.name}
+                    />
 
-                <FormInputField
-                    label='Компния /опция/'
-                    type='text'
-                    name='company'
-                    autoComplete='off'
-                    onChange={handleChange}
-                    value={formValues.company}
-                />
+                    <FormInputField
+                        label='Компния /опция/'
+                        type='text'
+                        name='company'
+                        autoComplete='off'
+                        onChange={handleChange}
+                        value={formValues.company}
+                    />
 
-                <FormInputField
-                    label='Телефон за контакт'
-                    type='text'
-                    name='phonenumber'
-                    autoComplete='off'
-                    onChange={handleChange}
-                    value={formValues.phonenumber}
-                />
+                    <FormInputField
+                        label='Телефон за контакт'
+                        type='text'
+                        name='phonenumber'
+                        autoComplete='off'
+                        onChange={handleChange}
+                        value={formValues.phonenumber}
+                    />
 
-                <FormInputField
-                    label='Email'
-                    type='email'
-                    name='email'
-                    autoComplete='off'
-                    onChange={handleChange}
-                    value={formValues.email}
-                />
+                    <FormInputField
+                        label='Email'
+                        type='email'
+                        name='email'
+                        autoComplete='off'
+                        onChange={handleChange}
+                        value={formValues.email}
+                    />
 
-                <FormTextArea
-                    label='Запитване'
-                    type='text'
-                    rows='8'
-                    cols='100'
-                    name='message'
-                    onChange={handleChange}
-                    value={formValues.message}
-                />
+                    <FormTextArea
+                        label='Запитване'
+                        type='text'
+                        rows='8'
+                        cols='100'
+                        name='message'
+                        onChange={handleChange}
+                        value={formValues.message}
+                    />
 
-                <div className="buttons-container">
-                    {/* <Button type='submit' buttonType={'primary'}>изпрати</Button> */}
-                    {/* <Button onClick={() => handleSubmit()} buttonType={'primary'}>изпрати</Button> */}
-                    <Button label="изпрати" onClick={() => handleSubmit()} />
+                    <div className="buttons-container">
+                        {/* <Button type='submit' buttonType={'primary'}>изпрати</Button> */}
+                        {/* <Button onClick={() => handleSubmit()} buttonType={'primary'}>изпрати</Button> */}
+                        <Button label="изпрати" onClick={() => handleSubmit()} />
 
+                    </div>
+                    {!isFormValid && <div className="form-error-message">{errorMessage}</div>}
                 </div>
-                {!isFormValid && <div className="form-error-message">{errorMessage}</div>}
             </div>
         </div>
     )

@@ -14,8 +14,7 @@ const InfoSection = () => {
 
     return (
 
-        <div className='info-section-wrapper'>
-
+        <div className='u-c-w info-section'>
             <div className="counter-container">
                 {counetrsContent.map((counterItem, index) => {
                     return <Counter
@@ -31,9 +30,9 @@ const InfoSection = () => {
             <div id='card-content-container' className="card-content-container">
                 {infoCardsContent.map((card, index) => <ContentCard key={index} {...card} aspectRatio='600/600' />)}
             </div>
-            <div className="logos-image-container" data-aos="fade-in">
+            {/* <div className="logos-image-container" data-aos="fade-in">
                 <img src="https://i.ibb.co/Z8T4cvr/second-hand-machines-brands-ordered-low-res.jpg" alt="поливни макари марки" />
-            </div>
+            </div> */}
         </div>
     )
 }

@@ -2,6 +2,7 @@ import './ContentCard.styles.scss'
 import IMAGES from '../../assets/images/content-cards/images';
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink, scroller } from 'react-scroll';
+import { Button } from 'primereact/button';
 
 import { useState } from 'react';
 
@@ -27,9 +28,9 @@ const ContentCard = ({ topTitle, content, buttonPageLink, buttonScrollLink, butt
     const [isHovered, setIsHovered] = useState(false);
 
     const divStyles = {
-        color: isHovered ? 'white' : `${accentColor}`,
-        background: isHovered ? `linear-gradient(to right, ${accentColor}, ${accentColor})` : 'white',
-        border: isHovered ? '0px solid black' : `2px solid ${accentColor}`
+        // color: isHovered ? 'white' : `${accentColor}`,
+        background: isHovered ? `linear-gradient(to right, ${accentColor}, ${accentColor1})` : accentColor,
+        border: isHovered ? '0px solid transparent' : `1px solid ${accentColor}`
     };
 
     const renderContent = () => {
@@ -48,7 +49,8 @@ const ContentCard = ({ topTitle, content, buttonPageLink, buttonScrollLink, butt
                             data-aos-delay="50"
                         // data-aos-once="true"
                         >{topTitle}</h2>
-                        <h3 style={{ borderLeft: `2px solid ${accentColor}` }}
+                        <h3 style={{ borderLeft: `2px solid ${accentColor1}`, color: accentColor }}
+                            className='content-card-two__top-title'
                             data-aos="zoom-in-right"
                             data-aos-easing="ease-in"
                             data-aos-duration="300"
@@ -100,14 +102,38 @@ const ContentCard = ({ topTitle, content, buttonPageLink, buttonScrollLink, butt
     }
 
     return (
-        <div className="content-card-two"
-        >
+        <div className="content-card-two" style={{ backgroundColor: 'transparent' }}>
             {/* <div className="content-card-two__top-title" style={{ color: accentColor }}>
                 <h3>{topTitle}</h3>
             </div> */}
             <div className="content-card-two__content">
                 {renderContent()}
             </div>
+            {/* {buttonScrollLink
+                ? <div>
+                    <Button
+                        // className="content-card-two__button"
+                        style={divStyles}
+                        label="Контакт"
+                        onMouseEnter={() => setIsHovered(true)}
+                        onMouseLeave={() => setIsHovered(false)}
+                        onClick={() => scroller.scrollTo(buttonScrollLink, { smooth: true, duration: 100 })}
+                    />
+                </div> : ''
+            }
+            {
+                buttonPageLink ?
+                    <Link aria-label="content card redirect to stripe other website page button or contact" to={buttonPageLink}>
+                        <Button
+                            aria-label="content card redirect to stripe other website page button or contact"
+                            // className="content-card-two__button"
+                            style={divStyles}
+                            label="Контакт"
+                            onMouseEnter={() => setIsHovered(true)}
+                            onMouseLeave={() => setIsHovered(false)}
+                        />
+                    </Link> : ''
+            } */}
             {buttonScrollLink
                 ? <div>
                     <button

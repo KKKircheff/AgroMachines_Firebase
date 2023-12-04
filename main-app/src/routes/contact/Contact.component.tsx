@@ -4,7 +4,6 @@ import FooterHomePage from '../../components/footer-home-page/footer-home-page.c
 const Contact = () => {
     return (
         <div>
-            <h1>Contact</h1>
             <ContatForm />
             <FooterHomePage />
         </div>
