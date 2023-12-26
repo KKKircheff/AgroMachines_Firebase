@@ -1,13 +1,12 @@
-@import '../../assets/app.colors.scss';
-
-
+@import '../../sass/variables.scss';
+@import '../../sass/mixins';
+$textLocalColor: white;
 
 .wrapper {
 
     &__under-navigation-layer {
         height: 50px;
     }
-
 }
 
 .main-navbar {
@@ -28,7 +27,7 @@
         align-items: center;
         padding: 10px 3vw;
         min-height: 50px;
-        color: white;
+        color: $textLocalColor;
 
         &-logo {
             position: absolute;
@@ -55,7 +54,7 @@
         &-phone-number {
             display: flex;
             align-items: center;
-            color: white;
+            color: $textLocalColor;
             font-size: 1.5rem;
             z-index: 10;
 
@@ -100,7 +99,7 @@
                 width: 100%;
                 position: absolute;
                 height: 3px;
-                background: #fff;
+                background: $textLocalColor;
                 display: block;
                 transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -147,7 +146,7 @@
                 height: 100%;
                 padding: 0px 20px 10px 20px;
                 justify-content: space-between;
-                color: #fff;
+                color: $textLocalColor;
                 text-decoration: none;
             }
 
@@ -182,7 +181,7 @@ ul {
     padding: 0;
 
     li>span {
-        color: #fff;
+        color: $textLocalColor;
     }
 }
 
@@ -225,7 +224,8 @@ ul {
     }
 }
 
-@media (min-width: 720px) {
+@include mdMinBreakPoint {
+
     .wrapper {
 
         &__under-navigation-layer {
@@ -295,7 +295,7 @@ ul {
                 span {
                     min-width: 40px;
                     padding: 0 10px;
-                    color: #fff;
+                    color: $textLocalColor;
                     text-decoration: none;
                 }
 
@@ -330,7 +330,7 @@ ul {
     .sub-menu {
         position: absolute;
         left: -10px;
-        background: #209af1;
+        background: $color-primary-0;
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
 

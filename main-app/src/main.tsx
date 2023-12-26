@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import ScrollToTop from './Layout/ScrollToTop.component';
 import { PrimeReactProvider } from 'primereact/api';
 // import 'primereact/resources/themes/soho-light/theme.css'; //theme
-import './assets/primeTheme.scss'
+import './sass/primeTheme.scss'
 import 'primereact/resources/primereact.min.css'; //core css
 import 'primeicons/primeicons.css'; //icons
 import 'primeflex/primeflex.css'; // flex

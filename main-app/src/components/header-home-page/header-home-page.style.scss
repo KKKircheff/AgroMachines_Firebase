@@ -1,4 +1,6 @@
-@import '../../assets/app.colors.scss';
+@import '../../sass/variables.scss';
+@import '../../sass/mixins';
+$textLocalColor: white;
 
 .home-hero {
     display: flex;
@@ -22,7 +24,7 @@
             font-size: calc(1.20rem + 2vw);
             font-weight: 900;
             line-height: calc(1rem + 4vw);
-            color: white;
+            color: $textLocalColor;
             padding: 0;
             margin: 0;
         }
@@ -51,7 +53,7 @@
 }
 
 
-@media (min-width: 720px) {
+@include mdMinBreakPoint {
     .home-hero {
         &__left-side {
 
@@ -69,7 +71,8 @@
     }
 }
 
-@media (min-width: 1360px) {
+@include xxlMinBreakPoint {
+
     .home-hero {
         &__left-side {
 

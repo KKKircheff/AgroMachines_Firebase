@@ -1,4 +1,5 @@
-@import '../../assets/app.colors.scss';
+@import '../../sass/variables.scss';
+@import '../../sass/mixins';
 
 .content-card {
     display: flex;
@@ -26,21 +27,24 @@
             line-height: 3rem;
             margin: 6vw 0 3vw 0;
         }
+
         .subtitle {
             font-size: calc(0.6rem + 3vw);
             color: $color-primary-0;
             margin: 1vw 0 3vw 0;
         }
+
         .content {
             text-align: justify;
-            color: $text-dark-color;
+            color: $textColor;
             font-weight: 500;
             font-size: calc(0.2rem + 3vw);
         }
     }
 }
 
-@media (min-width: 720px) {
+@include mdMinBreakPoint {
+
     .content-card {
         display: flex;
         flex-direction: row;

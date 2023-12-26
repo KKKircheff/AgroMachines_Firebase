@@ -1,4 +1,5 @@
-@import '../../assets/app.colors.scss';
+@import '../../sass/variables.scss';
+@import '../../sass/mixins';
 
 .product-card {
     display: flex;
@@ -12,6 +13,7 @@
     .carousel-wrapper {
         width: 100%;
         border-radius: 5px 5px 0 0;
+
         img {
             height: 100vw;
             object-fit: cover;
@@ -34,6 +36,7 @@
             height: 8vw;
             background-color: $color-secondary-1-0;
             clip-path: polygon(0 0, 100% 0, 100% 100%, 6% 100%);
+
             p {
                 font-size: calc(0.3rem + 2vw);
                 font-weight: 700;
@@ -53,6 +56,7 @@
             margin: 0;
             background-color: $color-primary-0;
             clip-path: polygon(0 0, 100% 0, 100% 100%, 28% 100%);
+
             p {
                 font-family: 'Kanit', sans-serif;
                 font-weight: 500;
@@ -73,10 +77,12 @@
                 color: $color-primary-0;
                 line-height: 0.8rem;
             }
+
             .product-card-subtitle {
                 margin: 0 0 1.3vw 0;
                 font-size: calc(0.5rem + 1vw);
                 color: $color-secondary-1-0;
+
                 span {
                     font-size: calc(0.5rem + 1vw);
                     margin-left: 5px;
@@ -84,31 +90,35 @@
                 }
             }
         }
+
         h4 {
             margin: 1vw 0 0 0;
             padding: 0;
             font-size: calc(0.5rem + 1vw);
             line-height: 0.5rem;
             color: $color-secondary-1-0;
+
             span {
                 font-size: calc(0.5rem + 1vw);
                 color: $color-primary-0;
                 margin-left: 5px;
             }
         }
+
         .product-card-content {
             text-align: justify;
-            color: $text-dark-color;
+            color: $textColor;
             font-weight: 500;
             font-size: calc(0.7rem + 1vw);
         }
     }
 }
+
 .button-arrow-carousel {
     display: none;
 }
 
-@media (min-width: 720px) {
+@include mdMinBreakPoint {
     .product-card {
         display: flex;
         flex-direction: row;
@@ -124,6 +134,7 @@
             width: 33vw;
             padding: 0;
             margin: 0;
+
             img {
                 height: 33vw;
                 object-fit: cover;
@@ -142,6 +153,7 @@
             .top-banner-title-section {
                 height: 5vw;
                 padding: 0;
+
                 p {
                     font-size: calc(0.2rem + 1.5vw);
                     line-height: 1vw;
@@ -151,6 +163,7 @@
             .top-banner-icon-section {
                 height: 6vw;
                 padding: 0.8vw 0 0.3vw 0;
+
                 p {
                     line-height: calc(0.7rem + 1.2vw);
                     font-size: calc(0.15rem + 1.8vw);
@@ -188,6 +201,7 @@
     .button-arrow-carousel {
         display: block;
     }
+
     .button-arrow-carousel:hover {
         transform: scale(1.3);
         transition: transform 0.1s;

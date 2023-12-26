@@ -1,4 +1,5 @@
-@import '../../assets/app.colors.scss';
+@import '../../sass/variables.scss';
+@import '../../sass/mixins';
 
 .contact-form-container {
     display: flex;
@@ -27,14 +28,15 @@
 
 .form-error-message {
     width: 100%;
-    border: 1px solid red;
-    color: red;
+    border: 1px solid $warningColor;
+    color: $warningColor;
     font-weight: 500;
     padding: 10px;
     margin: 10px 0;
 }
 
-@media only screen and (min-width: 781px) {
+@include mdMinBreakPoint {
+
     .contact-form-container {
         width: 66%;
     }

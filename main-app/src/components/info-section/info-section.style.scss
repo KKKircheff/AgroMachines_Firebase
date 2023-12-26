@@ -1,8 +1,9 @@
-@import '../../assets/app.colors.scss';
+@import '../../sass/variables.scss';
+@import '../../sass/mixins';
 
 
 .info-section {
-    background: linear-gradient(to bottom, #ffffff 0%, $background-color 100%);
+    background: linear-gradient(to bottom, white 0%, $background-color 100%);
 }
 
 .counter-container {
@@ -16,13 +17,13 @@
 }
 
 .card-content-container {
-    background: linear-gradient(to bottom, #ffffff 0%, $background-color 100%);
+    background: linear-gradient(to bottom, white 0%, $background-color 100%);
     // background-color: $background-color;
 }
 
 
 
-@media (min-width: 720px) {
+@include mdMinBreakPoint {
     .card-content-container {
         display: flex;
         flex-direction: column;
@@ -33,5 +34,6 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 40px;
+
     }
 }

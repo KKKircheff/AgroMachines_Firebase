@@ -1,12 +1,12 @@
-@import '../../assets/app.colors.scss';
+@import '../../sass/variables.scss';
+@import '../../sass/mixins';
+$textLocalColor: $gray-20;
 
 .content-card-two {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 30px;
-    // padding: 100px 7vw 40px 7vw;
-    // border-right: 2px solid red;
     overflow-x: hidden;
     padding: 30px 0;
     background-color: transparent;
@@ -20,18 +20,15 @@
 
             h2 {
                 font-size: 24px;
-                color: $gray-45;
+                color: $textColor;
                 font-weight: 600;
                 padding-bottom: 0px;
-
             }
 
             h3 {
                 line-height: 35px;
                 padding-left: 20px;
                 margin-bottom: 20px;
-                // line-height: 3.3rem;
-                // letter-spacing: -1px;
                 font-size: 20px;
                 color: #111;
                 font-weight: 600;
@@ -56,13 +53,12 @@
             // border-radius: 20px;
             text-align: justify;
             font-size: $p-size;
-            color: $gray-18;
+            color: $textLocalColor;
             font-weight: $p-font-weight;
             padding: 20px 0 0 0;
             border-top: 1px solid hsl(0, 0%, 93%);
         }
     }
-
 
     &__button {
         margin-top: 30px;
@@ -79,16 +75,12 @@
         background-color: white;
         margin-top: 20px;
         transition: all .1s;
-
-
     }
 }
 
-@media only screen and (min-width: 720px) {
+@include mdMinBreakPoint {
     .content-card-two {
         background: transparent;
-
-
 
         &__content {
             display: grid;
@@ -103,60 +95,31 @@
                 width: 100%;
                 padding: 0 20px 20px 20px;
                 margin: 0 auto;
-
             }
         }
-
 
         &__button {
             margin-left: 0px;
             border-radius: 0px;
             margin-top: 40px;
-
             transition: border-radius .2s;
-            // transition: background-color .2s;
-
-
 
             &:hover {
                 border-radius: 55px 0px;
                 transition: border-radius .2s;
-                // transition: background-color .2s;
             }
 
         }
     }
 }
 
-@media only screen and (min-width: 1280px) {
-
+@include xlMinBreakPoint {
     .content-card-two {
+        max-width: 1100px;
+        margin: 0 auto;
 
-        // margin-left: 3vw;
-        // padding: 120px 150px 0 150px;
-
-        // &__content {
-        //     // display: flex;
-        //     // flex-direction: row;
-        //     // flex-wrap: wrap;
-
-        //     // &-title {
-        //     //     width: 80%;
-        //     //     padding-bottom: 40px;
-        //     // }
-
-        //     // &-text {
-        //     //     width: 32%;
-        //     //     border-top: none;
-        //     //     // margin: auto 0px;
-        //     //     // border-left: 1px solid hsl(0, 0%, 93%);
-        //     //     // padding: 0px 0px 0px 20px;
-
-        //     // }
 
         &-img {
-            // width: 25%;
-            // order: 3;
 
             img {
                 margin: 0 auto;

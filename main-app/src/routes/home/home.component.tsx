@@ -27,7 +27,7 @@ const Home = () => {
         <div className='home-wrapper'>
             <HeaderHomePage />
             <InfoSection />
-            {productCards && <div id='product-card-wrapper'>{productCards}</div>}
+            {/* {productCards && <div id='product-card-wrapper'>{productCards}</div>} */}
             {/* <Suspense fallback={<div>...</div>}>
                 <HistoryGallery />
             </Suspense> */}
