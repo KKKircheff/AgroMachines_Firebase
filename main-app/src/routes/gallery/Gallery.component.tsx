@@ -9,7 +9,7 @@ import FooterHomePage from '../../components/footer-home-page/footer-home-page.c
 import { fullGalleryData } from '../../application-data/gallery-data';
 import './Gallery.styles.scss'
 import { ClickHandlerProps } from 'react-photo-album';
-import PopUpImage from '../../components/pop-up-image/pop-up-image.component';
+import PopUpImage from '../../components/ui/pop-up-image/pop-up-image.component';
 
 
 type Photo = {

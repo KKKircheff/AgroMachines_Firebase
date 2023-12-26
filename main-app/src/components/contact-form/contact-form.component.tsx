@@ -1,5 +1,5 @@
-import FormInputField from '../form-input-field/form-input-field.component'
-import FormTextArea from "../form-text-area-field/form-text-area.component";
+import FormInputField from '../ui/form-input-field/form-input-field.component'
+import FormTextArea from "../ui/form-text-area-field/form-text-area.component";
 // import Button from "../button/button.component"
 import { Button } from 'primereact/button';
 import { useState } from "react";

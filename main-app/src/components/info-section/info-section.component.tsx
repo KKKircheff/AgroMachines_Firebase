@@ -1,4 +1,4 @@
-import Counter from '../counter/counter.component';
+import Counter from '../ui/counter/counter.component';
 // import ContentCard from '../content-card/content-card.component';
 // import { cardContent } from '../../application-data/content-card-data'
 

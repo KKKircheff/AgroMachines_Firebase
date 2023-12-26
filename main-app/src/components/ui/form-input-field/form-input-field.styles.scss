@@ -1,16 +1,16 @@
-@import '../../sass/variables.scss';
+@import '../../../sass/variables.scss';
 
 $main-color: $color-primary-4;
 $sub-color: $color-primary-0;
 $backgroundLocalColor: white;
 
 @mixin shrinkLabel {
-    top: -20px;
+    top: -14px;
     font-size: 12px;
     color: $main-color;
 }
 
-.form-textarea-wrapper {
+.form-input-wrapper {
     position: relative;
     margin: 45px 0;
 
@@ -18,25 +18,29 @@ $backgroundLocalColor: white;
         background: none;
         background-color: $backgroundLocalColor;
         color: $sub-color;
-        font-size: 18px;
+        font-size: calc(0.7rem + 1vw);
         padding: 10px 10px 10px 5px;
         display: block;
         width: 100%;
         border: none;
         border-radius: 0;
-        border: 1px solid $sub-color;
+        border-bottom: 1px solid $sub-color;
         margin: 25px 0;
 
         &:focus {
             outline: none;
         }
 
-        &:focus~.form-textarea-label {
+        &:focus~.form-input-label {
             @include shrinkLabel();
         }
     }
 
-    .form-textarea-label {
+    input[type='password'] {
+        letter-spacing: 0.3em;
+    }
+
+    .form-input-label {
         color: $sub-color;
         font-size: 16px;
         font-weight: normal;

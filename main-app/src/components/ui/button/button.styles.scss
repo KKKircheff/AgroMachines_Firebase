@@ -1,4 +1,5 @@
-@import '../../styles/variables.scss';
+@import '../../../sass/variables';
+$textLocalColor: white;
 
 
 
@@ -11,7 +12,7 @@
     padding: 0 35px 0 35px;
     font-size: 15px;
     background-color: $color-primary-0;
-    color: white;
+    color: $textLocalColor;
     text-transform: uppercase;
     // font-family: 'Open Sans Condensed';
     font-family: 'Sofia Sans Condensed', sans-serif;
@@ -20,18 +21,18 @@
     display: flex;
     justify-content: center;
     border: none;
-    border: 1px solid white;
+    border: 1px solid $textLocalColor;
     border-radius: 0;
 
 
     &:active {
         background-color: #626262;
-        color: white;
+        color: $textLocalColor;
     }
 
     &.primary {
         background-color: $color-primary-2;
-        color: white;
+        color: $textLocalColor;
 
         &:active {
             background-color: $color-primary-0;
@@ -39,12 +40,12 @@
 
         &:hover {
             background-color: $color-primary-0;
-            border: 1px solid white;
+            border: 1px solid $textLocalColor;
         }
     }
 
     &.inverted {
-        background-color: white;
+        background-color: $textLocalColor;
         color: $color-primary-0;
         border: 1px solid $color-primary-0;
 
@@ -67,21 +68,21 @@
     .button-container {
 
         &:hover {
-            background-color: white;
+            background-color: $textLocalColor;
             color: $color-primary-0;
             border: 1px solid $color-primary-0;
         }
 
         &:active {
             background-color: $color-primary-0;
-            color: white;
+            color: $textLocalColor;
         }
 
 
         &.google-sign-in {
             &:hover {
                 background-color: $color-primary-3;
-                color: white;
+                color: $textLocalColor;
                 border: none;
             }
 
@@ -94,7 +95,7 @@
         &.inverted {
             &:hover {
                 background-color: $color-primary-0;
-                color: white;
+                color: $textLocalColor;
                 border: none;
             }
 

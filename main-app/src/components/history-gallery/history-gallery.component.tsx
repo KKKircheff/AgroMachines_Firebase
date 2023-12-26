@@ -8,7 +8,7 @@ import PhotoAlbum from "react-photo-album";
 import { fullGalleryData } from '../../application-data/gallery-data';
 import './history-gallery.component.scss'
 import { ClickHandlerProps } from 'react-photo-album';
-import PopUpImage from '../pop-up-image/pop-up-image.component';
+import PopUpImage from '../ui/pop-up-image/pop-up-image.component';
 // const bodyScroll = require('body-scroll-toggle');
 
 type Photo = {
