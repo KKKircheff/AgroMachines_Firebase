@@ -1,4 +1,6 @@
-@import '../../assets/app.colors.scss';
+@import '../../sass/variables.scss';
+@import '../../sass/mixins';
+$textLocalColor: white;
 
 .home-hero {
     display: flex;
@@ -19,16 +21,15 @@
 
         h1 {
             font-family: 'Raleway', sans-serif;
-            font-size: calc(1.66rem + 2vw);
+            font-size: calc(1.20rem + 2vw);
             font-weight: 900;
-            line-height: 7vw;
-            color: white;
+            line-height: calc(1rem + 4vw);
+            color: $textLocalColor;
             padding: 0;
             margin: 0;
         }
 
         Button {
-            width: 80px;
             margin-top: 12vw;
         }
     }
@@ -51,7 +52,9 @@
 }
 
 
-@media (min-width: 720px) {
+
+@include mdMinBreakPoint {
+
     .home-hero {
         &__left-side {
 
@@ -69,7 +72,8 @@
     }
 }
 
-@media (min-width: 1360px) {
+
+@include xxlMinBreakPoint {
     .home-hero {
         &__left-side {
 

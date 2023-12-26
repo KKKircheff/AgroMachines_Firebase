@@ -1,7 +1,9 @@
-@import '../../assets/app.colors.scss';
+@import '../../sass/variables';
+@import '../../sass/mixins';
+$textLocalColor: white;
 
 .history-gallery-wrapper {
-    color: white;
+    color: $textLocalColor;
     font-size: calc(0.5rem + 1vw);
 
     h2 {
@@ -14,6 +16,7 @@
         margin: calc(1rem + 2vw) 3vw;
         clip-path: polygon(0 0, 100% 0, 96% 100%, 0% 100%);
     }
+
     h3 {
         width: 60vw;
         background-color: $color-primary-0;
@@ -35,7 +38,8 @@
         }
     }
 }
-@media (min-width: 720px) {
+
+@include mdMinBreakPoint {
     .history-gallery-wrapper {
         h2 {
             width: 60%;

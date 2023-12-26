@@ -1,4 +1,5 @@
-@import '../../assets/app.colors.scss';
+@import '../../sass/variables.scss';
+@import '../../sass/mixins';
 
 .info-card {
     display: flex;
@@ -23,6 +24,7 @@
         font-weight: 600;
         min-width: 80%;
         text-align: center;
+
         h2 {
             margin: 0;
             padding: 0 3px;
@@ -58,27 +60,29 @@
     }
 }
 
-@media (min-width: 620px) {
+@include mdMinBreakPoint {
     .info-card {
-        margin: 4vw 0;
+        margin: 0;
         padding: 0;
-        width: 28vw;
-        height: 28vw;
+        width: 23vw;
+        height: 23vw;
 
-        .content-wrapper > h2 {
+        .content-wrapper>h2 {
             margin: 0;
             padding: 0 3px;
-            line-height: calc(1.3rem + 0.7vw);
-            font-size: calc(0.2rem + 1.6vw);
+            line-height: calc(.5rem + 2vw);
+            font-size: calc(0.2rem + 1.3vw);
             color: $color-primary-0;
         }
 
         .counter-wrapper {
             margin: 0;
             padding: 30px;
+
             .count-up {
-                font-size: calc(3rem + 2vw);
+                font-size: calc(2.3rem + 2.3vw);
             }
+
             span {
                 font-size: 3.5rem;
             }

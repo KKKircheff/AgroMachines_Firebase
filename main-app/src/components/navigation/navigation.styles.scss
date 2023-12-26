@@ -1,13 +1,12 @@
-@import '../../assets/app.colors.scss';
-
-
+@import '../../sass/variables.scss';
+@import '../../sass/mixins';
+$textLocalColor: white;
 
 .wrapper {
 
     &__under-navigation-layer {
         height: 50px;
     }
-
 }
 
 .main-navbar {
@@ -19,7 +18,7 @@
     display: flex;
     flex-direction: column;
     background: $color-primary-0;
-    transition: max-height 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     left: 0px;
 
     &__head {
@@ -27,49 +26,35 @@
         justify-content: space-between;
         align-items: center;
         padding: 10px 3vw;
-        min-height: 30px;
-        color: white;
+        min-height: 50px;
+        color: $textLocalColor;
 
         &-logo {
             position: absolute;
             top: 0;
             left: 0;
             height: 45px;
-            padding: 2vw 4vw 2.5vw 1vw;
+            padding: 15px 30px 45px 20px;
             text-align: center;
             clip-path: polygon(0 0, 100% 0, 84% 100%, 0% 100%);
             background-color: $color-secondary-1-0;
             transition: all 0.3s;
 
-            p {
-                display: block;
-                font-family: 'Kanit', sans-serif;
-                font-weight: 500;
-                font-style: italic;
-                font-size: calc(1rem + 1vw);
-                margin: 0;
-                padding: 0 15px 0px 10px;
-                line-height: calc(1.2rem + 0.7vw);
+            img {
+                width: 60px;
             }
 
-            &.active {
-                display: flex;
-                flex-direction: row;
-                height: 22px;
-                clip-path: polygon(0 0, 100% 0, 88% 100%, 0% 100%);
-                padding: 10px 30px 15px 10px;
 
-                p {
-                    padding: 0 3px;
-                    display: inline-block;
-                }
+            &.active {
+                padding: 20px 35px 50px 20px;
+
             }
         }
 
         &-phone-number {
             display: flex;
             align-items: center;
-            color: white;
+            color: $textLocalColor;
             font-size: 1.5rem;
             z-index: 10;
 
@@ -114,7 +99,7 @@
                 width: 100%;
                 position: absolute;
                 height: 3px;
-                background: #fff;
+                background: $textLocalColor;
                 display: block;
                 transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -142,7 +127,8 @@
         justify-content: flex-end;
         gap: 5px;
         left: 100vw;
-        max-height: 0px;
+        max-height: 40px;
+        height: 0px;
         max-width: 70vw;
         overflow: hidden;
         transition: all 0.3s ease-in-out;
@@ -160,7 +146,7 @@
                 height: 100%;
                 padding: 0px 20px 10px 20px;
                 justify-content: space-between;
-                color: #fff;
+                color: $textLocalColor;
                 text-decoration: none;
             }
 
@@ -195,7 +181,7 @@ ul {
     padding: 0;
 
     li>span {
-        color: #fff;
+        color: $textLocalColor;
     }
 }
 
@@ -238,11 +224,12 @@ ul {
     }
 }
 
-@media (min-width: 720px) {
+@include mdMinBreakPoint {
+
     .wrapper {
 
         &__under-navigation-layer {
-            height: 70px;
+            height: 60px;
         }
 
     }
@@ -258,7 +245,7 @@ ul {
 
                 p {
                     font-size: calc(0.5rem + 0.8vw);
-                    padding: 0 0 0 calc(1px + 30vw);
+                    padding: 10px 0 0 calc(1px + 27vw);
 
                     // padding: 0 auto;
                     span {
@@ -271,11 +258,12 @@ ul {
             }
 
             &-logo {
-                padding: 1vw 4vw 2.5vw 1vw;
-                max-width: 150px;
+                padding: 20px 50px 57px 30px;
+                clip-path: polygon(0 0, 100% 0, 88% 100%, 0% 100%);
 
-                p {
-                    font-size: calc(1rem + .7vw);
+
+                img {
+                    width: 80px;
                 }
             }
 
@@ -295,7 +283,9 @@ ul {
             padding: 0 2vw;
             left: 0;
             background-color: rgba($color-primary-1, 0.3);
-            clip-path: polygon(3.5% 0, 100% 0, 100% 100%, 0% 100%);
+            clip-path: polygon(4% 0, 100% 0, 100% 100%, 0% 100%);
+            height: 60px;
+
 
             li {
                 font-size: calc(0.4rem + 0.7vw);
@@ -305,7 +295,7 @@ ul {
                 span {
                     min-width: 40px;
                     padding: 0 10px;
-                    color: #fff;
+                    color: $textLocalColor;
                     text-decoration: none;
                 }
 
@@ -340,7 +330,7 @@ ul {
     .sub-menu {
         position: absolute;
         left: -10px;
-        background: #209af1;
+        background: $color-primary-0;
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
 

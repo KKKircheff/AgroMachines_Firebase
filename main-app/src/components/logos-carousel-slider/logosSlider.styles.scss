@@ -1,0 +1,24 @@
+.logosSliderWrapper {
+    width: 100%;
+    background-color: lightgray;
+    height: 200px;
+    transition: all 4s;
+
+    &__item {
+
+        img {
+            object-fit: cover;
+            width: 25%;
+        }
+    }
+
+    // &__container {
+
+}
+
+
+
+// .p-carousel-items-container {
+//     transition: transform 2s;
+//     background: red;
+// }

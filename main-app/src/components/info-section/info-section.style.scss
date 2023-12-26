@@ -1,4 +1,10 @@
-@import '../../assets/app.colors.scss';
+@import '../../sass/variables.scss';
+@import '../../sass/mixins';
+
+
+.info-section {
+    background: linear-gradient(to bottom, white 0%, $background-color 100%);
+}
 
 .counter-container {
     display: flex;
@@ -6,38 +12,28 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding:16vw 0;
-    background: linear-gradient(to bottom, #ffffff 0%, $background-color 100%);
+    padding: 16vw 0;
+    background: transparent;
 }
 
 .card-content-container {
-    background-color: $background-color;
+    background: linear-gradient(to bottom, white 0%, $background-color 100%);
+    // background-color: $background-color;
 }
 
-@media (min-width: 620px) {
-    .counter-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        padding: 8vw 15px;
-    }
-}
 
-@media (min-width: 720px) {
+
+@include mdMinBreakPoint {
     .card-content-container {
         display: flex;
         flex-direction: column;
         width: 100%;
     }
-}
 
-.logos-image-container {
-    margin: 0;
-    padding: 8vw 0;;
-    background: linear-gradient(to top, #ffffff 0%, $background-color 100%);
+    .counter-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 40px;
 
-    img {
-        mix-blend-mode: multiply;
-        margin: 8vw 0;
-        width: 100%;
     }
 }

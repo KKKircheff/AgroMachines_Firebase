@@ -1,4 +1,5 @@
 import { isMobile } from 'react-device-detect';
+import { BlockUI } from 'primereact/blockui';
 import './pop-up-image.styles.scss';
 // const bodyScroll = require('body-scroll-toggle');
 
@@ -28,6 +29,7 @@ const PopUpImage = ({ url, isClicked, setIsClicked }: PopUpProps) => {
             onClick={handelClick}
             className={`${isClicked ? 'screen-overlay-active' : 'screen-overlay'}`}
         >
+            <BlockUI blocked={isClicked} fullScreen baseZIndex={1} style={{ zIndex: 1 }} />
             {isClicked && <img src={url} alt="" />}
         </div>
     );

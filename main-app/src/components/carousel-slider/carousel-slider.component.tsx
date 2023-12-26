@@ -26,13 +26,17 @@ const CarouselSlider = ({ url, isClicked, setIsClicked, setPopUpUrl }: SliderPro
     const sliderSettings = {
         dots: true,
         infinite: true,
-        speed: 500,
+        // speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
         swipeToSlide: true,
+        autoplay: true,
+        speed: 2000,
+        autoplaySpeed: 1000,
         arrows: (window.innerWidth > 720),
         nextArrow: <SlickNextArrow />,
         prevArrow: <SlickPreviousArrow />,
+        cssEase: "linear",
         afterChange: (current: number) => setSliderIndex(current),
         appendDots: (dots: any) => SlickDots(dots)
     };

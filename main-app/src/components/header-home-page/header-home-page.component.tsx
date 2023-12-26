@@ -1,6 +1,6 @@
-
-import Button from '../button/button.component'
-import headerImage from '../../images-application/header-image.jpg'
+// import Button from '../button/button.component'
+import { Button } from 'primereact/button'
+import headerImage from '../../images-application/header-image.webp'
 import './header-home-page.style.scss'
 import { Link } from 'react-scroll'
 
@@ -24,14 +24,15 @@ const HeaderHomePage = () => {
                     offset={-100}
                     duration={2000}
                 >
-                    <Button id='header-button'
+                    {/* <Button id='header-button'
                         buttonType={'primary'}
                         data-aos="fade-right"
                         data-aos-delay="200"
                         data-aos-anchor=".left-side"
                     >
                         Контакт
-                    </Button>
+                    </Button> */}
+                    <Button label="Контакт" />
                 </Link>
             </div>
             <div className="home-hero__right-side" data-aos="fade-left">

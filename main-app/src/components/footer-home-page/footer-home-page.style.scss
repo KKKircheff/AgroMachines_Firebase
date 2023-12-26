@@ -1,12 +1,15 @@
-@import '../../assets/app.colors.scss';
+@import '../../sass/variables.scss';
+@import '../../sass/mixins';
+$footerBackgroundColor: black;
+$footerTextColor: $gray-90;
 
 .footer-home-page-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 60px;
-    background-color: black;
-    color: white;
+    background-color: $footerBackgroundColor;
+    color: $footerTextColor;
     padding: 20px 0 40px 0;
     font-family: 'Kanit', sans-serif;
 
@@ -16,22 +19,26 @@
         color: $color-primary-0;
         line-height: 0.4rem;
         font-family: 'Kanit', sans-serif;
+
         h5 {
             font-size: 1rem;
             margin: 10px 0 0 0;
             padding: 0;
             line-height: 0.6rem;
         }
+
         p {
             font-size: 0.8rem;
-            color: rgb(229, 229, 229);
+            color: $footerTextColor;
         }
     }
+
     .contacts {
         font-size: 0.7rem;
-        color: rgb(229, 229, 229);
+        color: $footerTextColor;
         font-weight: 500;
         text-align: center;
+
         p {
             line-height: 1.2rem;
             display: flex;
@@ -43,6 +50,7 @@
             font-size: 0.8rem;
             margin: 3px 0;
         }
+
         span {
             padding-top: 2px;
             margin-right: 5px;
@@ -51,7 +59,8 @@
         }
     }
 }
-@media (min-width: 720px) {
+
+@include mdMinBreakPoint {
     .footer-home-page-container {
         flex-direction: row;
         justify-content: space-around;
