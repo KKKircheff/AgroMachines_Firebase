@@ -30,7 +30,6 @@ $textLocalColor: white;
         }
 
         Button {
-            // width: 80px;
             margin-top: 12vw;
         }
     }
@@ -53,7 +52,9 @@ $textLocalColor: white;
 }
 
 
+
 @include mdMinBreakPoint {
+
     .home-hero {
         &__left-side {
 
@@ -71,8 +72,8 @@ $textLocalColor: white;
     }
 }
 
-@include xxlMinBreakPoint {
 
+@include xxlMinBreakPoint {
     .home-hero {
         &__left-side {
 

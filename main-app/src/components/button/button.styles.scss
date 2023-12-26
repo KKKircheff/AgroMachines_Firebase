@@ -30,11 +30,16 @@
     }
 
     &.primary {
-        background-color: $color-primary-1;
+        background-color: $color-primary-2;
         color: white;
 
         &:active {
-            background-color: $color-primary-1;
+            background-color: $color-primary-0;
+        }
+
+        &:hover {
+            background-color: $color-primary-0;
+            border: 1px solid white;
         }
     }
 
