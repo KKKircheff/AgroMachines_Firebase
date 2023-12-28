@@ -28,7 +28,7 @@ const Home = () => {
     return (
         <div className='home-wrapper'>
             <HeaderHomePage />
-            <ResponsiveContainer>
+            <ResponsiveContainer gradientColor='#fffaeb' gradientColor1='#fff'>
                 <CountersContainer />
                 <InfoCardsContainer />
             </ResponsiveContainer>
