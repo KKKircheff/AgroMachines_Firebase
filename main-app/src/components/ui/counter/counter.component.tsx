@@ -7,30 +7,32 @@ type CounterProps = {
     countFrom: number,
     countTo: number,
     content: string,
-    countAddOn:string,
+    countAddOn: string,
 }
 
-const Counter = ({ countFrom, countTo, content,countAddOn }: CounterProps) => {
+const Counter = ({ countFrom, countTo, content, countAddOn }: CounterProps) => {
 
     return (
-        <div className='info-card' data-aos="fade-in">
+        <div className='counter-widget' data-aos="fade-in">
             <RenderIfVisible defaultHeight={300} visibleOffset={50}>
-                <div className="counter-wrapper">
+                <div className="counter-widget__counter">
                     <CountUp
                         start={countFrom}
                         end={countTo}
                         duration={2.2}
                         redraw={true}
-                        className='count-up'
+                        className='counter-widget__count-up'
                     />
-                    <span>{countAddOn}</span>
+                    <div className="counter-widget__add-on">{countAddOn}</div>
                 </div>
-
-                <div className='separator'></div>
             </RenderIfVisible >
-            <div className='content-wrapper'>
-                <h2>{content}</h2>
-            </div>
+
+            <div className='counter-widget__separator'></div>
+
+            <h2 className='counter-widget__text'>
+                {content}
+            </h2>
+
         </div>
     )
 }

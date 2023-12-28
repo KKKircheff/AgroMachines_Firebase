@@ -1,0 +1,28 @@
+@import "../../../sass/_mixins.scss";
+
+.responsiveContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: 40px 20px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+
+@include mdMinBreakPoint {
+
+    .responsiveContainer {
+        padding: 80px 80px;
+
+    }
+}
+
+@include xlMinBreakPoint {
+
+    .responsiveContainer {
+        padding: 120px 150px;
+
+    }
+}

@@ -7,8 +7,10 @@ pnpm add react-router-dom localforage match-sorter sort-by
 pnpm add sass
 pnpm add firebase
 pnpm install react-icons
+
 firebase experiments:enable webframeworks /* vscode prompt terminal
 firebase init
+
 pnpm add -S aos
 pnpm add -S @types/aos@latest
 pnpm add -S @types/node@latest
