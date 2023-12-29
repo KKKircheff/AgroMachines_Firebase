@@ -9,6 +9,8 @@ import { productsData } from '../../application-data/products-data';
 import ResponsiveContainer from '../../components/layout/responsiveContainer/ResponsiveContainer';
 import InfoCardsContainer from '../../components/layout/infoCardsContainer/InfoCardsContainer.component';
 import CountersContainer from '../../components/layout/countersContainer/CountersContainer.component';
+import LogoCarouselContainer from '../../components/layout/logoCarouselContainer/LogoCarouselContainer.component';
+import IrrigationLogos from '../../components/irrigationLogos/IrrigationLogos.component';
 
 const Home = () => {
 
@@ -28,6 +30,9 @@ const Home = () => {
     return (
         <div className='home-wrapper'>
             <HeaderHomePage />
+            <LogoCarouselContainer>
+                <IrrigationLogos />
+            </LogoCarouselContainer>
             <ResponsiveContainer gradientColor='#fffaeb' gradientColor1='#fff'>
                 <CountersContainer />
                 <InfoCardsContainer />
@@ -36,9 +41,9 @@ const Home = () => {
             {/* <Suspense fallback={<div>...</div>}>
                 <HistoryGallery />
             </Suspense> */}
-            {/* <LogosSlider /> */}
-            {/* <Gallery /> */}
-            {/* <ContatForm /> */}
+            <LogoCarouselContainer backgroundColor='white'>
+                <IrrigationLogos backgroundColor='white' />
+            </LogoCarouselContainer>
             <FooterHomePage />
         </div>
     )

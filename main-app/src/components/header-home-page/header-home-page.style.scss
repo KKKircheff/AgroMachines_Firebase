@@ -43,8 +43,9 @@ $textLocalColor: white;
         justify-content: flex-end;
 
         img {
-            width: 100%;
-            max-width: 720px;
+            // width: 100%;
+            // max-width: 720px;
+            width: clamp(360px, 100%, 720px);
             object-fit: contain;
         }
     }
@@ -62,7 +63,7 @@ $textLocalColor: white;
             margin-top: 100px;
 
             h1 {
-                line-height: 4rem;
+                line-height: clamp (3rem, 30vw, 7rem);
             }
 
             Button {
@@ -70,7 +71,19 @@ $textLocalColor: white;
                 margin-top: calc(4rem + 1.5vw);
             }
         }
+
+        &__right-side {
+
+            img {
+                width: clamp(360px, 80%, 1200px);
+                object-fit: cover;
+                max-height: 600px;
+            }
+
+        }
+
     }
+
 }
 
 
@@ -91,7 +104,7 @@ $textLocalColor: white;
         &__right-side {
 
             img {
-                max-width: 1200px;
+                width: clamp(360px, 100%, 1200px);
                 max-height: 600px;
                 object-fit: cover;
             }

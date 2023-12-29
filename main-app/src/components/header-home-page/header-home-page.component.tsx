@@ -2,7 +2,7 @@
 import { Button } from 'primereact/button'
 import headerImage from '../../images-application/header-image.webp'
 import './header-home-page.style.scss'
-import { Link } from 'react-scroll'
+import { Link } from 'react-router-dom'
 
 // type Button = {
 //     children: React.ReactNode,
@@ -18,11 +18,8 @@ const HeaderHomePage = () => {
                 <h1 data-aos="fade-right" data-aos-delay="100">ВТОРА УПОТРЕБА</h1>
                 <h1 data-aos="fade-right" data-aos-delay="200">ОТ НИДЕРЛАНДИЯ</h1>
                 <Link
-                    activeClass="active"
-                    to="contact-form-container"
-                    spy={true} smooth={true}
-                    offset={-100}
-                    duration={2000}
+                    to="/contact"
+                    data-aos="fade-right" data-aos-delay="300"
                 >
                     {/* <Button id='header-button'
                         buttonType={'primary'}
