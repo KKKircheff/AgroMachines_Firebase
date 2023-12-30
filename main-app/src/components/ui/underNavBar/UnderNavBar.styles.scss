@@ -1,0 +1,13 @@
+@import "../../../sass/variables";
+
+.under-nav-bar {
+    width: 100%;
+    height: $nav-height;
+}
+
+@mixin mdMinBreakPoint {
+    .under-nav-bar {
+        width: 100%;
+        height: calc($nav-height + 10px);
+    }
+}

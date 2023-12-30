@@ -2,12 +2,6 @@
 @import '../../sass/mixins';
 $textLocalColor: white;
 
-.wrapper {
-
-    &__under-navigation-layer {
-        height: 50px;
-    }
-}
 
 .main-navbar {
     position: fixed;
@@ -223,14 +217,6 @@ ul {
 }
 
 @include mdMinBreakPoint {
-
-    .wrapper {
-
-        &__under-navigation-layer {
-            height: 60px;
-        }
-
-    }
 
     .main-navbar {
         flex-direction: row;

@@ -1,0 +1,106 @@
+// Common styles for both mobile and desktop
+@import '../../css-styles/colors.scss';
+
+.blog-card {
+    // General styles for the blog card
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 30px auto;
+
+    &__image {
+        width: 100%;
+        aspect-ratio: 192/128;
+        object-fit: cover;
+    }
+
+    &__content {
+
+        padding-top: 10px;
+
+        &__title {
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+            line-height: 30px;
+            font-size: 24px;
+            font-weight: 700;
+            padding-top: 10px;
+        }
+
+        &__author-section {
+
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: $gray-45;
+            font-weight: 500;
+            padding: 10px 0 30px 0;
+            gap: 20px;
+            line-height: 1.2rem;
+            font-size: 14px;
+
+
+            &-image {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+
+            }
+        }
+
+    }
+
+    &__read-more {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        color: $primary-brand;
+        font-weight: 00;
+    }
+}
+
+// Media query for desktop (min-width: 720px)
+@media only screen and (min-width: 720px) {
+    .blog-card {
+        max-width: 700px;
+        margin-bottom: 50px;
+        cursor: pointer;
+
+        &__image {
+            width: 100%;
+            max-height: 300px
+        }
+
+        &__content {
+
+
+            &__title {
+                line-height: 50px;
+                font-size: 40px;
+                padding-bottom: 10px;
+            }
+
+            &__author-section {
+                padding: 0px 0 10px 0;
+                line-height: 1.2rem;
+                font-size: 16px;
+
+                &-image {
+                    width: 65px;
+                    height: 65px;
+                }
+
+            }
+        }
+
+        &:hover {
+            transform: scale(1.02);
+            transition: all .2s;
+            box-shadow: rgba(0, 0, 0, 0.08) 0px 20px 30px,
+                rgba(0, 0, 0, 0.12) 0px 10px 20px;
+        }
+    }
+}

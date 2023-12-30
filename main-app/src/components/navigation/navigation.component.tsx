@@ -8,6 +8,7 @@ import { HiOutlinePhone } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 
 import './navigation.styles.scss';
+import UnderNavBar from '../ui/underNavBar/UnderNavBar.component';
 
 interface NavigationProps {
     items: Item[];
@@ -93,7 +94,8 @@ const Navigation = ({ items }: NavigationProps) => {
 
     return (
         <div ref={rootRef} className='wrapper'>
-            <div className='wrapper__under-navigation-layer'></div>
+            {/* <div className='wrapper__under-navigation-layer'></div> */}
+            <UnderNavBar />
             <nav className={
                 isTransparentNavbar
                     ? 'main-navbar active'

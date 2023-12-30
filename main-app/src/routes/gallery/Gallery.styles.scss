@@ -6,7 +6,7 @@ $textLocalColor: white;
     color: $textLocalColor;
     font-size: calc(0.5rem + 1vw);
 
-    h2 {
+    >h2 {
         width: 70vw;
         font-size: calc(0.5rem + 1.8vw);
         background-color: $color-primary-0;
@@ -17,7 +17,7 @@ $textLocalColor: white;
         clip-path: polygon(0 0, 100% 0, 96% 100%, 0% 100%);
     }
 
-    h3 {
+    >h3 {
         width: 60vw;
         background-color: $color-primary-0;
         height: 45px;
@@ -31,7 +31,7 @@ $textLocalColor: white;
         width: 95%;
         margin: calc(1.5rem + 4vw) auto;
 
-        img {
+        >img {
             transform: scale(100%);
             transition: transform 0.2s;
             z-index: 1;
@@ -41,13 +41,13 @@ $textLocalColor: white;
 
 @include mdMinBreakPoint {
     .history-gallery-wrapper {
-        h2 {
+        >h2 {
             width: 60%;
             height: 50px;
             line-height: 3rem;
         }
 
-        h3 {
+        >h3 {
             width: 50%;
             height: 50px;
             line-height: 3rem;

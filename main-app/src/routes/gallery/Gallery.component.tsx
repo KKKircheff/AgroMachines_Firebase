@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import PhotoAlbum from "react-photo-album";
 import FooterHomePage from '../../components/footer-home-page/footer-home-page.component';
-
+import GalleryCard from '../../components/galleryCard/GalleryCard.component';
+import ResponsiveContainer from '../../components/layout/responsiveContainer/ResponsiveContainer';
 // import { useEffect } from 'react';
 // import { getImageSize} from 'react-image-size';
 // import { galleryData } from '../application-data/gallery-data';
@@ -66,7 +67,9 @@ const Gallery = () => {
 
     return (
         <div id='history-gallery-wrapper' className="history-gallery-wrapper">
-
+            <ResponsiveContainer>
+                <GalleryCard />
+            </ResponsiveContainer>
             {isClicked &&
                 <PopUpImage
                     url={clickedUrl}
