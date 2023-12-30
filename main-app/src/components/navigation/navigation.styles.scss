@@ -55,7 +55,6 @@ $textLocalColor: white;
             display: flex;
             align-items: center;
             color: $textLocalColor;
-            font-size: 1.5rem;
             z-index: 10;
 
             p {
@@ -64,9 +63,8 @@ $textLocalColor: white;
                 flex-direction: row;
                 align-items: center;
                 justify-content: center;
-                font-family: 'Kanit', sans-serif;
-                font-size: calc(0.8rem + 0.8vw);
-                font-weight: 400;
+                font-size: calc(0.7rem + 0.7vw);
+                font-weight: 500;
                 font-style: italic;
                 padding: 0 0 0 calc(36vw);
                 margin: 0;
@@ -244,7 +242,7 @@ ul {
             &-phone-number {
 
                 p {
-                    font-size: calc(0.5rem + 0.8vw);
+                    font-size: calc(0.5rem + 0.6vw);
                     padding: 10px 0 0 calc(1px + 27vw);
 
                     // padding: 0 auto;

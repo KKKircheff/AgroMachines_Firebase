@@ -69,49 +69,6 @@ export default function ContatForm() {
         });
     }
 
-    // const encode = (data: any) => {
-    //     return Object.keys(data)
-    //         .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    //         .join("&");
-    // }
-
-    // const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    //     event.preventDefault();
-
-    //     const { name, email, message, phonenumber } = formValues;
-
-    //     if (!name || !email || !phonenumber || !message) {
-    //         setIsFormValid(false);
-    //         setErrorMessage("Моля попълнете всички задължителни полетa във формата!");
-    //         return;
-    //     }
-    //     if (!validateField(fieldsRegex.fullEmailAddress, email)) {
-    //         setIsFormValid(false);
-    //         setErrorMessage('Грешно въведен мейл адреса!');
-    //         return
-    //     }
-    //     if (!validateField(fieldsRegex.fullPhoneNumber, phonenumber)) {
-    //         setIsFormValid(false);
-    //         setErrorMessage('Грешно въведен телефонен номер!');
-    //         return
-    //     }
-
-    //     fetch(`/`, {
-    //         method: `POST`,
-    //         headers: { 'Content-Type': `application/x-www-form-urlencoded` },
-    //         body: encode({
-    //             'form-name': 'contact-form__v1',
-    //             ...formValues,
-    //         }),
-    //     })
-    //         .then((response) => {
-    //             console.log(response);
-    //             alert('Вашето запитване е прието. Ще се свържем с вас в рамките на един работен ден')
-    //         })
-    //         .catch(error => alert(`Error: ${error}`))
-    //     clearFormFields();
-    // }
-
     const contactTemplate = (formValues: ContactInfo, created: Date, time_stamp: number) => {
         return ({
             // to: "contact@reddigit.net",

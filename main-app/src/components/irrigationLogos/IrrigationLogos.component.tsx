@@ -18,7 +18,7 @@ const IrrigationLogos: React.FC<Props> = ({ backgroundColor }) => {
             const numImages = 9;
             return Promise.all(
                 Array.from({ length: numImages }, async (_, index) => {
-                    const src = `../../assets/images/logos/${(index + 1)}.webp`
+                    const src = `/logos/${(index + 1)}.webp`
                     const imageUrl = new URL(src, import.meta.url).href;
                     return imageUrl;
                 })

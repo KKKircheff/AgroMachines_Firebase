@@ -31,6 +31,8 @@ $color-secondary-2-3: #A47E17;
 $color-secondary-2-4: #7C5A00;
 
 $background-color: #fffaeb;
+
+$gray-96: hsl(0, 0%, 96%);
 $gray-90: hsl(0, 0%, 90%);
 $gray-80: hsl(0, 0%, 80%);
 $gray-70: hsl(0, 0%, 70%);
@@ -40,6 +42,11 @@ $gray-40: hsl(0, 0%, 40%);
 $gray-30: hsl(0, 0%, 30%);
 $gray-20: hsl(0, 0%, 20%);
 $gray-10: hsl(0, 0%, 10%);
+
+/* Typography */
+$title-font: 'Roboto Condensedt', sans-serif;
+$content-font: 'Commissioner', sans-serif;
+// $optional-font: 'Raleway', sans-serif;
 
 $p-size: 14px;
 $p-font-weight: 400;

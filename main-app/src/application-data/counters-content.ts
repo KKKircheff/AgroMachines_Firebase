@@ -8,7 +8,7 @@ export const counetrsContent = [
     {
         'countFrom': 0,
         'countTo': 450,
-        'content': 'актуални оферти за точен и изгоден избор!',
+        'content': 'оферти за поливни системи и земеделски машини!',
         'countAddOn': '+',
     },
     {

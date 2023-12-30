@@ -4,18 +4,17 @@ $textLocalColor: white;
 
 
 .button-container {
-    min-width: 120px;
-    width: auto;
+    width: clamp(120px, 100%, 165px);
     height: 50px;
     letter-spacing: 0.5px;
-    line-height: 50px;
-    padding: 0 35px 0 35px;
+    // line-height: 50px;
+    // padding: 0 35px 0 35px;
     font-size: 15px;
     background-color: $color-primary-0;
     color: $textLocalColor;
     text-transform: uppercase;
     // font-family: 'Open Sans Condensed';
-    font-family: 'Sofia Sans Condensed', sans-serif;
+    font-family: $content-font;
     font-weight: bolder;
     cursor: pointer;
     display: flex;

@@ -21,7 +21,7 @@ $textLocalColor: white;
         margin-top: 10vw;
 
         h1 {
-            font-family: 'Raleway', sans-serif;
+            font-family: $content-font;
             font-size: calc(1.20rem + 2vw);
             font-weight: 900;
             line-height: calc(1rem + 4vw);

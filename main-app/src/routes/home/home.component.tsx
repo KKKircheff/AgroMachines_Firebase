@@ -41,8 +41,8 @@ const Home = () => {
             {/* <Suspense fallback={<div>...</div>}>
                 <HistoryGallery />
             </Suspense> */}
-            <LogoCarouselContainer backgroundColor='white'>
-                <IrrigationLogos backgroundColor='white' />
+            <LogoCarouselContainer backgroundColor='#f5f5f5'>
+                <IrrigationLogos backgroundColor='#f5f5f5' />
             </LogoCarouselContainer>
             <FooterHomePage />
         </div>
