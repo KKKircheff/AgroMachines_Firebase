@@ -11,11 +11,11 @@ const PrimeGallery = ({ imgUrls }: PrimeGalleryProps) => {
     const responsiveOptions: GalleriaResponsiveOptions[] = [
         {
             breakpoint: '2600px',
-            numVisible: 3
+            numVisible: 4
         },
         {
             breakpoint: '600px',
-            numVisible: 3
+            numVisible: 4
         },
 
     ];
@@ -41,6 +41,7 @@ const PrimeGallery = ({ imgUrls }: PrimeGalleryProps) => {
                 value={imgUrls}
                 responsiveOptions={responsiveOptions}
                 numVisible={5}
+                showItemNavigators={true}
                 // style={{ maxWidth: '1200px' }}
                 item={itemTemplate} thumbnail={thumbnailTemplate} />}
         </div>

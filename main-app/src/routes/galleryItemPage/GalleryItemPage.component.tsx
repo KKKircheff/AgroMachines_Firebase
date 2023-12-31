@@ -5,10 +5,10 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import { Image } from 'primereact/image';
 
-import { db, storage, getFirebaseStorageImageUrl } from "../../utils/firebase-utils";
-// import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { db, getFirebaseStorageImageUrl } from "../../utils/firebase-utils";
 import { getDocs, collection, query, where } from 'firebase/firestore'
-import PrimeGallery from '../../components/primeGallery/primeGallery.component';
+import PrimeGallery from '../../components/primeGallery/PrimeGallery.component';
+import UnderNavBar from '../../components/ui/underNavBar/UnderNavBar.component';
 
 interface GalleryCard {
     name: string;
@@ -51,7 +51,6 @@ const GalleryItemPage = () => {
                             return data;
                         })
                     )
-                    console.log('array urls:', imgUrlArray)
                     setPhotosUrls(imgUrlArray);
                     setCardData(data);
                 } else {
@@ -70,13 +69,20 @@ const GalleryItemPage = () => {
     const icon = (<i className="pi pi-search"></i>)
     return (
         <div className='gallery-item-page'>
+            <UnderNavBar />
             <ResponsiveContainer>
-                {cardData && photosUrls && <div>
-                    <PrimeGallery imgUrls={photosUrls} />
-                    <h2>{cardData.title}</h2>
-                    <h3>{cardData.subtitle}</h3>
-                    <p>{cardData.content}</p>
-                </div>}
+                {cardData && photosUrls &&
+                    < div className='gallery-item-page__card'>
+                        <div className='gallery-item-page__card__gallery'>
+                            <PrimeGallery imgUrls={photosUrls} />
+                        </div>
+
+                        <div className='gallery-item-page__card__content'>
+                            <h2>{cardData.title}</h2>
+                            <h3>{cardData.subtitle}</h3>
+                            <p>{cardData.content}</p>
+                        </div>
+                    </div>}
             </ResponsiveContainer>
             <FooterHomePage />
         </div>

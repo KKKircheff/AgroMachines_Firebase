@@ -32,10 +32,10 @@ const Home = () => {
         <div className='home-wrapper'>
             <UnderNavBar />
             <HeaderHomePage />
-            <LogoCarouselContainer>
-                <IrrigationLogos />
+            <LogoCarouselContainer backgroundColor='#fff'>
+                <IrrigationLogos backgroundColor='#fff' />
             </LogoCarouselContainer>
-            <ResponsiveContainer gradientColor='#fffaeb' gradientColor1='#fff'>
+            <ResponsiveContainer gradientColor='#f5f5f5' gradientColor1='#f5f5f5'>
                 <CountersContainer />
                 <InfoCardsContainer />
             </ResponsiveContainer>
