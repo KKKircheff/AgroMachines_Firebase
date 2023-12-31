@@ -28,7 +28,7 @@ const GalleryCardsContainer = () => {
                 });
                 setCardsData(data);
             } catch (error) {
-                console.log('error fetching data from Firestore', error);
+                console.log('Error fetching data from Firestore', error);
             }
         };
         fetchData();

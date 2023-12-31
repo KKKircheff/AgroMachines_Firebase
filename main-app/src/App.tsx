@@ -1,16 +1,20 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
+import { lazy, Suspense } from 'react';
+
 import './App.scss';
 import { Routes, Route } from 'react-router-dom';
 import AOS from 'aos';
 import Layout from './Layout/Layout.component';
 
 import Home from './routes/home/home.component';
-import Offers from "./routes/offers/Offers.component";
-import Gallery from "./routes/gallery/Gallery.component";
-import Contact from "./routes/contact/Contact.component";
+// import Offers from "./routes/offers/Offers.component";
+// import Gallery from "./routes/gallery/Gallery.component";
+// import Contact from "./routes/contact/Contact.component";
 
-// import { Item } from './application-data/navbar-config';
-// import { items } from './application-data/navbar-config';
+const Offers = lazy(() => import('./routes/offers/Offers.component'));
+const Gallery = lazy(() => import('./routes/gallery/Gallery.component'));
+const Contact = lazy(() => import('./routes/contact/Contact.component'));
+const GalleryItemPage = lazy(() => import('./routes/galleryItemPage/GalleryItemPage.component'));
 
 export type ToggleContextType = {
     toggleView: boolean;
@@ -43,9 +47,31 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Home />} />
-                        <Route path={`/offers`} element={<Offers />} />
-                        <Route path={`/gallery`} element={<Gallery />} />
-                        <Route path={`/contact`} element={<Contact />} />
+                        <Route path={`/offers`} element={
+                            <Suspense fallback={<div>Loading...</div>}>
+                                <Offers />
+                            </Suspense>
+                        } />
+                        <Route path={`/gallery`} element={
+                            <Suspense fallback={<div>Loading...</div>}>
+                                <Gallery />
+                            </Suspense>
+                        } />
+                        <Route path={`/gallery/:id`} element={
+                            <Suspense fallback={<div>Loading...</div>}>
+                                <GalleryItemPage />
+                            </Suspense>
+                        } />
+                        <Route path={`/gallery/*`} element={
+                            <Suspense fallback={<div>Loading...</div>}>
+                                <Gallery />
+                            </Suspense>
+                        } />
+                        <Route path={`/contact`} element={
+                            <Suspense fallback={<div>Loading...</div>}>
+                                <Contact />
+                            </Suspense>
+                        } />
                         <Route path={`/*`} element={<Home />} />
                     </Route>
                 </Routes>

@@ -1,0 +1,46 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+.prime-gallery {
+    width: 100%;
+
+    button {
+        z-index: 3 !important;
+        padding: 0 !important;
+    }
+
+    &__gallery {
+        width: clamp(280px, 60%, 600px);
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    &__main {
+        img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+
+    &__thumb {
+        img {
+            width: 70%;
+            aspect-ratio: 1/1;
+            height: auto;
+            margin: 0 10%;
+            object-fit: cover;
+            overflow: hidden;
+        }
+    }
+}
+
+.p-galleria-thumbnail-container {
+    // background-color: red !important;
+
+    &-icon {
+        // background-color: red;
+        color: white !important;
+    }
+}
