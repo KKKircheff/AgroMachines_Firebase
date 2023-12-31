@@ -11,6 +11,8 @@ import { fullGalleryData } from '../../application-data/gallery-data';
 import './Gallery.styles.scss'
 import { ClickHandlerProps } from 'react-photo-album';
 import PopUpImage from '../../components/ui/pop-up-image/pop-up-image.component';
+import UnderNavBar from '../../components/ui/underNavBar/UnderNavBar.component';
+import GalleryCardsContainer from '../../components/layout/galleryCardsContainer/GalleryCardsContainer.component';
 
 
 type Photo = {
@@ -38,7 +40,6 @@ const Gallery = () => {
     const handleClick = (e: ClickHandlerProps<Photo>) => {
         setClickedUrl(e.photo.src);
         setIsClicked(true);
-
         // bodyScroll.disable();
     }
 
@@ -66,31 +67,11 @@ const Gallery = () => {
     //  console.log(photos);
 
     return (
-        <div id='history-gallery-wrapper' className="history-gallery-wrapper">
+        <div className="gallery-page">
+            <UnderNavBar />
             <ResponsiveContainer>
-                <GalleryCard />
+                <GalleryCardsContainer />
             </ResponsiveContainer>
-            {isClicked &&
-                <PopUpImage
-                    url={clickedUrl}
-                    isClicked={isClicked}
-                    setIsClicked={setIsClicked}
-                />
-            }
-            <h2 data-aos='fade-right'>доставени поливни макари</h2>
-            <h3 data-aos='fade-right' data-aos-delay="100">от Agro-machines</h3>
-
-            <div className='history-gallery' data-aos='fade-in'>
-                {photos.length
-                    ? <PhotoAlbum
-                        layout="rows"
-                        targetRowHeight={imageHeigth}
-                        photos={photos}
-                        spacing={10}
-                        onClick={(e) => handleClick(e)}
-                    />
-                    : <div></div>}
-            </div>
             <FooterHomePage />
         </div>
     )

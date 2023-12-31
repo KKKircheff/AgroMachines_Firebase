@@ -63,7 +63,9 @@ $textLocalColor: white;
             margin-top: 100px;
 
             h1 {
-                line-height: clamp (3rem, 30vw, 7rem);
+                line-height: clamp (3rem, 32vw, 9rem);
+                font-size: calc(1.70rem + 2vw);
+
             }
 
             Button {
@@ -75,9 +77,9 @@ $textLocalColor: white;
         &__right-side {
 
             img {
-                width: clamp(360px, 80%, 1200px);
+                width: clamp(360px, 80%, 1000px);
                 object-fit: cover;
-                max-height: 600px;
+                max-height: 480px;
             }
 
         }
@@ -94,7 +96,7 @@ $textLocalColor: white;
             margin-top: 100px;
 
             h1 {
-                line-height: 6rem;
+                line-height: 5rem;
             }
 
 

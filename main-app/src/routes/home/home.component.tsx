@@ -11,6 +11,7 @@ import InfoCardsContainer from '../../components/layout/infoCardsContainer/InfoC
 import CountersContainer from '../../components/layout/countersContainer/CountersContainer.component';
 import LogoCarouselContainer from '../../components/layout/logoCarouselContainer/LogoCarouselContainer.component';
 import IrrigationLogos from '../../components/irrigationLogos/IrrigationLogos.component';
+import UnderNavBar from '../../components/ui/underNavBar/UnderNavBar.component';
 
 const Home = () => {
 
@@ -29,6 +30,7 @@ const Home = () => {
 
     return (
         <div className='home-wrapper'>
+            <UnderNavBar />
             <HeaderHomePage />
             <LogoCarouselContainer>
                 <IrrigationLogos />

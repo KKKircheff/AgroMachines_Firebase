@@ -1,8 +1,12 @@
 import './Offers.styles.scss'
+import UnderNavBar from '../../components/ui/underNavBar/UnderNavBar.component'
 
 const Offers = () => {
     return (
-        <div>Offers</div>
+        <div>
+            <UnderNavBar />
+            <h1>Offers</h1>
+        </div>
     )
 }
 

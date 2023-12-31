@@ -3,8 +3,9 @@
 $footerBackgroundColor: black;
 $footerTextColor: $gray-90;
 
-.footer-home-page-container {
+.footer-home-page {
     display: flex;
+    width: 100vw;
     flex-direction: column;
     align-items: center;
     min-height: 60px;
@@ -12,32 +13,32 @@ $footerTextColor: $gray-90;
     color: $footerTextColor;
     padding: 20px 0 40px 0;
 
-    .company {
+    &__company {
         font-weight: 500;
         text-align: center;
         color: $color-primary-0;
         line-height: 0.4rem;
 
-        h5 {
+        >h5 {
             font-size: 1rem;
             margin: 10px 0 0 0;
             padding: 0;
             line-height: 0.6rem;
         }
 
-        p {
+        >p {
             font-size: 0.8rem;
             color: $footerTextColor;
         }
     }
 
-    .contacts {
+    &__contacts {
         font-size: 0.7rem;
         color: $footerTextColor;
         font-weight: 500;
         text-align: center;
 
-        p {
+        >p {
             line-height: 1.2rem;
             display: flex;
             flex-direction: row;
@@ -46,19 +47,20 @@ $footerTextColor: $gray-90;
             font-weight: 400;
             font-size: 0.8rem;
             margin: 3px 0;
+
+            >span {
+                padding-top: 2px;
+                margin-right: 5px;
+                color: $color-primary-0;
+                font-size: 1rem;
+            }
         }
 
-        span {
-            padding-top: 2px;
-            margin-right: 5px;
-            color: $color-primary-0;
-            font-size: 1rem;
-        }
     }
 }
 
 @include mdMinBreakPoint {
-    .footer-home-page-container {
+    .footer-home-page {
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
