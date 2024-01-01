@@ -13,6 +13,7 @@ import { ClickHandlerProps } from 'react-photo-album';
 import PopUpImage from '../../components/ui/pop-up-image/pop-up-image.component';
 import UnderNavBar from '../../components/ui/underNavBar/UnderNavBar.component';
 import GalleryCardsContainer from '../../components/layout/galleryCardsContainer/GalleryCardsContainer.component';
+import GalleryHero from '../../components/galleryHero/GalleryHero.component';
 
 
 type Photo = {
@@ -69,7 +70,10 @@ const Gallery = () => {
     return (
         <div className="gallery-page">
             <UnderNavBar />
-            <ResponsiveContainer>
+            <ResponsiveContainer gradientColor1='#111' gradientColor='#111'>
+                <GalleryHero />
+            </ResponsiveContainer>
+            <ResponsiveContainer gradientColor1='#f5f5f5' gradientColor='#f5f5f5'>
                 <GalleryCardsContainer />
             </ResponsiveContainer>
             <FooterHomePage />

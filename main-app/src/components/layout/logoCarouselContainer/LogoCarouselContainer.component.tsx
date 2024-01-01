@@ -17,7 +17,7 @@ const LogoCarouselContainer: React.FC<ContainerProps> = ({ children, backgroundC
     } : {}
 
     return (
-        <div className="logo-carousel-container">
+        <div className="logo-carousel-container" style={{ background: `${backgroundColor}` }}>
             <div className="logo-carousel-container__before" style={logosBackgroundStyleBefore}></div>
             {children}
             <div className="logo-carousel-container__after" style={logosBackgroundStyleAfter}></div>

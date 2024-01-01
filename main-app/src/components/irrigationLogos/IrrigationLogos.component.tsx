@@ -45,11 +45,12 @@ const IrrigationLogos: React.FC<Props> = ({ backgroundColor }) => {
             </div>
             <div className='irrigation-logos__section' style={logosBackgroundStyle}>
                 {imageArray
-                    && imageArray.map((image, index) => {
+                    ? imageArray.map((image, index) => {
                         return (
                             <img key={index * 20} src={image} alt='лого поливна макара' />
                         )
                     })
+                    : <div className='irrigation-logos__skeleton' style={logosBackgroundStyle}></div>
                 }
             </div>
         </div>

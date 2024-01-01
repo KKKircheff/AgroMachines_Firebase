@@ -5,16 +5,18 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    margin: 0;
+    margin: 40px 0;
     padding: 0;
     animation: 15s logo-carousel linear infinite;
 
-    &:hover {
-        animation-play-state: paused;
+    &__skeleton {
+        width: 100vw;
+        background-color: white;
+        height: 90px;
     }
 
+
     &__section {
-        padding: 100px 0 60px 0;
         background-color: $background-color;
         // background-color: $gray-90;
         display: inline-block;
@@ -22,10 +24,17 @@
         display: inline-block;
         white-space: nowrap;
 
+
         img {
             height: 90px;
             margin: 0 40px;
+
         }
+
+    }
+
+    &:hover {
+        animation-play-state: paused;
     }
 }
 

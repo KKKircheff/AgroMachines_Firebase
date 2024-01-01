@@ -1,16 +1,16 @@
-import React, { createContext, useState, useContext, useEffect } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import { lazy, Suspense } from 'react';
 
 import './App.scss';
 import { Routes, Route } from 'react-router-dom';
 import AOS from 'aos';
+
 import Layout from './Layout/Layout.component';
 
-import Home from './routes/home/home.component';
-// import Offers from "./routes/offers/Offers.component";
-// import Gallery from "./routes/gallery/Gallery.component";
-// import Contact from "./routes/contact/Contact.component";
+import PageLoaderSkeleton from "./components/layout/pageLoaderSkeleton/PageLoaderSkeleton.component";
 
+// import Home from './routes/home/home.component';
+const Home = lazy(() => import('./routes/home/home.component'));
 const Offers = lazy(() => import('./routes/offers/Offers.component'));
 const Gallery = lazy(() => import('./routes/gallery/Gallery.component'));
 const Contact = lazy(() => import('./routes/contact/Contact.component'));
@@ -46,29 +46,32 @@ function App() {
             <ToggleContext.Provider value={{ toggleView, setToggleView }}>
                 <Routes>
                     <Route path="/" element={<Layout />}>
-                        <Route index element={<Home />} />
+                        <Route index element={
+                            <Suspense fallback={<PageLoaderSkeleton />}>
+                                <Home />
+                            </Suspense>} />
                         <Route path={`/offers`} element={
-                            <Suspense fallback={<div>Loading...</div>}>
+                            <Suspense fallback={<PageLoaderSkeleton />}>
                                 <Offers />
                             </Suspense>
                         } />
                         <Route path={`/gallery`} element={
-                            <Suspense fallback={<div>Loading...</div>}>
+                            <Suspense fallback={<PageLoaderSkeleton />}>
                                 <Gallery />
                             </Suspense>
                         } />
                         <Route path={`/gallery/:id`} element={
-                            <Suspense fallback={<div>Loading...</div>}>
+                            <Suspense fallback={<PageLoaderSkeleton />}>
                                 <GalleryItemPage />
                             </Suspense>
                         } />
                         <Route path={`/gallery/*`} element={
-                            <Suspense fallback={<div>Loading...</div>}>
+                            <Suspense fallback={<PageLoaderSkeleton />}>
                                 <Gallery />
                             </Suspense>
                         } />
                         <Route path={`/contact`} element={
-                            <Suspense fallback={<div>Loading...</div>}>
+                            <Suspense fallback={<PageLoaderSkeleton />}>
                                 <Contact />
                             </Suspense>
                         } />

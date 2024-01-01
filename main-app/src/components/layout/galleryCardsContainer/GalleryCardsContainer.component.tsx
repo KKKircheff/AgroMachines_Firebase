@@ -4,6 +4,7 @@ import GalleryCard from '../../galleryCard/GalleryCard.component';
 
 import { db } from '../../../utils/firebase-utils';
 import { collection, getDocs } from 'firebase/firestore'
+import PageLoaderSkeleton from '../pageLoaderSkeleton/PageLoaderSkeleton.component';
 
 interface GalleryCardProps {
     name: string;
@@ -36,7 +37,7 @@ const GalleryCardsContainer = () => {
 
     return (
         <div className='gallery-cards-container' >
-            {cardsData && cardsData.map((cardData: GalleryCardProps, index) => {
+            {cardsData ? cardsData.map((cardData: GalleryCardProps, index) => {
                 return (
                     <GalleryCard
                         key={index}
@@ -48,7 +49,10 @@ const GalleryCardsContainer = () => {
                         numberOfPhotos={cardData.numberOfPhotos}
                     />
                 )
-            })
+            }) :
+                <div className='gallery-cards-container__page-loader'>
+                    <div className='gallery-cards-container__page-loader-spinner' ></div>
+                </div>
             }
         </div>
     )
