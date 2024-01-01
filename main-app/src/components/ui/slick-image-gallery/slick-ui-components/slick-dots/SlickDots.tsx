@@ -1,6 +1,6 @@
 import './SlickDots.scss';
 
-export default function SlickDots(dots: any) {
+const SlickDots = (dots: any) => {
     return (
         <div style={{ margin: '0 0 2.5rem 0' }}>
             <ul className="slick-dots-wrapper">
@@ -9,3 +9,4 @@ export default function SlickDots(dots: any) {
         </div>
     )
 }
+export default SlickDots;

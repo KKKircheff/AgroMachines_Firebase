@@ -1,10 +1,11 @@
 import './GalleryCardsContainer.styles.scss'
 import { useEffect, useState } from 'react';
-import GalleryCard from '../../galleryCard/GalleryCard.component';
+import GalleryCard from '../../gallery-card/GalleryCard.component';
 
 import { db } from '../../../utils/firebase-utils';
 import { collection, getDocs } from 'firebase/firestore'
 import PageLoaderSkeleton from '../pageLoaderSkeleton/PageLoaderSkeleton.component';
+import SectionLoadSpinner from '../../ui/sectionLoadSpinner/SectionLoadSpinner.component';
 
 interface GalleryCardProps {
     name: string;
@@ -50,9 +51,7 @@ const GalleryCardsContainer = () => {
                     />
                 )
             }) :
-                <div className='gallery-cards-container__page-loader'>
-                    <div className='gallery-cards-container__page-loader-spinner' ></div>
-                </div>
+                <SectionLoadSpinner />
             }
         </div>
     )

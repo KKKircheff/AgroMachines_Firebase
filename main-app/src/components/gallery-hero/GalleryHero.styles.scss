@@ -27,20 +27,19 @@ $textLocalColor: white;
         >h2 {
             max-width: 100%;
             margin: 0;
-            font-weight: 600;
-            line-height: clamp(2rem, 9vw, 6rem);
-            font-size: clamp(20px, 9vw, 60px);
+            font-weight: 700;
+            // line-height: clamp(2rem, 4vw, 6rem);
+            font-size: clamp(30px, 9vw, 60px);
             font-family: $title-font;
-            padding: 30px 0 0 0;
+            padding: clamp(50px, 6vw, 90px) 0 clamp(10px, 3vw, 30px) 0;
         }
 
         >h3 {
             max-width: 100%;
             margin: 0;
             font-weight: 300;
-            font-size: clamp(11px, 1vw, 48px);
+            font-size: clamp(11px, 2vw, 18px);
             font-family: $content-font;
-            line-height: clamp(1rem, 2vw, 1.5rem);
         }
     }
 }

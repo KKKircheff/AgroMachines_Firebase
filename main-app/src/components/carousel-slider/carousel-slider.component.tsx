@@ -5,9 +5,9 @@ import { useState } from 'react';
 import { isMobile } from 'react-device-detect';
 
 import Slider from "react-slick";
-import SlickNextArrow from '../../utils/slick-img-slider-arrows&dots/SlickNextArrow';
-import SlickPreviousArrow from '../../utils/slick-img-slider-arrows&dots/SlickPreviousArrow';
-import SlickDots from '../../utils/slick-img-slider-arrows&dots/SlickDots';
+import SlickNextArrow from '../ui/slick-image-gallery/slick-ui-components/Slick-next-arrow/SlickNextArrow';
+import SlickPreviousArrow from '../ui/slick-image-gallery/slick-ui-components/slick-previous-arrow/SlickPreviousArrow';
+import SlickDots from '../ui/slick-image-gallery/slick-ui-components/slick-dots/SlickDots';
 import './carousel-slider.styles.scss';
 
 // const bodyScroll = require('body-scroll-toggle');

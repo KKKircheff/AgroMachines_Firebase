@@ -7,8 +7,13 @@ import { Image } from 'primereact/image';
 
 import { db, getFirebaseStorageImageUrl } from "../../utils/firebase-utils";
 import { getDocs, collection, query, where } from 'firebase/firestore'
-import PrimeGallery from '../../components/primeGallery/PrimeGallery.component';
+import PrimeGallery from '../../components/ui/prime-image-gallery/PrimeGallery.component';
 import UnderNavBar from '../../components/ui/underNavBar/UnderNavBar.component';
+import SectionLoadSpinner from '../../components/ui/sectionLoadSpinner/SectionLoadSpinner.component';
+import GalleryItemPageCard from '../../components/gallery-item-page-card/GalleryItemPageCard.component';
+import GalleryCardsContainer from '../../components/layout/galleryCardsContainer/GalleryCardsContainer.component';
+import GalleryItemPageHero from '../../components/gallery-item-page-hero/GalleryItemPageHero.component';
+// import GalleryHero from '../../components/gallery-hero/GalleryHero.component';
 
 interface GalleryCard {
     name: string;
@@ -70,19 +75,13 @@ const GalleryItemPage = () => {
     return (
         <div className='gallery-item-page'>
             <UnderNavBar />
-            <ResponsiveContainer>
-                {cardData && photosUrls &&
-                    < div className='gallery-item-page__card'>
-                        <div className='gallery-item-page__card__gallery'>
-                            <PrimeGallery imgUrls={photosUrls} />
-                        </div>
-
-                        <div className='gallery-item-page__card__content'>
-                            <h2>{cardData.title}</h2>
-                            <h3>{cardData.subtitle}</h3>
-                            <p>{cardData.content}</p>
-                        </div>
-                    </div>}
+            <ResponsiveContainer gradientColor1='#111' gradientColor='#111'>
+                <GalleryItemPageHero />
+            </ResponsiveContainer>
+            <ResponsiveContainer gradientColor='#f5f5f5' gradientColor1='#f5f5f5' >
+                {photosUrls && cardData
+                    ? <GalleryItemPageCard cardData={cardData} photosUrls={photosUrls} />
+                    : <SectionLoadSpinner />}
             </ResponsiveContainer>
             <FooterHomePage />
         </div>

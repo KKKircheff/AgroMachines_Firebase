@@ -1,3 +1,6 @@
+@import '../../../../../sass/mixins';
+@import '../../../../../sass/variables';
+
 .slick-dots ul li {
     position: relative;
     height: 10px;
@@ -5,7 +8,7 @@
 }
 
 .slick-dots ul li button:before {
-    background-color: #76b82a;
+    background-color: $color-primary-0;
     border: 1px solid white;
     height: 8px;
     width: 8px;

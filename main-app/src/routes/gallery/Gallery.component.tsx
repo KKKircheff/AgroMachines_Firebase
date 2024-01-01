@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import PhotoAlbum from "react-photo-album";
 import FooterHomePage from '../../components/footer-home-page/footer-home-page.component';
-import GalleryCard from '../../components/galleryCard/GalleryCard.component';
+import GalleryCard from '../../components/gallery-card/GalleryCard.component';
 import ResponsiveContainer from '../../components/layout/responsiveContainer/ResponsiveContainer';
 // import { useEffect } from 'react';
 // import { getImageSize} from 'react-image-size';
@@ -10,10 +10,9 @@ import ResponsiveContainer from '../../components/layout/responsiveContainer/Res
 import { fullGalleryData } from '../../application-data/gallery-data';
 import './Gallery.styles.scss'
 import { ClickHandlerProps } from 'react-photo-album';
-import PopUpImage from '../../components/ui/pop-up-image/pop-up-image.component';
 import UnderNavBar from '../../components/ui/underNavBar/UnderNavBar.component';
 import GalleryCardsContainer from '../../components/layout/galleryCardsContainer/GalleryCardsContainer.component';
-import GalleryHero from '../../components/galleryHero/GalleryHero.component';
+import GalleryHero from '../../components/gallery-hero/GalleryHero.component';
 
 
 type Photo = {

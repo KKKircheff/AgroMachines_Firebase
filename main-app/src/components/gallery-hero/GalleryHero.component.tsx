@@ -1,6 +1,8 @@
+
 import './GalleryHero.styles.scss'
 
 const GalleryHero = () => {
+
     return (
         <div className='gallery-hero'>
             <div className='gallery-hero__content'>

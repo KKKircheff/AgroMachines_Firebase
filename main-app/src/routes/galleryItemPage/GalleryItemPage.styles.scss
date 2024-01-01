@@ -1,18 +1,7 @@
 @import '../../sass/variables';
-@import '../../sass/mixins';
 
 .gallery-item-page {
     width: 100vw;
     box-sizing: border-box;
     color: $textColor;
-}
-
-@include mdMinBreakPoint {
-
-    .gallery-item-page {
-        &__card {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-        }
-    }
 }
