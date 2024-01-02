@@ -40,7 +40,6 @@ function App() {
         })
     }, []);
 
-
     return (
         <div className="App">
             <ToggleContext.Provider value={{ toggleView, setToggleView }}>
@@ -75,7 +74,10 @@ function App() {
                                 <Contact />
                             </Suspense>
                         } />
-                        <Route path={`/*`} element={<Home />} />
+                        <Route path={`/*`} element={
+                            <Suspense fallback={<PageLoaderSkeleton />}>
+                                <Home />
+                            </Suspense>} />
                     </Route>
                 </Routes>
             </ToggleContext.Provider>

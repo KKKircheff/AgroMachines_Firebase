@@ -34,7 +34,7 @@
             object-fit: cover;
             aspect-ratio: 1/1;
             width: 25vw;
-            margin: 0 auto
+            margin: 0 10px 0 10px;
         }
     }
 }
@@ -55,7 +55,7 @@
 
         &__top-slider {
             aspect-ratio: 1/1;
-            width: 76%;
+            width: 82%;
 
             img {
                 object-fit: cover;
@@ -66,13 +66,13 @@
 
         &__bottom-slider {
             position: relative;
-            height: 95%;
-            width: 19.5%;
+            height: 90%;
+            width: 16%;
             margin: 0;
 
             img {
                 object-fit: cover;
-                width: 50%;
+                width: 78%;
                 aspect-ratio: 1/1;
             }
 
@@ -82,7 +82,7 @@
                 @include lgMinBreakPoint {
                     transform: rotate(90deg);
                     top: -35px;
-                    left: calc(50% - 12px);
+                    left: calc(50% - 14px);
                 }
             }
 
@@ -91,8 +91,8 @@
 
                 @include lgMinBreakPoint {
                     transform: rotate(90deg);
-                    top: 105%;
-                    right: calc(50% - 12px);
+                    top: 103%;
+                    right: calc(50% - 10px);
                 }
             }
         }

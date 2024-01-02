@@ -2,7 +2,11 @@ import './GalleryItemPageHero.styles.scss'
 import Button from '../ui/button/button.component'
 import { useNavigate } from 'react-router-dom'
 
-const GalleryItemPageHero = () => {
+type GalleryItemPageHeroProps = {
+    imageUrl: string;
+}
+
+const GalleryItemPageHero = ({ imageUrl }: GalleryItemPageHeroProps) => {
     const navigate = useNavigate();
     const handleClick = () => { navigate('/gallery') }
     return (
@@ -15,7 +19,9 @@ const GalleryItemPageHero = () => {
                     <span> галерия</span>
                 </Button>
             </div>
-
+            <div className='gallery-item-page-hero__image'>
+                <img src={imageUrl} alt="Доставена поливна макара шириокоформатна снимка снимка" />
+            </div>
         </div>
     )
 }

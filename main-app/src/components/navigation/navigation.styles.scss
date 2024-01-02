@@ -334,9 +334,8 @@ ul {
 }
 
 .main-navbar.active {
-    background-color: rgba($color-primary-0,
-            0.9);
+    background-color: rgba($color-primary-0, 0.9);
     /* Background color with 50% transparency */
-    backdrop-filter: blur(4px);
+    --webkit-backdrop-filter: blur(4px);
     /* Blur effect */
 }

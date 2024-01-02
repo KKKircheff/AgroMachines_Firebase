@@ -74,9 +74,7 @@ const GalleryItemPage = () => {
     return (
         <div className='gallery-item-page'>
             <UnderNavBar />
-            <ResponsiveContainer gradientColor1='#111' gradientColor='#111'>
-                <GalleryItemPageHero />
-            </ResponsiveContainer>
+            {photosUrls ? <GalleryItemPageHero imageUrl={photosUrls[0]} /> : <SectionLoadSpinner />}
             <ResponsiveContainer gradientColor='#f5f5f5' gradientColor1='#f5f5f5' >
                 {photosUrls && cardData
                     ? <GalleryItemPageCard cardData={cardData} photosUrls={photosUrls} />
