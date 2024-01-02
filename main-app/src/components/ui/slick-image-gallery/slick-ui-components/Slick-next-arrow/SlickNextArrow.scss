@@ -1,20 +1,35 @@
 @import '../../../../../sass/mixins';
+$arrosColor: white;
+// $arrowBackGround: rgba(0, 0, 0, 0.7);
+$arrowBackGround: rgba($color-primary-0, .8);
+$arrowBackGroundBorder: rgba(255, 255, 255, 0.2);
 
 .slick-next-arrow {
     position: absolute;
-    border: 0px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid $arrowBackGroundBorder;
+    background-color: $arrowBackGround;
+    border-radius: 2px;
+
     padding: 0;
     margin: 0;
-    background-color: transparent;
-    font-size: 30px;
-    color: white;
+
+
+    color: $arrosColor;
     z-index: 1;
-    top: calc(50% - 40px);
-    width: fit-content;
-    cursor: pointer;
+
+    top: calc(50% - 12px);
     right: 5px;
 
-    svg {
-        filter: drop-shadow(1px 1px 1px rgb(0 0 0 / 0.9));
-    }
+    width: 25px;
+    height: 25px;
+    font-size: 15px;
+    cursor: pointer;
+
+    // svg {
+    //     filter: drop-shadow(1px 1px 1px rgb(0 0 0 / 0.9));
+    // }
 }

@@ -51,7 +51,6 @@ const GalleryItemPage = () => {
                     const imgUrlArray = await Promise.all(
                         Array.from({ length: data.numberOfPhotos }, async (_, index) => {
                             const fullPath = `${storageFolder}/${id}/${index + 1}.webp`
-                            console.log('fullPath:', fullPath);
                             const data = await getFirebaseStorageImageUrl(fullPath);
                             return data;
                         })

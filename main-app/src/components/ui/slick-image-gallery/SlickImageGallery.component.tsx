@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { isMobile } from 'react-device-detect';
 
 import Slider from "react-slick";
@@ -17,11 +17,19 @@ interface PrimeGalleryProps {
     imgUrls: string[];
 }
 
-
-
+const breakPoint = 992;
+const slidesMobile = 3;
+const slidesDesktop = 5;
 
 const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
-    const [sliderIndex, setSliderIndex] = useState(0);
+
+    const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
+    const sliderRef = useRef<Slider>(null);
+    // const sliderRef = useRef();
+    useEffect(() => {
+        sliderRef.current?.slickGoTo(currentSlideIndex);
+    }, [currentSlideIndex]);
 
     const mainSliderSettings = {
         dots: true,
@@ -36,29 +44,28 @@ const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
         nextArrow: <SlickNextArrow />,
         prevArrow: <SlickPreviousArrow />,
         cssEase: "linear",
-        appendDots: (dots: any) => SlickDots(dots)
+        slickGoTo: 3,
+        appendDots: (dots: any) => SlickDots(dots),
     };
 
     const thumbSliderSettings = {
         dots: false,
         infinite: true,
-        // speed: 500,
-        slidesToShow: (window.innerWidth >= 992 ? 1 : 3),
-        rows: (window.innerWidth >= 992 ? 4 : 1),
+        slidesToShow: (window.innerWidth >= breakPoint ? slidesDesktop : slidesMobile),
         slidesToScroll: 1,
-        swipeToSlide: true,
+        swipe: true,
         autoplay: false,
-        speed: 500,
+        speed: 300,
         autoplaySpeed: 1000,
-        vertical: (window.innerWidth >= 992),
-        verticalSwiping: true,
-        // arrows: (window.innerWidth > 720),
+        vertical: (window.innerWidth >= breakPoint),
+        verticalSwiping: (window.innerWidth >= breakPoint ? true : false),
         arrows: (!isMobile),
         nextArrow: <SlickNextArrow />,
         prevArrow: <SlickPreviousArrow />,
         cssEase: "linear",
         centerMode: false,
-        afterChange: (current: number) => setSliderIndex(current),
+        focusOnSelect: true,
+        afterChange: (current: number) => { setCurrentSlideIndex(current) },
     };
 
     const icon = (<i className="pi pi-search"></i>)
@@ -66,14 +73,14 @@ const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
     const renderMain = () => {
         return imgUrls.map((imageUrl, index) => {
             return (
-                <Image className='prime-gallery__main' src={imageUrl} indicatorIcon={icon} alt="Image" preview />
+                <Image key={index} className='prime-gallery__main' src={imageUrl} indicatorIcon={icon} alt="Image" preview />
             )
         })
     }
     const renderThumb = () => {
         return imgUrls.map((imageUrl, index) => {
             return (
-                <Image className='prime-gallery__main' src={imageUrl} alt="Image" />
+                <Image key={index} className='prime-gallery__main' src={imageUrl} alt="Image" />
             )
         })
     }
@@ -81,7 +88,7 @@ const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
     return (
         <div className='slick-image-gallery'>
             <div className='slick-image-gallery__top-slider'>
-                <Slider {...mainSliderSettings}>
+                <Slider {...mainSliderSettings} ref={sliderRef}>
                     {renderMain()}
                 </Slider>
             </div>
