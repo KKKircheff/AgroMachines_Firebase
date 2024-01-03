@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { isMobile } from 'react-device-detect';
 
@@ -24,12 +23,13 @@ const slidesDesktop = 5;
 const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
 
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+    const [clickedIndex, setClickedIndex] = useState(0);
 
     const sliderRef = useRef<Slider>(null);
     // const sliderRef = useRef();
     useEffect(() => {
-        sliderRef.current?.slickGoTo(currentSlideIndex);
-    }, [currentSlideIndex]);
+        sliderRef.current?.slickGoTo(clickedIndex);
+    }, [clickedIndex]);
 
     const mainSliderSettings = {
         dots: true,
@@ -44,7 +44,6 @@ const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
         nextArrow: <SlickNextArrow />,
         prevArrow: <SlickPreviousArrow />,
         cssEase: "linear",
-        slickGoTo: 3,
         appendDots: (dots: any) => SlickDots(dots),
     };
 
@@ -55,7 +54,7 @@ const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
         slidesToScroll: 1,
         swipe: true,
         autoplay: false,
-        speed: 300,
+        speed: 200,
         autoplaySpeed: 1000,
         vertical: (window.innerWidth >= breakPoint),
         verticalSwiping: (window.innerWidth >= breakPoint ? true : false),
@@ -64,7 +63,7 @@ const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
         prevArrow: <SlickPreviousArrow />,
         cssEase: "linear",
         centerMode: false,
-        focusOnSelect: true,
+        // focusOnSelect: true,
         afterChange: (current: number) => { setCurrentSlideIndex(current) },
     };
 
@@ -80,9 +79,14 @@ const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
     const renderThumb = () => {
         return imgUrls.map((imageUrl, index) => {
             return (
-                <Image key={index} className='prime-gallery__main' src={imageUrl} alt="Image" />
+                <Image key={index} className='prime-gallery__main' src={imageUrl} alt="Image" data-index={index} onClick={handleClick} />
             )
         })
+    }
+
+    const handleClick = (event: React.MouseEvent<HTMLImageElement>) => {
+        const dataIndex = event.currentTarget.getAttribute('data-index');
+        dataIndex ? setClickedIndex(+dataIndex) : setClickedIndex(0);
     }
 
     return (

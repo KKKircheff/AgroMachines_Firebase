@@ -1,28 +1,43 @@
 @import '../../sass/variables.scss';
 @import '../../sass/mixins';
+$localTextColor: $gray-10;
+$background-color: white;
 
-.contact-form-container {
+.contact-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin: 60px auto;
-    background-color: white;
+    width: clamp(250px, 100%, 800px);
+    margin: 0;
+    padding: clamp(30px, 6vw, 60px) clamp(20px, 5vw, 30px);
+    background-color: $background-color;
+    border-radius: 5px;
+    @include cardShadow;
 
     h2 {
-        font-size: calc(2rem + 1vw);
-        margin: 10px 0px;
-        color: $color-primary-0;
+        font-family: $title-font;
+        margin: 0;
+        padding: 0 0 clamp(20px, 4vw, 40px) 0;
+        font-weight: 700;
+        letter-spacing: -1px;
+        color: $localTextColor;
+        font-size: clamp(23px, 9vw, 55px);
+        line-height: clamp(2rem, 9vw, 4rem);
     }
 
     p {
-        margin: 5vw 0px;
-        color: $color-primary-2;
+        margin: 0;
+        padding: 0 0 clamp(20px, 4vw, 40px) 0;
         font-weight: 500;
-        font-size: 1.1rem;
+        letter-spacing: -1px;
+        color: $gray-40;
+        font-size: clamp(14px, 3vw, 20px);
+        line-height: clamp(1rem, 4vw, 1.8rem);
         text-align: justify;
         max-width: 500px;
+    }
+
+    Button {
+        width: 100%
     }
 }
 
@@ -33,15 +48,5 @@
     font-weight: 500;
     padding: 10px;
     margin: 10px 0;
-}
-
-@include mdMinBreakPoint {
-
-    .contact-form-container {
-        width: 66%;
-    }
-
-    .form-error-message {
-        width: 60%;
-    }
+    font-size: 14px;
 }

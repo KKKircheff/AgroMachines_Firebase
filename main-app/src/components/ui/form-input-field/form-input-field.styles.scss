@@ -1,37 +1,42 @@
 @import '../../../sass/variables.scss';
 
-$main-color: $color-primary-4;
-$sub-color: $color-primary-0;
+// $main-color: $color-primary-4;
+// $sub-color: $color-primary-0;
+$main-color: $gray-40;
+$sub-color: $gray-70;
+$borderColor: $gray-90;
 $backgroundLocalColor: white;
 
 @mixin shrinkLabel {
-    top: -14px;
+    top: -22px;
     font-size: 12px;
     color: $main-color;
+    font-weight: 500;
+    left: 5px;
 }
 
-.form-input-wrapper {
+.form-input {
     position: relative;
-    margin: 45px 0;
+    margin: 30px 0;
 
-    .form-input {
+    &__field {
         background: none;
         background-color: $backgroundLocalColor;
-        color: $sub-color;
-        font-size: calc(0.7rem + 1vw);
-        padding: 10px 10px 10px 5px;
+        color: $main-color;
+        font-size: clamp(.9rem, 2.5vw, 1.2rem);
+        padding: 10px 10px 10px 10px;
+        margin: 0;
         display: block;
         width: 100%;
         border: none;
         border-radius: 0;
-        border-bottom: 1px solid $sub-color;
-        margin: 25px 0;
+        border: 1px solid $borderColor;
 
         &:focus {
             outline: none;
         }
 
-        &:focus~.form-input-label {
+        &:focus~.form-input__label {
             @include shrinkLabel();
         }
     }
@@ -40,18 +45,26 @@ $backgroundLocalColor: white;
         letter-spacing: 0.3em;
     }
 
-    .form-input-label {
+    &__label {
         color: $sub-color;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: normal;
         position: absolute;
         pointer-events: none;
-        left: 5px;
-        top: 10px;
+        left: 15px;
+        top: calc(8px + 0.3vw);
         transition: 300ms ease all;
 
-        &.shrink {
+        span {
+            color: $warningColor;
+            margin-left: 4px;
+            font-size: 14px;
+            vertical-align: middle
+        }
+
+        &.form-input--shrink {
             @include shrinkLabel();
         }
     }
+
 }

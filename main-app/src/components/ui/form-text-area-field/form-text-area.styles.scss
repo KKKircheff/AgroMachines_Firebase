@@ -2,52 +2,66 @@
 
 $main-color: $color-primary-4;
 $sub-color: $color-primary-0;
+
+$main-color: $gray-40;
+$sub-color: $gray-70;
+$borderColor: $gray-90;
 $backgroundLocalColor: white;
 
 @mixin shrinkLabel {
-    top: -20px;
+    top: -23px;
     font-size: 12px;
     color: $main-color;
+    font-weight: 500;
+    left: 5px;
 }
 
-.form-textarea-wrapper {
+.form-textarea {
     position: relative;
-    margin: 45px 0;
+    margin: 25px 0 45px 0;
 
-    .form-input {
+    &__input {
         background: none;
         background-color: $backgroundLocalColor;
-        color: $sub-color;
-        font-size: 18px;
-        padding: 10px 10px 10px 5px;
+        color: $main-color;
+        font-size: clamp(.9rem, 2.5vw, 1.2rem);
+        padding: 10px 10px 10px 10px;
+        margin: 0;
         display: block;
         width: 100%;
         border: none;
         border-radius: 0;
-        border: 1px solid $sub-color;
-        margin: 25px 0;
+        border: 1px solid $borderColor;
 
         &:focus {
             outline: none;
         }
 
-        &:focus~.form-textarea-label {
+        &:focus~.form-textarea__label {
             @include shrinkLabel();
         }
     }
 
-    .form-textarea-label {
+    &__label {
         color: $sub-color;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: normal;
         position: absolute;
         pointer-events: none;
-        left: 5px;
-        top: 10px;
+        left: 15px;
+        top: 8px;
         transition: 300ms ease all;
+        margin: auto;
 
-        &.shrink {
+        &.form-textarea__shrink {
             @include shrinkLabel();
+        }
+
+        >span {
+            color: $warningColor;
+            margin-left: 4px;
+            font-size: 14px;
+            vertical-align: middle
         }
     }
 }

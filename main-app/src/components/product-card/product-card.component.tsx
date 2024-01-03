@@ -3,7 +3,7 @@ import { lazy, Suspense } from 'react';
 import PopUpImage from '../ui/pop-up-image/pop-up-image.component'
 // import CarouselSlider from '../carousel-slider/carousel-slider.component';
 import './product.card.style.scss';
-const CarouselSlider = lazy(() => import('../carousel-slider/carousel-slider.component'));
+// const CarouselSlider = lazy(() => import('../carousel-slider/carousel-slider.component'));
 
 type CardProps = {
     url: string[],
@@ -33,14 +33,14 @@ const ProductCard = ({ url, mainTitle, title, subtitle, content, price, imgSide 
             <div className={`product-card ${imgSide}`}>
                 <div className="carousel-wrapper">
                     {/* <img src="https://i.ibb.co/CM58BDr/img-reel-1.jpg" alt="" /> */}
-                    <Suspense fallback={<div>...</div>}>
+                    {/* <Suspense fallback={<div>...</div>}>
                         <CarouselSlider
                             url={url}
                             isClicked={isClicked}
                             setIsClicked={setIsClicked}
                             setPopUpUrl={setPopUpUrl}
                         />
-                    </Suspense>
+                    </Suspense> */}
                 </div>
 
                 <div className="content-section" >

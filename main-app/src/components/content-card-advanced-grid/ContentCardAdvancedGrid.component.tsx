@@ -43,18 +43,18 @@ const ContentCardAdvancedGrid = ({ topTitle, content, buttonPageLink, buttonScro
                 return (
                     <div className="content-card-advanced-grid__content-title" key={index}>
                         <h2 style={{ color: accentColor }}
-                            data-aos="zoom-in-right"
-                            data-aos-easing="ease-in"
-                            data-aos-duration="300"
-                            data-aos-delay="50"
+                        // data-aos="zoom-in-right"
+                        // data-aos-easing="ease-in"
+                        // data-aos-duration="300"
+                        // data-aos-delay="50"
                         // data-aos-once="true"
                         >{topTitle}</h2>
                         <h3 style={{ borderLeft: `2px solid ${accentColor1}`, color: accentColor }}
                             className='content-card-advanced-grid__top-title'
-                            data-aos="zoom-in-right"
-                            data-aos-easing="ease-in"
-                            data-aos-duration="300"
-                            data-aos-delay="50"
+                        // data-aos="zoom-in-right"
+                        // data-aos-easing="ease-in"
+                        // data-aos-duration="300"
+                        // data-aos-delay="50"
                         // data-aos-once="true"
                         >{title}</h3>
                     </div>
@@ -65,10 +65,10 @@ const ContentCardAdvancedGrid = ({ topTitle, content, buttonPageLink, buttonScro
                 return (
                     <div className="content-card-advanced-grid__content-img"
                         key={index}
-                        data-aos="zoom-in-left"
-                        data-aos-easing="ease-in"
-                        data-aos-duration="300"
-                        data-aos-delay="50"
+                    // data-aos="zoom-in-left"
+                    // data-aos-easing="ease-in"
+                    // data-aos-duration="300"
+                    // data-aos-delay="50"
                     // data-aos-once="true"
                     >
                         <img src={value} alt="content card image" style={aspectRatio ? { aspectRatio: aspectRatio } : {}} />
@@ -79,10 +79,10 @@ const ContentCardAdvancedGrid = ({ topTitle, content, buttonPageLink, buttonScro
                 return (
                     <p className="content-card-advanced-grid__content-text"
                         key={index}
-                        data-aos="zoom-in-right"
-                        data-aos-easing="ease-in"
-                        data-aos-duration="300"
-                        data-aos-delay="50"
+                    // data-aos="zoom-in-right"
+                    // data-aos-easing="ease-in"
+                    // data-aos-duration="300"
+                    // data-aos-delay="50"
                     // data-aos-once="true"
                     >
                         {text.map((textItem, i) => (
@@ -102,7 +102,14 @@ const ContentCardAdvancedGrid = ({ topTitle, content, buttonPageLink, buttonScro
     }
 
     return (
-        <div className="content-card-advanced-grid" style={{ backgroundColor: 'transparent' }}>
+        <div className="content-card-advanced-grid"
+            style={{ backgroundColor: 'transparent' }}
+            data-aos="fade-up"
+            data-aos-easing="ease-in"
+            data-aos-duration="250"
+            data-aos-delay="50"
+        // data-aos-once="true"
+        >
 
             <div className="content-card-advanced-grid__content">
                 {renderContent()}

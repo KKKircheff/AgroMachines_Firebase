@@ -6,14 +6,16 @@ interface FormInputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const FormInputField: React.FC<FormInputFieldProps> = ({ label, ...otherProps }) => {
+    const isRequired = otherProps.hasOwnProperty('required');
     return (
-        <div className='form-input-wrapper'>
-            <input className="form-input" {...otherProps} />
+        <div className='form-input'>
+            <input className="form-input__field" {...otherProps} />
             {label &&
                 <label
-                    className={`${otherProps.value?.toString().length ? 'shrink' : ''
-                        } form-input-label`}>
+                    className={`${otherProps.value?.toString().length ? 'form-input--shrink' : ''
+                        } form-input__label`}>
                     {label}
+                    {isRequired && <span>*</span>}
                 </label>}
         </div>
     );
