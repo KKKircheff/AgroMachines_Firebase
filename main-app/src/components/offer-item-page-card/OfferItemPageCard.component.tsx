@@ -13,7 +13,7 @@ type OfferItemProps = {
         content: string;
         cardImgUrl: string;
         numberOfPhotos: number;
-        price?: number,
+        price: number,
         active?: boolean,
     }
     photosUrls: string[];
@@ -34,8 +34,9 @@ const OfferItemPageCard = ({ cardData, photosUrls }: OfferItemProps) => {
                 </div>
 
                 <div className='offer-item-page-card__card__content'>
-                    <h2>{cardData.title}</h2>
-                    <h3>{cardData.subtitle}</h3>
+                    <h2>{cardData.title.toUpperCase()}</h2>
+                    <h3>{cardData.subtitle.toUpperCase()}</h3>
+                    <h3>Цена: <span>{cardData.price}</span> лева</h3>
                     <p>{cardData.content}</p>
                     <Button buttonType='primary' onClick={() => navigate('/contact')}>Контакт</Button>
                 </div>
