@@ -11,7 +11,7 @@ $background-color: white;
     height: 100%;
     gap: 20px;
     width: clamp(250px, 100%, 800px);
-    padding: clamp(30px, 6vw, 60px) clamp(20px, 6vw, 60px);
+    padding: clamp(30px, 6vw, 60px) clamp(20px, 4vw, 60px);
     background-color: $background-color;
     border-radius: 5px;
     @include cardShadow;
@@ -29,7 +29,8 @@ $background-color: white;
             padding-bottom: 5px;
             font-weight: 500;
             color: $localTextColor;
-            font-size: clamp(20px, 4vw, 28px);
+            // font-size: clamp(20px, 4vw, 28px);
+            font-size: clamp(16px, 3vw, 26px);
             letter-spacing: -1px;
             line-height: clamp(2rem, 3vw, 3rem);
 
@@ -42,14 +43,16 @@ $background-color: white;
         }
 
         >p {
-            max-width: 100%;
+            max-width: 150%;
             margin: 0;
             font-weight: 400;
             color: $gray-40;
-            padding: 0;
-            padding-left: clamp(36px, calc(25px + 2.5vw), 45px);
+            padding: 0 0 0 0;
+            // padding: 0 0 0 clamp(36px, calc(25px + 2.5vw), 45px);
             font-size: 16px;
             letter-spacing: 0px;
+
+
 
             // line-height: 1px;
             >a {
@@ -69,6 +72,10 @@ $background-color: white;
                     padding-bottom: 0px;
                     margin-right: 5px;
                 }
+            }
+
+            @media (min-width: 350px) {
+                padding: 0 0 0 clamp(36px, calc(25px + 2.5vw), 45px);
             }
 
 

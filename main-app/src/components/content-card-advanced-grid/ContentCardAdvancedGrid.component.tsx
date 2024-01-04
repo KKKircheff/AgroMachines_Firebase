@@ -2,6 +2,7 @@ import './ContentCardAdvancedGrid.styles.scss'
 import IMAGES from '../../assets/images/content-cards/images';
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink, scroller } from 'react-scroll';
+import RenderIfVisible from 'react-render-if-visible';
 // import { Button } from 'primereact/button';
 
 import { useState } from 'react';
@@ -84,44 +85,48 @@ const ContentCardAdvancedGrid = ({ topTitle, content, buttonPageLink, buttonScro
     }
 
     return (
-        <div className="content-card-advanced-grid"
-            style={{ backgroundColor: 'transparent' }}
-            data-aos="fade-up"
-            data-aos-easing="ease-in"
-            data-aos-duration="250"
-            data-aos-delay="50"
-        // data-aos-once="true"
-        >
+        <RenderIfVisible defaultHeight={300} visibleOffset={50}>
+            <div>
+                <div className="content-card-advanced-grid"
+                    style={{ backgroundColor: 'transparent' }}
+                    data-aos="fade-up"
+                    data-aos-easing="ease-in"
+                    data-aos-duration="250"
+                    data-aos-delay="50"
+                // data-aos-once="true"
+                >
 
-            <div className="content-card-advanced-grid__content">
-                {renderContent()}
+                    <div className="content-card-advanced-grid__content">
+                        {renderContent()}
+                    </div>
+
+                    {buttonScrollLink
+                        ? <div>
+                            <button
+                                className="content-card-advanced-grid__button"
+                                aria-label={`линк към ${buttonScrollLink}`}
+                                style={divStyles}
+                                onMouseEnter={() => setIsHovered(true)}
+                                onMouseLeave={() => setIsHovered(false)}
+                                onClick={() => scroller.scrollTo(buttonScrollLink, { smooth: true, duration: 100 })}
+                            >{buttonText}</button>
+                        </div> : ''
+                    }
+                    {
+                        buttonPageLink ?
+                            <Link aria-label={`линк към ${buttonPageLink}`} to={buttonPageLink}>
+                                <button
+                                    className="content-card-advanced-grid__button"
+                                    style={divStyles}
+                                    onMouseEnter={() => setIsHovered(true)}
+                                    onMouseLeave={() => setIsHovered(false)}
+                                >{buttonText}</button>
+                            </Link> : ''
+                    }
+
+                </div >
             </div>
-
-            {buttonScrollLink
-                ? <div>
-                    <button
-                        className="content-card-advanced-grid__button"
-                        aria-label={`линк към ${buttonScrollLink}`}
-                        style={divStyles}
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => setIsHovered(false)}
-                        onClick={() => scroller.scrollTo(buttonScrollLink, { smooth: true, duration: 100 })}
-                    >{buttonText}</button>
-                </div> : ''
-            }
-            {
-                buttonPageLink ?
-                    <Link aria-label={`линк към ${buttonPageLink}`} to={buttonPageLink}>
-                        <button
-                            className="content-card-advanced-grid__button"
-                            style={divStyles}
-                            onMouseEnter={() => setIsHovered(true)}
-                            onMouseLeave={() => setIsHovered(false)}
-                        >{buttonText}</button>
-                    </Link> : ''
-            }
-
-        </div >
+        </RenderIfVisible>
     );
 };
 

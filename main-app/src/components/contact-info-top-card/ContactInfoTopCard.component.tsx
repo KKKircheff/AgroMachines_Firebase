@@ -5,7 +5,12 @@ import { SlClock } from "react-icons/sl";
 const ContactInfoTopCard = () => {
 
     return (
-        <div className="contact-info-top-card">
+        <div className="contact-info-top-card"
+            data-aos="fade-left"
+            data-aos-easing="ease-in"
+            data-aos-duration="250"
+            data-aos-delay="300"
+        >
 
             <div className="contact-info-top-card__block">
                 <h2><span><SlClock /></span>Работно време</h2>

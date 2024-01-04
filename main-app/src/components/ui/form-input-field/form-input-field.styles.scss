@@ -8,16 +8,18 @@ $borderColor: $gray-90;
 $backgroundLocalColor: white;
 
 @mixin shrinkLabel {
-    top: -22px;
+    top: -10px;
     font-size: 12px;
     color: $main-color;
     font-weight: 500;
+    padding: 0 5px;
     left: 5px;
+    background: $backgroundLocalColor;
 }
 
 .form-input {
     position: relative;
-    margin: 30px 0;
+    margin: 15px 0;
 
     &__field {
         background: none;

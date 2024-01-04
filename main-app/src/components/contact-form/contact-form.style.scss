@@ -8,7 +8,7 @@ $background-color: white;
     flex-direction: column;
     width: clamp(250px, 100%, 800px);
     margin: 0 auto;
-    padding: clamp(30px, 6vw, 60px) clamp(20px, 5vw, 30px);
+    padding: clamp(30px, 6vw, 60px) clamp(20px, 6vw, 40px);
     background-color: $background-color;
     border-radius: 5px;
     @include cardShadow;
@@ -16,24 +16,24 @@ $background-color: white;
     >h2 {
         // font-family: $title-font;
         margin: 0;
-        padding: 0 0 clamp(20px, 4vw, 40px) 0;
+        padding: 0 0 clamp(10px, 2vw, 40px) 0;
         font-weight: 700;
         letter-spacing: -1px;
         color: $localTextColor;
-        font-size: clamp(23px, 4vw, 50px);
+        font-size: clamp(26px, 3.8vw, 44px);
         line-height: clamp(2rem, 9vw, 4rem);
     }
 
     >p {
         margin: 0;
-        padding: 0 0 clamp(20px, 4vw, 40px) 0;
+        padding: 0 0 clamp(10px, 2vw, 40px) 0;
         font-weight: 400;
         letter-spacing: -1px;
         color: $gray-40;
         // font-size: clamp(14px, 3vw, 20px);
         line-height: clamp(1rem, 4vw, 1.8rem);
         text-align: justify;
-        max-width: 500px;
+        // max-width: 500px;
     }
 
     Button {

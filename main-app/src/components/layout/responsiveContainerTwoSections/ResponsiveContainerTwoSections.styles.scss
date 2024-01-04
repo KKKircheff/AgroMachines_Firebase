@@ -11,7 +11,6 @@
     background-color: white;
     gap: 40px;
 
-
     &__left {
         width: 100%;
     }
@@ -25,7 +24,7 @@
         height: 100%;
         flex-direction: row;
         padding: 40px 80px;
-        gap: 20px;
+        gap: 60px;
         align-items: stretch;
 
         &__left {
@@ -40,6 +39,6 @@
 
     @include xlMinBreakPoint {
         padding: 80px 150px;
-        gap: 50px;
+        gap: 100px;
     }
 }

@@ -14,7 +14,12 @@ const OffersPageHero = () => {
     const handleClick = () => { navigate('/gallery') }
     return (
         <div className='offers-page-hero'>
-            <div className='offers-page-hero__content'>
+            <div className='offers-page-hero__content'
+                data-aos="fade-in"
+                data-aos-easing="ease-in"
+                data-aos-duration="450"
+                data-aos-delay="250"
+            >
                 <p>към {today}</p>
                 <h2>АКТУАЛНИ ОФЕРТИ</h2>
                 <h3>изгодни оферти налични в момента</h3>

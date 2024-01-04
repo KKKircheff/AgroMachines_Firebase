@@ -20,8 +20,13 @@ type GalleryItemProps = {
 const GalleryItemPageCard = ({ cardData, photosUrls }: GalleryItemProps) => {
     const navigate = useNavigate();
     return (
-        <div className='gallery-item-page-card' >
-            < div className='gallery-item-page-card__card'>
+        <div className='gallery-item-page-card'>
+            < div className='gallery-item-page-card__card'
+                data-aos="fade-in"
+                data-aos-easing="ease-in"
+                data-aos-duration="450"
+                data-aos-delay="250"
+            >
                 <div className='gallery-item-page-card__card__gallery'>
                     <SlickImageGallery imgUrls={photosUrls} />
                 </div>
@@ -34,7 +39,6 @@ const GalleryItemPageCard = ({ cardData, photosUrls }: GalleryItemProps) => {
                     <Button buttonType='primary' onClick={() => navigate('/contact')}>Контакт</Button>
                 </div>
             </div>
-
         </div >
     )
 }

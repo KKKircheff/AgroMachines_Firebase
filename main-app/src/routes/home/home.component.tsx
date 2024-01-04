@@ -2,7 +2,7 @@
 import './home.style.scss'
 import "aos/dist/aos.css";
 import { Suspense, lazy } from 'react';
-import HeaderHomePage from '../../components/header-home-page/header-home-page.component';
+import HomePageHero from '../../components/home-page-hero/HomePageHero.component';
 import ProductCard from '../../components/product-card/product-card.component';
 import FooterHomePage from '../../components/footer-home-page/footer-home-page.component';
 import { productsData } from '../../application-data/products-data';
@@ -31,7 +31,7 @@ const Home = () => {
     return (
         <div className='home-wrapper'>
             <UnderNavBar />
-            <HeaderHomePage />
+            <HomePageHero />
             <LogoCarouselContainer backgroundColor='#fff'>
                 <IrrigationLogos backgroundColor='#fff' />
             </LogoCarouselContainer>

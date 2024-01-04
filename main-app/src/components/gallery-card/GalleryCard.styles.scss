@@ -87,6 +87,7 @@ $animation-duration: 0.3s;
     .gallery-card {
         height: 300px;
         transition: all $animation-duration;
+        max-width: 1200px;
 
         &__more {
 

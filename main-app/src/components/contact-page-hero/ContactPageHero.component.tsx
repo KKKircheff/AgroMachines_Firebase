@@ -10,7 +10,12 @@ const ContactPageHero = () => {
     const handleClick = () => { navigate('/gallery') }
     return (
         <div className='contact-page-hero'>
-            <div className='contact-page-hero__content'>
+            <div className='contact-page-hero__content'
+                data-aos="fade-in"
+                data-aos-easing="ease-in"
+                data-aos-duration="450"
+                data-aos-delay="250"
+            >
                 <h2>КОНТАКТ</h2>
                 <h3>още информация на нашите на телефон | емайл | форма</h3>
                 {/* <h3>телефон | емайл | форма</h3> */}

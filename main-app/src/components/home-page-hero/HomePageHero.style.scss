@@ -47,6 +47,7 @@ $textLocalColor: white;
             // max-width: 720px;
             width: clamp(360px, 100%, 720px);
             object-fit: contain;
+            aspect-ratio: 1280/847;
         }
     }
 

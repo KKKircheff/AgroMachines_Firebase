@@ -131,10 +131,14 @@ const ContatForm = () => {
     }
 
     return (
-        <div id='contact-form' className="contact-form" data-aos="fade-int">
+        <div className="contact-form"
+            data-aos="fade-right"
+            data-aos-easing="ease-in"
+            data-aos-duration="250"
+            data-aos-delay="250">
             <h2>Форма за контакт</h2>
             <p>Попълнете формата по-долу. Ще се свържем с вас в рамките на работния ден.</p>
-            <div>
+            <div >
                 <FormInputField
                     label='Вашето име и фамилия'
                     type='text'
