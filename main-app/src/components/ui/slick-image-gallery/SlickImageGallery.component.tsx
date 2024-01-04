@@ -24,9 +24,25 @@ const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
 
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
     const [clickedIndex, setClickedIndex] = useState(0);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth >= breakPoint);
 
     const sliderRef = useRef<Slider>(null);
-    // const sliderRef = useRef();
+
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth;
+            setWindowWidth(width);
+            setIsDesktop(width >= breakPoint);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     useEffect(() => {
         sliderRef.current?.slickGoTo(clickedIndex);
     }, [clickedIndex]);
@@ -40,7 +56,7 @@ const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
         autoplay: false,
         speed: 500,
         autoplaySpeed: 7000,
-        arrows: (!isMobile),
+        arrows: (!isMobile && isDesktop),
         nextArrow: <SlickNextArrow />,
         prevArrow: <SlickPreviousArrow />,
         cssEase: "linear",
@@ -50,20 +66,19 @@ const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
     const thumbSliderSettings = {
         dots: false,
         infinite: true,
-        slidesToShow: (window.innerWidth >= breakPoint ? slidesDesktop : slidesMobile),
+        slidesToShow: (isDesktop ? slidesDesktop : slidesMobile),
         slidesToScroll: 1,
         swipe: true,
         autoplay: false,
         speed: 200,
         autoplaySpeed: 1000,
-        vertical: (window.innerWidth >= breakPoint),
-        verticalSwiping: (window.innerWidth >= breakPoint ? true : false),
-        arrows: (!isMobile),
+        vertical: isDesktop,
+        verticalSwiping: isDesktop,
+        arrows: (!isMobile && isDesktop),
         nextArrow: <SlickNextArrow />,
         prevArrow: <SlickPreviousArrow />,
         cssEase: "linear",
         centerMode: false,
-        // focusOnSelect: true,
         afterChange: (current: number) => { setCurrentSlideIndex(current) },
     };
 

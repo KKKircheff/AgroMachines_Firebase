@@ -9,6 +9,7 @@ const InfoCardsContainer = () => {
     return (
         <section className='info-cards-container'>
             {infoCardsContent.map((card, index) => <ContentCardAdvancedGrid
+                key={index}
                 {...card}
                 aspectRatio='600/600' />)}
         </section>

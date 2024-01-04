@@ -3,6 +3,8 @@ import UnderNavBar from '../../components/ui/underNavBar/UnderNavBar.component'
 import OffersPageHero from '../../components/offers-page-hero/OffersPageHero.component'
 import ResponsiveContainer from '../../components/layout/responsiveContainer/ResponsiveContainer'
 import FooterHomePage from '../../components/footer-home-page/footer-home-page.component'
+import GalleryCardsContainer from '../../components/layout/galleryCardsContainer/GalleryCardsContainer.component'
+import OfferCardsContainer from '../../components/layout/offerCardsContainer/OfferCardsContainer.component'
 
 const Offers = () => {
     return (
@@ -10,7 +12,7 @@ const Offers = () => {
             <UnderNavBar />
             <OffersPageHero />
             <ResponsiveContainer>
-                <h1>Offers</h1>
+                <OfferCardsContainer />
             </ResponsiveContainer>
             <FooterHomePage />
         </div>

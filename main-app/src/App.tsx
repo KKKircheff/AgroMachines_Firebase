@@ -15,6 +15,7 @@ const Offers = lazy(() => import('./routes/offers/Offers.component'));
 const Gallery = lazy(() => import('./routes/gallery/Gallery.component'));
 const Contact = lazy(() => import('./routes/contact/Contact.component'));
 const GalleryItemPage = lazy(() => import('./routes/galleryItemPage/GalleryItemPage.component'));
+const OfferItemPage = lazy(() => import('./routes/offerItemPage/OfferItemPage.component'));
 
 export type ToggleContextType = {
     toggleView: boolean;
@@ -52,8 +53,15 @@ function App() {
                         <Route path={`/offers`} element={
                             <Suspense fallback={<PageLoaderSkeleton />}>
                                 <Offers />
-                            </Suspense>
-                        } />
+                            </Suspense>} />
+                        <Route path={`/offers/:id`} element={
+                            <Suspense fallback={<PageLoaderSkeleton />}>
+                                <OfferItemPage />
+                            </Suspense>} />
+                        <Route path={`/offers/* `} element={
+                            <Suspense fallback={<PageLoaderSkeleton />}>
+                                <Offers />
+                            </Suspense>} />
                         <Route path={`/gallery`} element={
                             <Suspense fallback={<PageLoaderSkeleton />}>
                                 <Gallery />
