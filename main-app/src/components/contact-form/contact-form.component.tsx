@@ -42,7 +42,7 @@ const fieldsRegex: FieldsRegex = {
     fullEmailAddress: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
 }
 
-export default function ContatForm() {
+const ContatForm = () => {
 
     const [formValues, setFormValues] = useState(contactInfo);
     const [isFormValid, setIsFormValid] = useState(true);
@@ -132,11 +132,11 @@ export default function ContatForm() {
 
     return (
         <div id='contact-form' className="contact-form" data-aos="fade-int">
-            <h2>Свържете се с нас</h2>
-            <p>Попълнете формата по-долу. Ще се свържем с вас в рамките на работния ден</p>
+            <h2>Форма за контакт</h2>
+            <p>Попълнете формата по-долу. Ще се свържем с вас в рамките на работния ден.</p>
             <div>
                 <FormInputField
-                    label='Имена'
+                    label='Вашето име и фамилия'
                     type='text'
                     name='name'
                     autoComplete='off'
@@ -193,3 +193,5 @@ export default function ContatForm() {
         </div>
     )
 }
+
+export default ContatForm;

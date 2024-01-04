@@ -1,5 +1,5 @@
 import './GalleryHero.styles.scss'
-import heroImage from '/hero-images/galleryHero.webp'
+import heroImage from '/hero-images/galleryHero1.webp'
 
 const GalleryHero = () => {
     return (

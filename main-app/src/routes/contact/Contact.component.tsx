@@ -4,6 +4,10 @@ import FooterHomePage from '../../components/footer-home-page/footer-home-page.c
 import UnderNavBar from '../../components/ui/underNavBar/UnderNavBar.component'
 import ContactPageHero from '../../components/contact-page-hero/ContactPageHero.component'
 import ResponsiveContainerTwoSections from '../../components/layout/responsiveContainerTwoSections/ResponsiveContainerTwoSections.component'
+import ColumnCardsContainer from '../../components/layout/columnCardsContainer/ColumnCardsContainer.component'
+import ContactInfoTopCard from '../../components/contact-info-top-card/ContactInfoTopCard.component'
+import ContactInfoBottomCard from '../../components/contact-info-bottom-card/ContactInfoBottomCard.component'
+
 
 const Contact = () => {
     return (
@@ -11,10 +15,15 @@ const Contact = () => {
             <UnderNavBar />
             <ContactPageHero />
             <ResponsiveContainerTwoSections
-                leftPanel={<ContatForm />}
-                rightPanel={<ContatForm />}
                 gradientColor1='#f5f5f5'
                 gradientColor='#f5f5f5'
+                leftPanel={<ContatForm />}
+                rightPanel={
+                    <ColumnCardsContainer>
+                        <ContactInfoTopCard />
+                        <ContactInfoBottomCard />
+                    </ColumnCardsContainer>
+                }
             />
             <FooterHomePage />
         </div>

@@ -1,0 +1,78 @@
+@import '../../sass/variables.scss';
+@import '../../sass/mixins';
+$localTextColor: $gray-10;
+$background-color: white;
+
+
+.contact-info-bottom-card {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    height: 100%;
+    gap: 20px;
+    width: clamp(250px, 100%, 800px);
+    padding: clamp(30px, 6vw, 60px) clamp(20px, 6vw, 60px);
+    background-color: $background-color;
+    border-radius: 5px;
+    @include cardShadow;
+
+    &__block {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+
+        >h2 {
+            width: 100%;
+            height: 100%;
+            font-family: $content-font;
+            margin: 0;
+            padding-bottom: 5px;
+            font-weight: 500;
+            color: $localTextColor;
+            font-size: clamp(20px, 4vw, 28px);
+            letter-spacing: -1px;
+            line-height: clamp(2rem, 3vw, 3rem);
+
+            >span {
+                color: $spanColor;
+                font-size: clamp(20px, 4vw, 28px);
+                vertical-align: middle;
+                margin-right: 15px;
+            }
+        }
+
+        >p {
+            max-width: 100%;
+            margin: 0;
+            font-weight: 400;
+            color: $gray-40;
+            padding: 0;
+            padding-left: clamp(36px, calc(25px + 2.5vw), 45px);
+            font-size: 16px;
+            letter-spacing: 0px;
+
+            // line-height: 1px;
+            >a {
+                color: $color-primary-0;
+            }
+
+            >span {
+                color: #3870e1;
+                color: $color-primary-0;
+                vertical-align: middle;
+                margin: 0px 5px;
+                padding-bottom: 5px;
+                cursor: pointer;
+
+                &.icon-center {
+                    vertical-align: middle;
+                    padding-bottom: 0px;
+                    margin-right: 5px;
+                }
+            }
+
+
+        }
+    }
+
+}

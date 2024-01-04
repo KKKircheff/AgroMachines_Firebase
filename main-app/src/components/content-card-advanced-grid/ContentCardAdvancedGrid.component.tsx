@@ -2,7 +2,7 @@ import './ContentCardAdvancedGrid.styles.scss'
 import IMAGES from '../../assets/images/content-cards/images';
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink, scroller } from 'react-scroll';
-import { Button } from 'primereact/button';
+// import { Button } from 'primereact/button';
 
 import { useState } from 'react';
 
@@ -27,10 +27,16 @@ const ContentCardAdvancedGrid = ({ topTitle, content, buttonPageLink, buttonScro
 
     const [isHovered, setIsHovered] = useState(false);
 
+    // const divStyles = {
+    //     // color: isHovered ? 'white' : `${accentColor}`,
+    //     background: isHovered ? `linear-gradient(to right, ${accentColor}, ${accentColor1})` : accentColor,
+    //     border: isHovered ? '0px solid transparent' : `1px solid ${accentColor}`
+    // };
     const divStyles = {
-        // color: isHovered ? 'white' : `${accentColor}`,
-        background: isHovered ? `linear-gradient(to right, ${accentColor}, ${accentColor1})` : accentColor,
-        border: isHovered ? '0px solid transparent' : `1px solid ${accentColor}`
+        color: isHovered ? `${accentColor}` : `white`,
+        background: isHovered ? 'white' : accentColor,
+        border: isHovered ? `1px solid ${accentColor}` : `1px solid white`,
+        transition: 'all 0.2s ease-in-out'
     };
 
     const renderContent = () => {
@@ -43,48 +49,24 @@ const ContentCardAdvancedGrid = ({ topTitle, content, buttonPageLink, buttonScro
                 return (
                     <div className="content-card-advanced-grid__content-title" key={index}>
                         <h2 style={{ color: accentColor }}
-                        // data-aos="zoom-in-right"
-                        // data-aos-easing="ease-in"
-                        // data-aos-duration="300"
-                        // data-aos-delay="50"
-                        // data-aos-once="true"
+
                         >{topTitle}</h2>
                         <h3 style={{ borderLeft: `2px solid ${accentColor1}`, color: accentColor }}
-                            className='content-card-advanced-grid__top-title'
-                        // data-aos="zoom-in-right"
-                        // data-aos-easing="ease-in"
-                        // data-aos-duration="300"
-                        // data-aos-delay="50"
-                        // data-aos-once="true"
-                        >{title}</h3>
+                            className='content-card-advanced-grid__top-title'>{title}</h3>
                     </div>
                 );
             } else if ('img' in item) {
                 const { img } = item;
                 const value = IMAGES[img as keyof typeof IMAGES];
                 return (
-                    <div className="content-card-advanced-grid__content-img"
-                        key={index}
-                    // data-aos="zoom-in-left"
-                    // data-aos-easing="ease-in"
-                    // data-aos-duration="300"
-                    // data-aos-delay="50"
-                    // data-aos-once="true"
-                    >
+                    <div className="content-card-advanced-grid__content-img" key={index}>
                         <img src={value} alt="content card image" style={aspectRatio ? { aspectRatio: aspectRatio } : {}} />
                     </div>
                 );
             } else if ('text' in item) {
                 const { text } = item;
                 return (
-                    <p className="content-card-advanced-grid__content-text"
-                        key={index}
-                    // data-aos="zoom-in-right"
-                    // data-aos-easing="ease-in"
-                    // data-aos-duration="300"
-                    // data-aos-delay="50"
-                    // data-aos-once="true"
-                    >
+                    <p className="content-card-advanced-grid__content-text" key={index}>
                         {text.map((textItem, i) => (
                             <span
                                 key={i}
@@ -119,6 +101,7 @@ const ContentCardAdvancedGrid = ({ topTitle, content, buttonPageLink, buttonScro
                 ? <div>
                     <button
                         className="content-card-advanced-grid__button"
+                        aria-label={`линк към ${buttonScrollLink}`}
                         style={divStyles}
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
@@ -128,9 +111,8 @@ const ContentCardAdvancedGrid = ({ topTitle, content, buttonPageLink, buttonScro
             }
             {
                 buttonPageLink ?
-                    <Link aria-label="content card redirect to stripe other website page button or contact" to={buttonPageLink}>
+                    <Link aria-label={`линк към ${buttonPageLink}`} to={buttonPageLink}>
                         <button
-                            aria-label="content card redirect to stripe other website page button or contact"
                             className="content-card-advanced-grid__button"
                             style={divStyles}
                             onMouseEnter={() => setIsHovered(true)}
