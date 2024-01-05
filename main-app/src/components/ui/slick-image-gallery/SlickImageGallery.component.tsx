@@ -10,7 +10,13 @@ import './SlickImageGallery.styles.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+// only needed for when using Prime React
+import 'primereact/resources/primereact.min.css'; //core css
+// import 'primeicons/primeicons.css'; //icons
+// import 'primeflex/primeflex.css'; // flex
+
 import { Image } from 'primereact/image';
+import { GoSearch } from 'react-icons/go';
 
 interface PrimeGalleryProps {
     imgUrls: string[];
@@ -82,7 +88,7 @@ const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
         afterChange: (current: number) => { setCurrentSlideIndex(current) },
     };
 
-    const icon = (<i className="pi pi-search"></i>)
+    const icon = (<GoSearch />)
 
     const renderMain = () => {
         return imgUrls.map((imageUrl, index) => {

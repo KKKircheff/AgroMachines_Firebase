@@ -1,5 +1,6 @@
 @import '../../../sass/variables';
 $textLocalColor: white;
+$hoverTextColor: $color-primary-0;
 
 
 
@@ -29,7 +30,7 @@ $textLocalColor: white;
     }
 
     &.primary {
-        background-color: $color-primary-2;
+        background-color: $color-primary-0;
         color: $textLocalColor;
 
         &:active {
@@ -37,8 +38,9 @@ $textLocalColor: white;
         }
 
         &:hover {
-            background-color: $color-primary-0;
-            border: 1px solid $textLocalColor;
+            background-color: $textLocalColor;
+            border: 1px solid $hoverTextColor;
+            color: $hoverTextColor;
         }
     }
 

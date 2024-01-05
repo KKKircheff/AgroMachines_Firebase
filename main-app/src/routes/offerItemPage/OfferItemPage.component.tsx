@@ -3,16 +3,13 @@ import ResponsiveContainer from '../../components/layout/responsiveContainer/Res
 import FooterHomePage from '../../components/footer-home-page/footer-home-page.component';
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import { Image } from 'primereact/image';
 
 import { db, getFirebaseStorageImageUrl } from "../../utils/firebase-utils";
 import { getDocs, collection, query, where } from 'firebase/firestore'
 import UnderNavBar from '../../components/ui/underNavBar/UnderNavBar.component';
 import SectionLoadSpinner from '../../components/ui/sectionLoadSpinner/SectionLoadSpinner.component';
 import OfferItemPageCard from '../../components/offer-item-page-card/OfferItemPageCard.component';
-import OfferCardsContainer from '../../components/layout/offerCardsContainer/OfferCardsContainer.component';
 import OfferItemPageHero from '../../components/offer-item-page-hero/OfferItemPageHero.component';
-// import GalleryHero from '../../components/gallery-hero/GalleryHero.component';
 import { OfferCardProps } from '../offers/Offers.component';
 
 
@@ -24,8 +21,6 @@ const OfferItemPage = () => {
     const [cardData, setCardData] = useState<OfferCardProps | null>(null);
     const [photosUrls, setPhotosUrls] = useState<string[]>([]);
 
-    // const firestoreCollection = 'offerCards';
-    // const storageFolder = 'offers';
     const firestoreCollection = 'offerCards';
     const storageFolder = 'offers';
 
@@ -64,7 +59,6 @@ const OfferItemPage = () => {
         fetchData();
     }, [id, navigate]);
 
-    const icon = (<i className="pi pi-search"></i>)
     return (
         <div className='offer-item-page'>
             <UnderNavBar />

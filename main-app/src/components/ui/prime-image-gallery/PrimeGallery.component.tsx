@@ -2,6 +2,7 @@
 import './PrimeGallery.styles.scss'
 import { Galleria, GalleriaResponsiveOptions } from 'primereact/galleria';
 import { Image } from 'primereact/image';
+import { GoSearch } from "react-icons/go";
 
 interface PrimeGalleryProps {
     imgUrls: string[];
@@ -19,7 +20,7 @@ const PrimeGallery = ({ imgUrls }: PrimeGalleryProps) => {
         },
 
     ];
-    const icon = (<i className="pi pi-search"></i>)
+    const icon = (<GoSearch />)
 
     const itemTemplate = (item: string) => {
         return (

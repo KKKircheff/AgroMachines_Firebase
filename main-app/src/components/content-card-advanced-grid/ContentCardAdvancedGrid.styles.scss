@@ -122,13 +122,13 @@ $textLocalColor: $textColor;
 
         &__button {
             margin-left: 0px;
-            border-radius: 0px;
+            border-radius: 3px;
             margin-top: 40px;
-            transition: border-radius .3s;
+            transition: border-radius .2s;
 
             &:hover {
                 // border-radius: 55px 0px;
-                transition: border-radius .3s;
+                transition: border-radius .2s;
             }
 
         }

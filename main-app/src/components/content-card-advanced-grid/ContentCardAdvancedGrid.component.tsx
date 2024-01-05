@@ -37,7 +37,7 @@ const ContentCardAdvancedGrid = ({ topTitle, content, buttonPageLink, buttonScro
         color: isHovered ? `${accentColor}` : `white`,
         background: isHovered ? 'white' : accentColor,
         border: isHovered ? `1px solid ${accentColor}` : `1px solid white`,
-        transition: 'all 0.2s ease-in-out'
+        transition: 'all 0.1s ease-in-out'
     };
 
     const renderContent = () => {

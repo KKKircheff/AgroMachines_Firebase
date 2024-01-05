@@ -1,13 +1,8 @@
-// import Button from '../button/button.component'
-import { Button } from 'primereact/button'
+// import { Button } from 'primereact/button'
+import Button from '../ui/button/button.component'
 import heroImage from '/hero-images/homeHero.webp'
 import './HomePageHero.style.scss'
 import { useNavigate } from 'react-router-dom'
-
-// type Button = {
-//     children: React.ReactNode,
-//     buttonType?: 'primary' | 'inverted'
-// }
 
 const HomePageHero = () => {
     const navigate = useNavigate();
@@ -29,12 +24,8 @@ const HomePageHero = () => {
                     data-aos-duration="250"
                     data-aos-delay="850">ОТ НИДЕРЛАНДИЯ</h1>
                 <Button
-                    data-aos="fade-in"
-                    data-aos-easing="ease-in"
-                    data-aos-duration="150"
-                    data-aos-delay="50"
-                    label="Контакт"
-                    onClick={() => navigate('/contact')} />
+                    buttonType='primary'
+                    onClick={() => navigate('/contact')}>Контакт</Button>
             </div>
             <div className="home-hero__right-side" data-aos="fade-left">
                 <img src={heroImage} alt="поливна макара" />

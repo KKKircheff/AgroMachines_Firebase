@@ -1,6 +1,5 @@
 import './ContactPageHero.styles.scss'
 
-import Button from '../ui/button/button.component'
 import { useNavigate } from 'react-router-dom'
 import heroImage from '/hero-images/contactHero.webp'
 
@@ -18,11 +17,6 @@ const ContactPageHero = () => {
             >
                 <h2>КОНТАКТ</h2>
                 <h3>още информация на нашите на телефон | емайл | форма</h3>
-                {/* <h3>телефон | емайл | форма</h3> */}
-                {/* <Button buttonType='primary' onClick={handleClick}>
-                    <span><i className="pi pi-chevron-left" style={{ color: 'white', fontSize: '.8rem', marginRight: '10px' }}></i></span>
-                    <span> галерия</span>
-                </Button> */}
             </div>
             <div className='contact-page-hero__image'>
                 <img src={heroImage} alt="Доставена поливна макара шириокоформатна снимка снимка" />

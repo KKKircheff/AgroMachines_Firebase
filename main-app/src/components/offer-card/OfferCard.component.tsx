@@ -13,8 +13,8 @@ const OfferCard = ({ name, title, subtitle, cardImgUrl, price }: OfferCardProps)
         <div className='offer-card' onClick={handleClick}
             data-aos="fade-in"
             data-aos-easing="ease-in"
-            data-aos-duration="350"
-            data-aos-delay="50"
+            data-aos-duration="200"
+            data-aos-delay="10"
         >
             <img className='offer-card__image' src={cardImgUrl} alt='Поливна макара внос' />
             <div className="offer-card__overlay"></div>
