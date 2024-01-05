@@ -1,0 +1,141 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+$localSpanColor1: $color-secondary-1-1;
+$localSpanColor: $color-primary-0;
+
+.offer-item-page-card {
+    width: 100%;
+
+    &__card {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            padding: 50px 0;
+            gap: 20px;
+
+            >h2 {
+                font-family: $title-font;
+                font-size: clamp(1rem, 7vw, 2rem);
+                font-weight: 800;
+                line-height: clamp(1rem, 8vw, 3rem);
+                width: clamp(100px, 100%, 500px);
+                margin: 0;
+            }
+
+            >h3 {
+                font-family: $title-font;
+                font-size: clamp(.7rem, 5.5vw, 1.5rem);
+                font-weight: 500;
+                line-height: clamp(1rem, 6vw, 2.2rem);
+                width: clamp(100px, 100%, 500px);
+                margin: 0;
+
+                >span {
+                    color: $localSpanColor;
+                }
+            }
+
+            &-crops {
+                color: $localSpanColor1 !important;
+
+
+            }
+
+            >p {
+                color: $gray-40;
+                width: 100%;
+                line-height: clamp(1rem, 5.5vw, 1.8rem);
+                margin: 0;
+            }
+
+            >Button {
+                width: 100%;
+                margin: 40px 0 0 0;
+            }
+        }
+    }
+
+}
+
+@include lgMinBreakPoint {
+
+    .offer-item-page-card {
+        display: flex;
+        flex-direction: row;
+        width: 80vw;
+        height: 35vw;
+        box-sizing: border-box;
+        margin: 0 auto;
+
+
+        &__card {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            background: white;
+            border-radius: 5px;
+            @include cardShadow;
+            gap: 5px;
+            overflow: hidden;
+
+            &__gallery {
+                width: 54%;
+                height: 35vw;
+            }
+
+            &__content {
+                flex: 1;
+                width: 45%;
+                max-height: 100%;
+                // padding: calmp(10px, 5%, 20px) 2vw 0px 0;
+                padding: 2vw 2vw 2vw 0;
+                gap: 10px;
+
+                >h2 {
+                    display: flex;
+                    flex-direction: row;
+                    font-size: clamp(1rem, 3vw, 2rem);
+                    font-weight: 800;
+                    line-height: clamp(1rem, 3vw, 2rem);
+                    width: clamp(100px, 100%, 500px);
+                    margin: 0;
+                }
+
+                >h3 {
+                    width: clamp(100px, 75%, 500px);
+                    font-family: $title-font;
+                    font-weight: 400;
+                    font-size: clamp(.5rem, 1.5vw, 1.2rem);
+                    line-height: clamp(1rem, 2.2vw, 2rem);
+                    margin: 0;
+                    // height: 70px;
+                }
+
+                >p {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    flex: 1;
+                    align-items: center;
+
+                    font-size: clamp(.8rem, 1.2vw, 1rem);
+                    line-height: clamp(.3rem, 1.4vw, 3rem);
+                    margin: 0;
+                    // background: red;
+                }
+
+                >Button {
+                    width: 100%;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}

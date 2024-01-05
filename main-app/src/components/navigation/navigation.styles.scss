@@ -2,19 +2,13 @@
 @import '../../sass/mixins';
 $textLocalColor: white;
 
-.wrapper {
-
-    &__under-navigation-layer {
-        height: 50px;
-    }
-}
 
 .main-navbar {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 4;
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     background: $color-primary-0;
@@ -42,6 +36,7 @@ $textLocalColor: white;
 
             img {
                 width: 60px;
+                aspect-ratio: 1024/426;
             }
 
 
@@ -55,7 +50,6 @@ $textLocalColor: white;
             display: flex;
             align-items: center;
             color: $textLocalColor;
-            font-size: 1.5rem;
             z-index: 10;
 
             p {
@@ -64,9 +58,8 @@ $textLocalColor: white;
                 flex-direction: row;
                 align-items: center;
                 justify-content: center;
-                font-family: 'Kanit', sans-serif;
-                font-size: calc(0.8rem + 0.8vw);
-                font-weight: 400;
+                font-size: calc(0.7rem + 0.7vw);
+                font-weight: 500;
                 font-style: italic;
                 padding: 0 0 0 calc(36vw);
                 margin: 0;
@@ -89,8 +82,8 @@ $textLocalColor: white;
 
         &-hamburger {
             position: relative;
-            width: 30px;
-            height: 20px;
+            width: 28px;
+            height: 18px;
             cursor: pointer;
             user-select: none;
 
@@ -98,7 +91,7 @@ $textLocalColor: white;
                 border-radius: 2px;
                 width: 100%;
                 position: absolute;
-                height: 3px;
+                height: 2.2px;
                 background: $textLocalColor;
                 display: block;
                 transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -226,14 +219,6 @@ ul {
 
 @include mdMinBreakPoint {
 
-    .wrapper {
-
-        &__under-navigation-layer {
-            height: 60px;
-        }
-
-    }
-
     .main-navbar {
         flex-direction: row;
         justify-content: space-between;
@@ -244,7 +229,7 @@ ul {
             &-phone-number {
 
                 p {
-                    font-size: calc(0.5rem + 0.8vw);
+                    font-size: calc(0.5rem + 0.6vw);
                     padding: 10px 0 0 calc(1px + 27vw);
 
                     // padding: 0 auto;
@@ -350,9 +335,8 @@ ul {
 }
 
 .main-navbar.active {
-    background-color: rgba($color-primary-0,
-            0.9);
+    background-color: rgba($color-primary-0, 0.9);
     /* Background color with 50% transparency */
-    backdrop-filter: blur(4px);
+    --webkit-backdrop-filter: blur(4px);
     /* Blur effect */
 }

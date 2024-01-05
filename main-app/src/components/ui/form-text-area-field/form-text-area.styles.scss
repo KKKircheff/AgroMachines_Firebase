@@ -1,0 +1,67 @@
+@import '../../../sass/variables.scss';
+
+$main-color: $color-primary-4;
+$sub-color: $color-primary-0;
+
+$main-color: $gray-40;
+$sub-color: $gray-70;
+$borderColor: $gray-90;
+$backgroundLocalColor: white;
+
+@mixin shrinkLabel {
+    top: -23px;
+    font-size: 12px;
+    color: $main-color;
+    font-weight: 500;
+    left: 5px;
+}
+
+.form-textarea {
+    position: relative;
+    margin: 25px 0 45px 0;
+
+    &__input {
+        background: none;
+        background-color: $backgroundLocalColor;
+        color: $main-color;
+        font-size: clamp(.9rem, 2.5vw, 1.2rem);
+        padding: 10px 10px 10px 10px;
+        margin: 0;
+        display: block;
+        width: 100%;
+        border: none;
+        border-radius: 0;
+        border: 1px solid $borderColor;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:focus~.form-textarea__label {
+            @include shrinkLabel();
+        }
+    }
+
+    &__label {
+        color: $sub-color;
+        font-size: 14px;
+        font-weight: normal;
+        position: absolute;
+        pointer-events: none;
+        left: 15px;
+        top: 8px;
+        transition: 300ms ease all;
+        margin: auto;
+
+        &.form-textarea__shrink {
+            @include shrinkLabel();
+        }
+
+        >span {
+            color: $spanColor;
+            margin-left: 4px;
+            font-size: 14px;
+            vertical-align: middle
+        }
+    }
+}

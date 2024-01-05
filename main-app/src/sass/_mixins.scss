@@ -42,3 +42,11 @@
         @content;
     }
 }
+
+@mixin cardShadow {
+    box-shadow: 0 0 0px rgba(0, 0, 0, .15);
+}
+
+@mixin hoverCardShadow {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .75);
+}

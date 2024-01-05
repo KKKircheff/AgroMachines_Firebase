@@ -1,0 +1,72 @@
+@import '../../../sass/variables.scss';
+
+// $main-color: $color-primary-4;
+// $sub-color: $color-primary-0;
+$main-color: $gray-40;
+$sub-color: $gray-70;
+$borderColor: $gray-90;
+$backgroundLocalColor: white;
+
+@mixin shrinkLabel {
+    top: -10px;
+    font-size: 12px;
+    color: $main-color;
+    font-weight: 500;
+    padding: 0 5px;
+    left: 5px;
+    background: $backgroundLocalColor;
+}
+
+.form-input {
+    position: relative;
+    margin: 15px 0;
+
+    &__field {
+        background: none;
+        background-color: $backgroundLocalColor;
+        color: $main-color;
+        font-size: clamp(.9rem, 2.5vw, 1.2rem);
+        padding: 10px 10px 10px 10px;
+        margin: 0;
+        display: block;
+        width: 100%;
+        border: none;
+        border-radius: 0;
+        border: 1px solid $borderColor;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:focus~.form-input__label {
+            @include shrinkLabel();
+        }
+    }
+
+    input[type='password'] {
+        letter-spacing: 0.3em;
+    }
+
+    &__label {
+        color: $sub-color;
+        font-size: 14px;
+        font-weight: normal;
+        position: absolute;
+        pointer-events: none;
+        left: 15px;
+        top: calc(8px + 0.3vw);
+        transition: 300ms ease all;
+
+        span {
+            color: $spanColor;
+            margin-left: 4px;
+            font-size: 14px;
+            vertical-align: middle
+        }
+
+        &.form-input--shrink {
+            @include shrinkLabel();
+        }
+    }
+
+}

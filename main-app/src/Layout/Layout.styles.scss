@@ -1,27 +1,27 @@
-.p-megamenu-button {
-    width: 40px;
-    height: 40px;
+// .p-megamenu-button {
+//     width: 40px;
+//     height: 40px;
 
-    &::after {
-        content: '+';
-        transform: rotate(0deg);
-        font-size: 0px;
-    }
+//     &::after {
+//         content: '+';
+//         transform: rotate(0deg);
+//         font-size: 0px;
+//     }
 
-    &--active {
+//     &--active {
 
-        svg {
-            width: 0;
-            height: 0;
-        }
+//         svg {
+//             width: 0;
+//             height: 0;
+//         }
 
-        &::after {
-            content: '+';
-            transform: rotate(45deg);
-            transition: transform .1s;
-            padding: 0;
-            margin-left: 3px;
-            font-size: 36px;
-        }
-    }
-}
+//         &::after {
+//             content: '+';
+//             transform: rotate(45deg);
+//             transition: transform .1s;
+//             padding: 0;
+//             margin-left: 3px;
+//             font-size: 36px;
+//         }
+//     }
+// }

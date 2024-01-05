@@ -1,3 +1,5 @@
+@import './variables';
+
 :root {
     --surface-a: #ffffff;
     --surface-b: #eff3f8;
@@ -9,7 +11,7 @@
     --text-color-secondary: #708da9;
     --primary-color: #76b82a;
     --primary-color-text: #ffffff;
-    --font-family: Kanit, sans-serif;
+    --font-family: $content-font;
     --surface-0: #ffffff;
     --surface-50: #f1f4f6;
     --surface-100: #e2e8ee;
@@ -68,7 +70,6 @@
 //     src: local("Kanit Bold"), local("Kanit-Bold"), url("./fonts/Kanit-v17-latin-ext_latin-700.woff2") format("woff2"), url("./fonts/Kanit-v17-latin-ext_latin-700.woff") format("woff")
 // }
 
-@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,900&family=Raleway:wght@400;500;700&display=swap');
 
 * {
     box-sizing: border-box
@@ -96,7 +97,7 @@
 }
 
 .p-component {
-    font-family: Kanit, sans-serif;
+    font-family: $content-font;
     font-size: 1rem;
     font-weight: normal
 }
@@ -130,7 +131,7 @@
 
 .p-link {
     font-size: 1rem;
-    font-family: Kanit, sans-serif;
+    font-family: $content-font;
     border-radius: 0px
 }
 
@@ -319,7 +320,7 @@
 }
 
 .p-autocomplete .p-autocomplete-multiple-container .p-autocomplete-input-token input {
-    font-family: Kanit, sans-serif;
+    font-family: $content-font;
     font-size: 1rem;
     color: #0b1555;
     padding: 0;
@@ -859,7 +860,7 @@
 }
 
 .p-chips .p-chips-multiple-container .p-chips-input-token input {
-    font-family: Kanit, sans-serif;
+    font-family: $content-font;
     font-size: 1rem;
     color: #0b1555;
     padding: 0;
@@ -1287,7 +1288,7 @@
 }
 
 .p-inputtext {
-    font-family: Kanit, sans-serif;
+    font-family: $content-font;
     font-size: 1rem;
     color: #0b1555;
     background: #fff;

@@ -8,6 +8,7 @@ import { HiOutlinePhone } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 
 import './navigation.styles.scss';
+import UnderNavBar from '../ui/underNavBar/UnderNavBar.component';
 
 interface NavigationProps {
     items: Item[];
@@ -67,51 +68,43 @@ const Navigation = ({ items }: NavigationProps) => {
     }
 
     useEffect(() => {
-        if (closeSubMenu && window.innerWidth > screenSizes.small) {
-            closeMenu(true);
-        }
-        if (rootRef.current) {
-            const totalHeight = rootRef.current.offsetHeight;
-        }
-        // eslint-disable-next-line
-    }, [closeSubMenu, screenSizes.small]);
-
-    useEffect(() => {
         const addTransparencyToNavbar = () => {
             if (window.scrollY >= 60) {
                 setIsTransparentNavbar(true);
             } else {
                 setIsTransparentNavbar(false);
             }
-        };
+        }
+
+        if (closeSubMenu && window.innerWidth > screenSizes.small) {
+            closeMenu(true);
+        }
+        if (rootRef.current) {
+            const totalHeight = rootRef.current.offsetHeight;
+        }
         window.addEventListener('scroll', addTransparencyToNavbar);
         return () => {
             window.removeEventListener('scroll', addTransparencyToNavbar);
         };
-    }, []);
-
+        // eslint-disable-next-line
+    }, [closeSubMenu, screenSizes.small]);
 
     return (
         <div ref={rootRef} className='wrapper'>
-            <div className='wrapper__under-navigation-layer'></div>
-            <nav className={
-                isTransparentNavbar
-                    ? 'main-navbar active'
-                    : 'main-navbar'}
-            >
+            {/* <div className='wrapper__under-navigation-layer'></div> */}
+            <nav className={isTransparentNavbar ? 'main-navbar active' : 'main-navbar'}>
                 <div className="main-navbar__head">
+
                     <div className={['main-navbar__head-logo', isToggled && 'active', closeSubMenu && 'closed'].filter(Boolean).join(' ')}>
                         <img src={logo} alt="" className="" />
                     </div>
+
                     <div className={['main-navbar__head-phone-number', isToggled && 'translate-down', closeSubMenu && 'closed'].filter(Boolean).join(' ')}>
                         <p><span><HiOutlinePhone /></span> +359 876 962484</p>
                     </div>
+
                     <div
-                        className={
-                            isToggled
-                                ? 'main-navbar__head-hamburger close'
-                                : 'main-navbar__head-hamburger'
-                        }
+                        className={isToggled ? 'main-navbar__head-hamburger close' : 'main-navbar__head-hamburger'}
                         onClick={() => setIsToggled(!isToggled)}
                     >
                         <span className="burger-bar"></span>
@@ -119,10 +112,11 @@ const Navigation = ({ items }: NavigationProps) => {
                         <span className="burger-bar"></span>
                         <span className="burger-bar"></span>
                     </div>
+
                 </div>
-                <ul
-                    className={['main-navbar__menu-items', isToggled && 'active', closeSubMenu && 'closed'].filter(Boolean).join(' ')}
-                >{renderItems()}</ul>
+                <ul className={['main-navbar__menu-items', isToggled && 'active', closeSubMenu && 'closed'].filter(Boolean).join(' ')}>
+                    {renderItems()}
+                </ul>
             </nav>
         </div>
     )

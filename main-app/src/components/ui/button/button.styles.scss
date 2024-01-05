@@ -1,0 +1,113 @@
+@import '../../../sass/variables';
+$textLocalColor: white;
+
+
+
+.button-container {
+    width: clamp(120px, 100%, 165px);
+    height: 50px;
+    letter-spacing: 0.5px;
+    line-height: 50px;
+    padding: 0 35px 0 35px;
+    font-size: 15px;
+    background-color: $color-primary-0;
+    color: $textLocalColor;
+    text-transform: uppercase;
+    font-family: $content-font;
+    font-weight: bolder;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    border: none;
+    border: 1px solid $textLocalColor;
+    border-radius: 0;
+
+
+    &:active {
+        background-color: #626262;
+        color: $textLocalColor;
+    }
+
+    &.primary {
+        background-color: $color-primary-2;
+        color: $textLocalColor;
+
+        &:active {
+            background-color: $color-primary-0;
+        }
+
+        &:hover {
+            background-color: $color-primary-0;
+            border: 1px solid $textLocalColor;
+        }
+    }
+
+    &.inverted {
+        background-color: $textLocalColor;
+        color: $color-primary-0;
+        border: 1px solid $color-primary-0;
+
+        &:active {
+            background-color: $color-primary-3;
+        }
+    }
+
+
+}
+
+@media (pointer: coarse) {
+    /* mobile device */
+}
+
+@media (pointer: fine),
+(pointer: none) {
+
+    /* desktop */
+    .button-container {
+
+        &:hover {
+            background-color: $textLocalColor;
+            color: $color-primary-0;
+            border: 1px solid $color-primary-0;
+        }
+
+        &:active {
+            background-color: $color-primary-0;
+            color: $textLocalColor;
+        }
+
+
+        &.google-sign-in {
+            &:hover {
+                background-color: $color-primary-3;
+                color: $textLocalColor;
+                border: none;
+            }
+
+            &:active {
+                background-color: $color-primary-1;
+            }
+
+        }
+
+        &.inverted {
+            &:hover {
+                background-color: $color-primary-0;
+                color: $textLocalColor;
+                border: none;
+            }
+
+            &:active {
+                background-color: $color-primary-0;
+            }
+
+        }
+
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    .button-container {
+        padding: 0 5px 0 5px;
+    }
+}

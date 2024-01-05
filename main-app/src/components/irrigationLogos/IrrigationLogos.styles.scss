@@ -1,0 +1,47 @@
+@import '../../sass/mixins';
+@import '../../sass/animations';
+
+.irrigation-logos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: 40px 0;
+    padding: 0;
+    animation: 15s logo-carousel linear infinite;
+
+    &__skeleton {
+        width: 100vw;
+        background-color: white;
+        height: 90px;
+    }
+
+
+    &__section {
+        background-color: $background-color;
+        // background-color: $gray-90;
+        display: inline-block;
+        margin: 0;
+        display: inline-block;
+        white-space: nowrap;
+
+
+        img {
+            height: 90px;
+            margin: 0 40px;
+            aspect-ratio: 2/1;
+
+        }
+
+    }
+
+    &:hover {
+        animation-play-state: paused;
+    }
+}
+
+@include mdMinBreakPoint {
+    .irrigation-logos {
+        animation: 25s logo-carousel linear infinite;
+
+    }
+}

@@ -1,0 +1,75 @@
+@import '../../../sass/variables.scss';
+@import '../../../sass/mixins';
+
+.counter-widget {
+    display: grid;
+    grid-template-rows: 5fr 1fr 3fr;
+    justify-items: center;
+    border: 2px solid $color-primary-0;
+    border-radius: 5px;
+    width: clamp(160px, 98%, 300px);
+    aspect-ratio: 1/1;
+    overflow: hidden;
+
+    &__counter {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &__count-up {
+        color: $color-primary-0;
+        font-size: 6rem;
+        font-weight: 800;
+        margin-top: 20px;
+    }
+
+    &__add-on {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        font-size: 3rem;
+        padding: 0;
+        line-height: 1rem;
+        color: $color-primary-1;
+        margin-top: 30px;
+
+    }
+
+    &__separator {
+        height: 0px;
+        width: 60%;
+        margin: 10px auto 20px auto;
+        border: 1px solid $color-primary-1;
+    }
+
+    &__text {
+        font-weight: 600;
+        text-align: center;
+        margin: 0;
+        padding: 0 10px;
+        line-height: clamp(1.1rem, 8vw, 2rem);
+        font-size: 1.1rem;
+        color: $color-primary-0;
+        min-width: 80%;
+
+    }
+}
+
+
+@include mdMinBreakPoint {
+    .counter-widget {
+
+        &__count-up {
+            font-size: clamp(3rem, 7vw, 5rem);
+        }
+
+        &__add-on {
+            line-height: .6rem;
+        }
+
+        &__text {
+            line-height: clamp(.7rem, 2vw, 2rem);
+            font-size: clamp(.5rem, 1.5vw, 1.1rem);
+        }
+    }
+}

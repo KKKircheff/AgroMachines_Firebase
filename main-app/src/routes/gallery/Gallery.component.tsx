@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import PhotoAlbum from "react-photo-album";
 import FooterHomePage from '../../components/footer-home-page/footer-home-page.component';
-
+import GalleryCard from '../../components/gallery-card/GalleryCard.component';
+import ResponsiveContainer from '../../components/layout/responsiveContainer/ResponsiveContainer';
 // import { useEffect } from 'react';
 // import { getImageSize} from 'react-image-size';
 // import { galleryData } from '../application-data/gallery-data';
@@ -9,7 +10,9 @@ import FooterHomePage from '../../components/footer-home-page/footer-home-page.c
 import { fullGalleryData } from '../../application-data/gallery-data';
 import './Gallery.styles.scss'
 import { ClickHandlerProps } from 'react-photo-album';
-import PopUpImage from '../../components/pop-up-image/pop-up-image.component';
+import UnderNavBar from '../../components/ui/underNavBar/UnderNavBar.component';
+import GalleryCardsContainer from '../../components/layout/galleryCardsContainer/GalleryCardsContainer.component';
+import GalleryHero from '../../components/gallery-hero/GalleryHero.component';
 
 
 type Photo = {
@@ -37,7 +40,6 @@ const Gallery = () => {
     const handleClick = (e: ClickHandlerProps<Photo>) => {
         setClickedUrl(e.photo.src);
         setIsClicked(true);
-
         // bodyScroll.disable();
     }
 
@@ -65,29 +67,12 @@ const Gallery = () => {
     //  console.log(photos);
 
     return (
-        <div id='history-gallery-wrapper' className="history-gallery-wrapper">
-
-            {isClicked &&
-                <PopUpImage
-                    url={clickedUrl}
-                    isClicked={isClicked}
-                    setIsClicked={setIsClicked}
-                />
-            }
-            <h2 data-aos='fade-right'>доставени поливни макари</h2>
-            <h3 data-aos='fade-right' data-aos-delay="100">от Agro-machines</h3>
-
-            <div className='history-gallery' data-aos='fade-in'>
-                {photos.length
-                    ? <PhotoAlbum
-                        layout="rows"
-                        targetRowHeight={imageHeigth}
-                        photos={photos}
-                        spacing={10}
-                        onClick={(e) => handleClick(e)}
-                    />
-                    : <div></div>}
-            </div>
+        <div className="gallery-page">
+            <UnderNavBar />
+            <GalleryHero />
+            <ResponsiveContainer gradientColor1='#f5f5f5' gradientColor='#f5f5f5'>
+                <GalleryCardsContainer />
+            </ResponsiveContainer>
             <FooterHomePage />
         </div>
     )
