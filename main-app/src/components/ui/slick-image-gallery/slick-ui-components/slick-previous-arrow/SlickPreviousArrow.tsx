@@ -1,6 +1,7 @@
 import { CSSProperties } from 'react';
-import { TfiAngleLeft } from 'react-icons/tfi'
 import './SlickPreviousArrow.scss';
+import { FaAngleLeft } from "react-icons/fa6";
+
 
 interface Style extends CSSProperties {
     background: string,
@@ -16,7 +17,7 @@ const SlickPreviousArrow = (props: SlickArrowProps) => {
     const { className, style, onClick } = props;
     return (
         <div className='slick-previous-arrow' onClick={onClick}>
-            <TfiAngleLeft />
+            <FaAngleLeft />
         </div>
     );
 }

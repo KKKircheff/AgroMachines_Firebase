@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import './GalleryCard.styles.scss'
 import { TfiAngleRight } from "react-icons/tfi";
-import RenderIfVisible from 'react-render-if-visible';
+import { FaAngleRight } from "react-icons/fa6";
 
 interface GalleryCardProps {
     name: string;
@@ -28,7 +28,7 @@ const GalleryCard = ({ name, title, subtitle, cardImgUrl }: GalleryCardProps) =>
                 <h2 className='gallery-card__content__title'>{title}</h2>
                 <h3 className='gallery-card__content__subtitle'>{subtitle}</h3>
             </div>
-            <button className='gallery-card__more'><TfiAngleRight /></button>
+            <div className='gallery-card__more'><FaAngleRight /></div>
         </div>
     )
 }

@@ -8,6 +8,7 @@ interface ContainerProps {
 }
 
 const ResponsiveContainer: React.FC<ContainerProps> = ({ children, gradientColor = '#fff', gradientColor1 = '#fff' }) => {
+
     const containerStyle = {
         background: `linear-gradient(to bottom, ${gradientColor} 0%, ${gradientColor1} 100%)`
     };

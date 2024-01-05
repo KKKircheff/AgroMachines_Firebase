@@ -52,7 +52,7 @@ const ContentCardAdvancedGrid = ({ topTitle, content, buttonPageLink, buttonScro
                         <h2 style={{ color: accentColor }}
 
                         >{topTitle}</h2>
-                        <h3 style={{ borderLeft: `2px solid ${accentColor1}`, color: accentColor }}
+                        <h3 style={{ borderLeft: `6px solid ${accentColor1}bb`, color: accentColor }}
                             className='content-card-advanced-grid__top-title'>{title}</h3>
                     </div>
                 );

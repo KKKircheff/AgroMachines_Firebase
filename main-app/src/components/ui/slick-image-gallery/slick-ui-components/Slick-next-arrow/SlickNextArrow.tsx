@@ -1,6 +1,7 @@
 import { CSSProperties } from 'react';
 import './SlickNextArrow.scss';
-import { TfiAngleRight } from 'react-icons/tfi'
+import { FaAngleRight } from "react-icons/fa6";
+
 
 interface Style extends CSSProperties {
     background: string,
@@ -18,7 +19,7 @@ const SlickNextArrow = (props: SlickArrowProps) => {
 
     return (
         <div className={'slick-next-arrow'} onClick={onClick}>
-            <TfiAngleRight />
+            <FaAngleRight />
         </div>
     );
 }

@@ -39,21 +39,6 @@ const LogosSlider = () => {
         fetchData();
     }, []);
 
-    // const sliderSettings = {
-    //     dots: false,
-    //     infinite: true,
-    //     speed: 1500,
-    //     slidesToShow: 3,
-    //     slidesToScroll: 1,
-    //     swipeToSlide: true,
-    //     arrows: (window.innerWidth > 720),
-    //     arrows: false,
-    //     nextArrow: <SlickNextArrow />,
-    //     prevArrow: <SlickPreviousArrow />,
-    //     autoplay: true,
-    //     autoplaySpeed: 1000,
-    //     cssEase: "linear"
-    // };
 
     const responsiveOptions: CarouselResponsiveOption[] = [
         {

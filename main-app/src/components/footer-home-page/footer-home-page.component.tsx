@@ -9,7 +9,7 @@ const FooterHomePage = () => {
     return (
         <div className='footer-home-page'>
             <div className="footer-home-page__company">
-                <h5>Agro Machines</h5>
+                <h1>Agro Machines</h1>
                 <p>Nederland</p>
             </div>
             <div className="footer-home-page__contacts">
