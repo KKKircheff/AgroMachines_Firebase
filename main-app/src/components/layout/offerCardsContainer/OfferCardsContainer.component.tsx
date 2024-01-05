@@ -6,17 +6,8 @@ import { db } from '../../../utils/firebase-utils';
 import { collection, getDocs } from 'firebase/firestore'
 import PageLoaderSkeleton from '../pageLoaderSkeleton/PageLoaderSkeleton.component';
 import SectionLoadSpinner from '../../ui/sectionLoadSpinner/SectionLoadSpinner.component';
+import { OfferCardProps } from '../../../routes/offers/Offers.component';
 
-interface OfferCardProps {
-    name: string;
-    title: string;
-    subtitle: string;
-    content: string;
-    cardImgUrl: string;
-    numberOfPhotos: number;
-    price: number,
-    active: boolean,
-}
 
 const OfferCardsContainer = () => {
     const [cardsData, setCardsData] = useState<OfferCardProps[] | null>(null);
@@ -45,14 +36,7 @@ const OfferCardsContainer = () => {
                 return (
                     <OfferCard
                         key={index}
-                        name={cardData.name}
-                        title={cardData.title}
-                        subtitle={cardData.subtitle}
-                        content={cardData.content}
-                        cardImgUrl={cardData.cardImgUrl}
-                        numberOfPhotos={cardData.numberOfPhotos}
-                        price={cardData.price}
-                        active={cardData.active}
+                        {...cardData}
                     />
                 )
             }) :

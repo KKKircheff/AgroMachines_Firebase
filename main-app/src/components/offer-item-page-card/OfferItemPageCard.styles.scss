@@ -1,6 +1,9 @@
 @import '../../sass/variables';
 @import '../../sass/mixins';
 
+$localSpanColor1: $color-secondary-1-1;
+$localSpanColor: $color-primary-0;
+
 .offer-item-page-card {
     width: 100%;
 
@@ -33,8 +36,14 @@
                 margin: 0;
 
                 >span {
-                    color: $color-primary-0;
+                    color: $localSpanColor;
                 }
+            }
+
+            &-crops {
+                color: $localSpanColor1 !important;
+
+
             }
 
             >p {
@@ -74,6 +83,7 @@
             border-radius: 5px;
             @include cardShadow;
             gap: 5px;
+            overflow: hidden;
 
             &__gallery {
                 width: 54%;
@@ -87,7 +97,6 @@
                 // padding: calmp(10px, 5%, 20px) 2vw 0px 0;
                 padding: 2vw 2vw 2vw 0;
                 gap: 10px;
-                overflow: visible;
 
                 >h2 {
                     display: flex;

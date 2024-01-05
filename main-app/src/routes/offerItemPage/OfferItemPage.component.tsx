@@ -13,24 +13,15 @@ import OfferItemPageCard from '../../components/offer-item-page-card/OfferItemPa
 import OfferCardsContainer from '../../components/layout/offerCardsContainer/OfferCardsContainer.component';
 import OfferItemPageHero from '../../components/offer-item-page-hero/OfferItemPageHero.component';
 // import GalleryHero from '../../components/gallery-hero/GalleryHero.component';
+import { OfferCardProps } from '../offers/Offers.component';
 
-interface OfferCard {
-    cardImgUrl: string;
-    name: string;
-    title: string;
-    subtitle: string;
-    content: string;
-    numberOfPhotos: number;
-    price: number,
-    active: boolean,
-}
 
 const OfferItemPage = () => {
 
     const { id } = useParams();
     const navigate = useNavigate();
 
-    const [cardData, setCardData] = useState<OfferCard | null>(null);
+    const [cardData, setCardData] = useState<OfferCardProps | null>(null);
     const [photosUrls, setPhotosUrls] = useState<string[]>([]);
 
     // const firestoreCollection = 'offerCards';
@@ -49,7 +40,7 @@ const OfferItemPage = () => {
                 const querySnapshot = await getDocs(q);
 
                 if (!querySnapshot.empty) {
-                    const data = querySnapshot.docs[0].data() as OfferCard;
+                    const data = querySnapshot.docs[0].data() as OfferCardProps;
                     /* Get all urls from Firebase Storage based on 'storage folder and number of photos*/
                     const imgUrlArray = await Promise.all(
                         Array.from({ length: data.numberOfPhotos }, async (_, index) => {

@@ -3,6 +3,8 @@
 
 .gallery-item-page-card {
     width: 100%;
+    overflow: hidden;
+    border-radius: 5px;
 
     &__card {
         width: 100%;

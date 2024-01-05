@@ -6,6 +6,19 @@ import FooterHomePage from '../../components/footer-home-page/footer-home-page.c
 import GalleryCardsContainer from '../../components/layout/galleryCardsContainer/GalleryCardsContainer.component'
 import OfferCardsContainer from '../../components/layout/offerCardsContainer/OfferCardsContainer.component'
 
+
+export interface OfferCardProps {
+    name: string;
+    title: string;
+    subtitle: string;
+    content: string;
+    crops?: string[];
+    cardImgUrl: string;
+    numberOfPhotos: number;
+    price: number,
+    active: boolean,
+}
+
 const Offers = () => {
     return (
         <div>

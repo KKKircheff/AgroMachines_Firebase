@@ -4,23 +4,25 @@ import { useNavigate } from 'react-router-dom';
 
 import SlickImageGallery from '../ui/slick-image-gallery/SlickImageGallery.component';
 import Button from '../ui/button/button.component';
+import { OfferCardProps } from '../../routes/offers/Offers.component';
 
 type OfferItemProps = {
-    cardData: {
-        name: string;
-        title: string;
-        subtitle: string;
-        content: string;
-        cardImgUrl: string;
-        numberOfPhotos: number;
-        price: number,
-        active: boolean,
-    }
+    cardData: OfferCardProps;
     photosUrls: string[];
 }
 
 const OfferItemPageCard = ({ cardData, photosUrls }: OfferItemProps) => {
     const navigate = useNavigate();
+    const { title, subtitle, price, content, crops = [] } = cardData;
+
+    const cropsTemplate = crops?.map((crop, index) => {
+        return (
+            <span key={index}
+                className='offer-item-page-card__card__content-crops'
+            >{crop.charAt(0).toUpperCase() + crop.slice(1)}, </span>
+        )
+    })
+
     return (
         <div className='offer-item-page-card'>
             < div className='offer-item-page-card__card'
@@ -34,10 +36,13 @@ const OfferItemPageCard = ({ cardData, photosUrls }: OfferItemProps) => {
                 </div>
 
                 <div className='offer-item-page-card__card__content'>
-                    <h2>{cardData.title.toUpperCase()}</h2>
-                    <h3>{cardData.subtitle.toUpperCase()}</h3>
-                    <h3>Цена: <span>{cardData.price}</span> лева</h3>
-                    <p>{cardData.content}</p>
+                    <h2>{title.toUpperCase()}</h2>
+                    <h3>{subtitle.toUpperCase()}</h3>
+                    {crops.length
+                        ? <h3>Kултури: {cropsTemplate}</h3>
+                        : null}
+                    <h3>Цена: <span>{price}</span> лева</h3>
+                    <p>{content}</p>
                     <Button buttonType='primary' onClick={() => navigate('/contact')}>Контакт</Button>
                 </div>
             </div>

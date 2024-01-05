@@ -2,17 +2,9 @@ import { useNavigate } from 'react-router-dom';
 import './OfferCard.styles.scss'
 import { TfiAngleRight } from "react-icons/tfi";
 import RenderIfVisible from 'react-render-if-visible';
+import { OfferCardProps } from '../../routes/offers/Offers.component';
 
-interface OfferCardProps {
-    name: string;
-    title: string;
-    subtitle: string;
-    content?: string;
-    cardImgUrl: string;
-    numberOfPhotos?: number;
-    price: number,
-    active: boolean,
-}
+
 
 const OfferCard = ({ name, title, subtitle, cardImgUrl, price }: OfferCardProps) => {
     const navigate = useNavigate();
@@ -26,7 +18,7 @@ const OfferCard = ({ name, title, subtitle, cardImgUrl, price }: OfferCardProps)
         >
             <img className='offer-card__image' src={cardImgUrl} alt='Поливна макара внос' />
             <div className="offer-card__overlay"></div>
-            <p className='offer-card__price'>цена: {price} </p>
+            <p className='offer-card__price'>цена: {price} лв.</p>
             <div className='offer-card__content'>
                 <h2 className='offer-card__content__title'>{title}</h2>
                 <h3 className='offer-card__content__subtitle'>{subtitle}</h3>
