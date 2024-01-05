@@ -11,7 +11,7 @@ $footerTextColor: $gray-90;
     min-height: 60px;
     background-color: $footerBackgroundColor;
     color: $footerTextColor;
-    padding: 20px 0 40px 0;
+    padding: 60px 0 60px 0;
 
     &__company {
         font-weight: 500;
@@ -63,6 +63,9 @@ $footerTextColor: $gray-90;
     .footer-home-page {
         flex-direction: row;
         justify-content: space-around;
-        align-items: center;
+        align-items: flex-start;
+        // align-items: center;
+        padding: 60px 0 50px 0;
+
     }
 }
