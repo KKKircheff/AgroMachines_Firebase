@@ -31,8 +31,8 @@ const HomePageHero = () => {
                 <Button
                     data-aos="fade-in"
                     data-aos-easing="ease-in"
-                    data-aos-duration="450"
-                    data-aos-delay="250"
+                    data-aos-duration="150"
+                    data-aos-delay="50"
                     label="Контакт"
                     onClick={() => navigate('/contact')} />
             </div>

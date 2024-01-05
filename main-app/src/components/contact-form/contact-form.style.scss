@@ -14,19 +14,31 @@ $background-color: white;
     @include cardShadow;
 
     >h2 {
-        // font-family: $title-font;
+        font-family: $title-font;
         margin: 0;
         padding: 0 0 clamp(10px, 2vw, 40px) 0;
-        font-weight: 700;
+        font-weight: 500;
         letter-spacing: -1px;
         color: $localTextColor;
-        font-size: clamp(26px, 3.8vw, 44px);
+        font-size: clamp(20px, 3.2vw, 36px);
         line-height: clamp(2rem, 9vw, 4rem);
+
+        >span {
+            color: $spanColor;
+            font-size: clamp(16px, 3vw, 30px);
+            vertical-align: middle;
+            margin-right: 10px;
+            transform: rotate(90deg);
+        }
+
+        svg {
+            transform: rotate(90deg);
+        }
     }
 
     >p {
         margin: 0;
-        padding: 0 0 clamp(10px, 2vw, 40px) 0;
+        padding: 0 0 clamp(10px, 1vw, 20px) 0;
         font-weight: 400;
         letter-spacing: -1px;
         color: $gray-40;

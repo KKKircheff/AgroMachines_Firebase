@@ -27,13 +27,13 @@ const ContactInfoBottomCard = () => {
 
     return (
         <div className="contact-info-bottom-card"
-            data-aos="fade-up"
-            data-aos-easing="ease-in"
-            data-aos-duration="250"
-            data-aos-delay="150"
+        // data-aos="fade-left"
+        // data-aos-easing="ease-in"
+        // data-aos-duration="200"
+        // data-aos-delay="50"
         >
             <div className="contact-info-bottom-card__block">
-                <h2><span><AiOutlineForm /></span>Контакти:</h2>
+                <h2><span><AiOutlineForm /></span>ДИРЕКТЕН КОНТАКТ:</h2>
 
                 <p>телефон: <span className='icon-center' ><BsTelephone /></span>+359 876 962484</p>
 
@@ -53,7 +53,7 @@ const ContactInfoBottomCard = () => {
             </div>
 
             <div className="contact-info-bottom-card__block">
-                <h2><span><VscVmConnect /></span>Интернет връзки:</h2>
+                <h2><span><VscVmConnect /></span>ИНТЕРНЕТ ВРЪЗКИ:</h2>
 
                 <p>уебсайт: <Link to='https://agro-machines.nl/'><span>agro-machines.nl</span></Link></p>
 

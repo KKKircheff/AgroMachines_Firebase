@@ -15,15 +15,14 @@ import OfferItemPageHero from '../../components/offer-item-page-hero/OfferItemPa
 // import GalleryHero from '../../components/gallery-hero/GalleryHero.component';
 
 interface OfferCard {
-    id: string
     cardImgUrl: string;
     name: string;
     title: string;
     subtitle: string;
     content: string;
     numberOfPhotos: number;
-    price?: number,
-    active?: boolean,
+    price: number,
+    active: boolean,
 }
 
 const OfferItemPage = () => {

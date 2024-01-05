@@ -14,7 +14,7 @@ type OfferItemProps = {
         cardImgUrl: string;
         numberOfPhotos: number;
         price: number,
-        active?: boolean,
+        active: boolean,
     }
     photosUrls: string[];
 }

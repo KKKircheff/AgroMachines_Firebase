@@ -14,8 +14,8 @@ interface OfferCardProps {
     content: string;
     cardImgUrl: string;
     numberOfPhotos: number;
-    price?: number,
-    active?: boolean,
+    price: number,
+    active: boolean,
 }
 
 const OfferCardsContainer = () => {
@@ -51,6 +51,8 @@ const OfferCardsContainer = () => {
                         content={cardData.content}
                         cardImgUrl={cardData.cardImgUrl}
                         numberOfPhotos={cardData.numberOfPhotos}
+                        price={cardData.price}
+                        active={cardData.active}
                     />
                 )
             }) :

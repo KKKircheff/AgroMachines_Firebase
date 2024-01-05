@@ -24,21 +24,19 @@ $background-color: white;
         >h2 {
             width: 100%;
             height: 100%;
-            font-family: $content-font;
             margin: 0;
             padding-bottom: 5px;
             font-weight: 500;
             color: $localTextColor;
-            // font-size: clamp(20px, 4vw, 28px);
-            font-size: clamp(16px, 3vw, 26px);
-            letter-spacing: -1px;
-            line-height: clamp(2rem, 3vw, 3rem);
+            font-family: $title-font;
+            font-size: clamp(1rem, 1.7vw, 1.5rem);
+            line-height: clamp(1rem, 2.2vw, 2rem);
 
             >span {
                 color: $spanColor;
-                font-size: clamp(20px, 4vw, 28px);
+                font-size: clamp(15px, 3vw, 24px);
                 vertical-align: middle;
-                margin-right: 15px;
+                margin-right: 20px;
             }
         }
 

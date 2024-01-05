@@ -4,6 +4,8 @@ import FormTextArea from "../ui/form-text-area-field/form-text-area.component";
 import { Button } from 'primereact/button';
 import { useState } from "react";
 
+import { IoIosBarcode } from "react-icons/io";
+
 import './contact-form.style.scss'
 
 type ContactInfo = {
@@ -136,7 +138,7 @@ const ContatForm = () => {
             data-aos-easing="ease-in"
             data-aos-duration="250"
             data-aos-delay="250">
-            <h2>Форма за контакт</h2>
+            <h2><span><IoIosBarcode /></span>ФОРМА ЗА КОНТАКТ</h2>
             <p>Попълнете формата по-долу. Ще се свържем с вас в рамките на работния ден.</p>
             <div >
                 <FormInputField

@@ -10,11 +10,11 @@ interface OfferCardProps {
     content?: string;
     cardImgUrl: string;
     numberOfPhotos?: number;
-    price?: number,
-    active?: boolean,
+    price: number,
+    active: boolean,
 }
 
-const OfferCard = ({ name, title, subtitle, cardImgUrl }: OfferCardProps) => {
+const OfferCard = ({ name, title, subtitle, cardImgUrl, price }: OfferCardProps) => {
     const navigate = useNavigate();
     const handleClick = () => { navigate(`/offers/${name}`) }
     return (
@@ -26,6 +26,7 @@ const OfferCard = ({ name, title, subtitle, cardImgUrl }: OfferCardProps) => {
         >
             <img className='offer-card__image' src={cardImgUrl} alt='Поливна макара внос' />
             <div className="offer-card__overlay"></div>
+            <p className='offer-card__price'>цена: {price} </p>
             <div className='offer-card__content'>
                 <h2 className='offer-card__content__title'>{title}</h2>
                 <h3 className='offer-card__content__subtitle'>{subtitle}</h3>

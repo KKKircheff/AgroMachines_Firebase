@@ -13,18 +13,18 @@ const ContactInfoTopCard = () => {
         >
 
             <div className="contact-info-top-card__block">
-                <h2><span><SlClock /></span>Работно време</h2>
-                <p>Понеделник - събота от 9:00 до 18:00</p>
+                <h2><span><SlClock /></span>РАБОТНО ВРЕМЕ</h2>
+                <p>понеделник - събота от 9:00 до 18:00</p>
             </div>
 
             <div className="contact-info-top-card__block">
-                <h2><span><SlLocationPin /></span>Локация България</h2>
-                <p>Южна промишлена зона</p>
-                <p>България, гр. Пазарджик</p>
+                <h2><span><SlLocationPin /></span>БЪЛГАРИЯ</h2>
+                <p>4400, Южна промишлена зона</p>
+                <p>гр. Пазарджик, България</p>
             </div>
 
             <div className="contact-info-top-card__block">
-                <h2><span><SlLocationPin /></span>Локация Нидерландия</h2>
+                <h2><span><SlLocationPin /></span>НИДЕРЛАНДИЯ</h2>
                 <p>7513EG, Haaksbergerstraat</p>
                 <p>Enschede, Nederland</p>
             </div>
