@@ -8,6 +8,7 @@ export default defineConfig(({command, mode}) => {
         // ...paths.map((path) => `/gallery/${path}`),
         // ...paths.map((path) => `/bg/${path}`),
         // ...paths.map((path) => `/nl/${path}`),
+        ...paths.map((path) => `/${path}`),
     ];
 
     return {
