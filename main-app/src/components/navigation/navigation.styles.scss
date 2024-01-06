@@ -8,10 +8,10 @@ $navMobileOpenHeight: 380px;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 4;
+    z-index: 1;
 
     width: 100vw;
-    height: $nav-height;
+    height: calc($nav-height);
 
     display: flex;
     flex-direction: column;
@@ -32,25 +32,27 @@ $navMobileOpenHeight: 380px;
         width: 100vw;
 
         &-logo {
-            height: calc($nav-height + 20px);
+            height: calc($nav-height + 10px);
             position: relative;
-            width: 115px;
-            padding: 0 35px 0 20px;
+            padding: 0 25px 0 10px;
             text-align: center;
             clip-path: polygon(0 0, 100% 0, 84% 100%, 0% 100%);
             background-color: $color-secondary-1-0;
             transition: all 0.3s;
+            z-index: 1;
+
 
             img {
                 cursor: pointer;
                 width: 60px;
                 aspect-ratio: 1024/426;
-                margin-top: 30px;
+                margin-top: 20px;
             }
 
 
             &.active {
-                padding: 20px 35px 50px 20px;
+                height: calc($nav-height + 30px);
+                padding: 15px 30px 25px 15px;
             }
         }
 
@@ -58,7 +60,7 @@ $navMobileOpenHeight: 380px;
             display: flex;
             align-items: center;
             color: $textLocalColor;
-            z-index: 10;
+            z-index: 1;
             position: relative;
 
             p {
@@ -100,7 +102,7 @@ $navMobileOpenHeight: 380px;
                         font-size: 1.1rem !important;
                     }
 
-                    transform: translateY(calc($navMobileOpenHeight - $nav-height - 20px));
+                    transform: translateY(calc($navMobileOpenHeight - $nav-height - 5px));
                     width: 100vw;
                 }
             }
@@ -253,10 +255,11 @@ ul {
     .main-navbar {
         flex-direction: row;
         justify-content: space-between;
-        width: 100vw;
+        height: calc($nav-height + 10px);
+
 
         &__head {
-            height: $nav-height;
+            height: calc($nav-height + 10px);
 
             &-logo {
                 width: 160px;
@@ -274,13 +277,14 @@ ul {
 
                 p {
                     margin: 0 auto;
+                    font-size: clamp(.9rem, calc(0.5rem + 0.6vw), 1rem);
 
                     a {
-                        font-size: calc(0.5rem + 0.6vw);
+                        font-size: inherit;
                     }
 
                     span {
-                        font-size: calc(0.5rem + 0.6vw);
+                        font-size: inherit;
                     }
                 }
             }
@@ -294,17 +298,17 @@ ul {
         &__menu-items {
             flex-direction: row;
             overflow: hidden;
-            gap: clamp(3px, .8vw, 30px);
+            gap: clamp(2px, .7vw, 26px);
             padding: 0 3vw;
             left: 0;
             background-color: rgba($color-primary-1, 0.3);
             clip-path: polygon(17px 0, 100% 0, 100% 100%, 0% 100%);
-            min-height: $nav-height;
-            max-height: $nav-height;
+            min-height: calc($nav-height + 10px);
+            max-height: calc($nav-height + 10px);
             // flex: 0;
 
             li {
-                font-size: clamp(0.8rem, 1.5vw, 1rem);
+                font-size: clamp(0.8rem, 1.5vw, 1.1rem);
                 text-align: center;
                 text-wrap: nowrap;
 
