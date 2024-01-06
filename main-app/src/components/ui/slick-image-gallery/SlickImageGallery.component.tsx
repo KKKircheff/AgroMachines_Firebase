@@ -85,6 +85,7 @@ const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
         prevArrow: <SlickPreviousArrow />,
         cssEase: "linear",
         centerMode: false,
+
         afterChange: (current: number) => { setCurrentSlideIndex(current) },
     };
 
