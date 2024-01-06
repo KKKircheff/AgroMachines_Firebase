@@ -98,8 +98,8 @@ const Navigation = ({ items }: NavigationProps) => {
     return (
         <div ref={rootRef} className='wrapper'>
             <nav
-                //  className={isTransparentNavbar ? 'main-navbar active' : 'main-navbar'}
-                className='main-navbar'
+                className={isTransparentNavbar ? 'main-navbar active' : 'main-navbar'}
+            // className='main-navbar'
             >
                 <div className="main-navbar__head">
 
@@ -126,7 +126,7 @@ const Navigation = ({ items }: NavigationProps) => {
                     </div>
 
                 </div>
-                <ul className={['main-navbar__menu-items', isToggled && 'active', closeSubMenu && 'closed'].filter(Boolean).join(' ')}>
+                <ul className={['main-navbar__menu-items', isToggled && 'active', closeSubMenu && 'closed', isTransparentNavbar && 'transparent'].filter(Boolean).join(' ')}>
                     {renderItems()}
                 </ul>
             </nav>

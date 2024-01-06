@@ -8,7 +8,7 @@ $navMobileOpenHeight: 380px;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 5;
 
     width: 100vw;
     height: calc($nav-height);
@@ -39,7 +39,7 @@ $navMobileOpenHeight: 380px;
             clip-path: polygon(0 0, 100% 0, 84% 100%, 0% 100%);
             background-color: $color-secondary-1-0;
             transition: all 0.3s;
-            z-index: 1;
+            z-index: 5;
 
 
             img {
@@ -60,7 +60,7 @@ $navMobileOpenHeight: 380px;
             display: flex;
             align-items: center;
             color: $textLocalColor;
-            z-index: 1;
+            z-index: 5;
             position: relative;
 
             p {
@@ -106,6 +106,8 @@ $navMobileOpenHeight: 380px;
                     width: 100vw;
                 }
             }
+
+
         }
 
         &-hamburger {
@@ -197,11 +199,20 @@ $navMobileOpenHeight: 380px;
             left: 0vw;
         }
 
+        &.transparent {
+            background-color: rgba($color-primary-0, 0.9);
+            --webkit-backdrop-filter: blur(4px);
+            // Blur effect with webkit because of problem Opera mobile browser
+        }
+
     }
 
     &.active {
-        height: $navMobileOpenHeight;
+        background-color: rgba($color-primary-0, 0.9);
+        --webkit-backdrop-filter: blur(4px);
+        // Blur effect with webkit because of problem Opera mobile browser
     }
+
 }
 
 ul {
@@ -242,7 +253,7 @@ ul {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-in-out;
-    z-index: 1;
+    z-index: 5;
 
     li a {
         padding: 10px 40px;
@@ -368,11 +379,4 @@ ul {
     .main-navbar__menu-items.closed .sub-menu {
         display: none;
     }
-}
-
-.main-navbar.active {
-    background-color: rgba($color-primary-0, 0.9);
-    /* Background color with 50% transparency */
-    --webkit-backdrop-filter: blur(4px);
-    /* Blur effect */
 }
