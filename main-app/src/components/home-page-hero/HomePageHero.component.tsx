@@ -25,7 +25,7 @@ const HomePageHero = () => {
                     data-aos-delay="850">ОТ НИДЕРЛАНДИЯ</h1>
                 <Button
                     buttonType='primary'
-                    onClick={() => navigate('/contact')}>Контакт</Button>
+                    onClick={() => navigate('/offers')}>Оферти</Button>
             </div>
             <div className="home-hero__right-side" data-aos="fade-left">
                 <img src={heroImage} alt="поливна макара" />

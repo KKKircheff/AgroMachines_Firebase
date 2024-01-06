@@ -57,6 +57,12 @@ $footerTextColor: $gray-90;
             }
         }
 
+        a {
+            color: $footerTextColor;
+            font-weight: 400;
+            font-size: 0.8rem;
+        }
+
     }
 }
 

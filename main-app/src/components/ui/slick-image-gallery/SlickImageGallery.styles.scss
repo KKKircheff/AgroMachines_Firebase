@@ -30,14 +30,28 @@ $imgBorderRadius: 5px;
     }
 
     &__bottom-slider {
+        display: flex;
+        flex-direction: column;
+
+        overflow: hidden;
         width: 100%;
-        height: 25vw;
+        height: 30vw;
+
+        .slick-slider {
+            width: 100%;
+        }
+
+        .slick-list {
+            width: 102%;
+            margin-top: .7vw;
+        }
+
 
         img {
             object-fit: cover;
             aspect-ratio: 1/1;
-            width: 25vw;
-            margin: 0 10px 0 10px;
+            width: 93%;
+            margin-right: 10%;
             border-radius: $imgBorderRadius !important;
         }
     }
@@ -72,7 +86,6 @@ $imgBorderRadius: 5px;
             height: 98%;
             overflow: hidden;
 
-            display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;

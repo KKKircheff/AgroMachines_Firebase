@@ -151,7 +151,7 @@ const ContatForm = () => {
                 />
 
                 <FormInputField
-                    label='Компния /опция/'
+                    label='Компaния /опция/'
                     type='text'
                     name='company'
                     autoComplete='off'

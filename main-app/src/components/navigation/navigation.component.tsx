@@ -1,21 +1,21 @@
 import React, { useEffect, useRef } from 'react';
 import { Item } from '../../application-data/navbar-config';
 import logo from '../../assets/images/logo-am.webp'
+import { isMobile } from 'react-device-detect';
 
 import { useState } from 'react';
 import { FaAngleDown } from 'react-icons/fa'
 import { HiOutlinePhone } from 'react-icons/hi';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import './navigation.styles.scss';
-import UnderNavBar from '../ui/underNavBar/UnderNavBar.component';
 
 interface NavigationProps {
     items: Item[];
 }
 
 const Navigation = ({ items }: NavigationProps) => {
-
+    const navigate = useNavigate()
 
     const [isToggled, setIsToggled] = useState(false);
     const [closeSubMenu, setCloseSubMenu] = useState(false);
@@ -33,10 +33,12 @@ const Navigation = ({ items }: NavigationProps) => {
     const renderItems = () => items.map((item, index) => (
         <li key={index}>
             {item.url
-                ? <Link
-                    to={item.url}
-                    onClick={() => closeMenu(true)}>{item.name}
-                </Link>
+                ? <span
+                    onClick={() => {
+                        closeMenu(true)
+                        navigate(item.url!)
+                    }}>{item.name}
+                </span>
                 : <span onClick={toggleSubMenu}>
                     {item.name}
                     <FaAngleDown className='submenu-dropdown-icon' />
@@ -44,16 +46,18 @@ const Navigation = ({ items }: NavigationProps) => {
             }
             {item.children && renderChildren(item.children)}
         </li>
-
     ))
 
     const renderChildren = (children: Item[]) => (
         <ul className="sub-menu">
             {children.map((child, index) => (
                 <li key={index}>
-                    <Link to={child.url!} onClick={() => closeMenu(true)}>
+                    <span onClick={() => {
+                        closeMenu(true)
+                        navigate(child.url!)
+                    }}>
                         {child.name}
-                    </Link>
+                    </span>
                 </li>
             ))}
         </ul>
@@ -66,6 +70,8 @@ const Navigation = ({ items }: NavigationProps) => {
             setTimeout(() => setCloseSubMenu(false), 0)
         }
     }
+
+
 
     useEffect(() => {
         const addTransparencyToNavbar = () => {
@@ -91,16 +97,22 @@ const Navigation = ({ items }: NavigationProps) => {
 
     return (
         <div ref={rootRef} className='wrapper'>
-            {/* <div className='wrapper__under-navigation-layer'></div> */}
-            <nav className={isTransparentNavbar ? 'main-navbar active' : 'main-navbar'}>
+            <nav
+                //  className={isTransparentNavbar ? 'main-navbar active' : 'main-navbar'}
+                className='main-navbar'
+            >
                 <div className="main-navbar__head">
 
                     <div className={['main-navbar__head-logo', isToggled && 'active', closeSubMenu && 'closed'].filter(Boolean).join(' ')}>
-                        <img src={logo} alt="" className="" />
+                        <img src={logo} alt="" className="" onClick={() => navigate('/')} />
                     </div>
 
                     <div className={['main-navbar__head-phone-number', isToggled && 'translate-down', closeSubMenu && 'closed'].filter(Boolean).join(' ')}>
-                        <p><span><HiOutlinePhone /></span> +359 876 962484</p>
+                        <p><span><HiOutlinePhone /></span>
+                            {isMobile
+                                ? <a href='tel:+359876962484'> +359 876 962484</a>
+                                : ' +359 876 962484'}
+                        </p>
                     </div>
 
                     <div
