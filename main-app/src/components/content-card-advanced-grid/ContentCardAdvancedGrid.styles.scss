@@ -5,21 +5,24 @@ $textLocalColor: $textColor;
 
 .content-card-advanced-grid {
     width: 100%;
+    position: relative;
+
     display: flex;
     flex-direction: column;
     gap: 30px;
+
     overflow-x: hidden;
-    padding: 30px 0;
-    background-color: transparent;
+    background-color: white;
+    @include cardShadow;
+
+    // padding: 30px 30px 0px 30px;
+    border-radius: 5px;
 
     &__content {
         display: flex;
         flex-direction: column;
         gap: 10px;
-        background-color: white;
         padding: 20px 5vw 30px 5vw;
-        border-radius: 5px;
-        @include cardShadow;
 
         &-title {
 
@@ -68,26 +71,50 @@ $textLocalColor: $textColor;
     }
 
     &__button {
-
-        width: 165px;
-        height: 50px;
-        border: 3px solid red;
+        // overflow: hidden;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border: none;
+        width: fit-content;
+        height: 45px;
         border-radius: 0px;
-        padding: 8px 20px;
+        padding: 10px 20px 6px 40px;
         color: white;
-        // text-transform: uppercase;
+        text-transform: uppercase;
+        white-space: nowrap;
         font-size: $buttot-text-size ;
         cursor: pointer;
-        font-weight: 600;
-        background-color: white;
+        font-weight: 500;
+        clip-path: polygon(25px 0%, 100% 0, 100% 100%, 0% 100%);
         transition: all .1s;
-        margin-top: 20px;
+
+        span {
+            vertical-align: middle;
+        }
+
+    }
+
+    &___line {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        top: 100px;
+        left: 50px;
+        width: 100%;
+        min-height: 10px;
+        height: 10px;
+        max-height: 10px;
+        background: red;
+        // transition: all .1s;
+
     }
 }
 
 @include mdMinBreakPoint {
     .content-card-advanced-grid {
-        background: transparent;
+        background-color: white;
+
 
         &__content {
             display: grid;
@@ -121,17 +148,11 @@ $textLocalColor: $textColor;
         }
 
         &__button {
-            margin-left: 0px;
-            border-radius: 3px;
-            margin-top: 40px;
-            transition: border-radius .2s;
-
             &:hover {
-                // border-radius: 55px 0px;
-                transition: border-radius .2s;
+                padding: 10px 50px 6px 50px;
             }
-
         }
+
     }
 }
 

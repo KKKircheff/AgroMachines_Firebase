@@ -163,8 +163,8 @@ $navMobileOpenHeight: 380px;
         transition: all 0.3s ease-in-out;
 
         li {
-            font-weight: 300;
-            font-size: 1.5rem;
+            font-weight: 500;
+            font-size: 1.2rem;
             cursor: pointer;
             position: relative;
 
@@ -309,50 +309,78 @@ ul {
         &__menu-items {
             flex-direction: row;
             overflow: hidden;
-            gap: clamp(2px, .7vw, 26px);
+            gap: clamp(2px, 3vw, 40px);
             padding: 0 3vw;
             left: 0;
-            background-color: rgba($color-primary-1, 0.3);
+            background-color: rgba($color-primary-3, 0.4);
             clip-path: polygon(17px 0, 100% 0, 100% 100%, 0% 100%);
             min-height: calc($nav-height + 10px);
             max-height: calc($nav-height + 10px);
             // flex: 0;
 
             li {
-                font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+                font-size: clamp(.8rem, 1.2vw, .9rem);
+                font-weight: 400;
                 text-align: center;
-                text-wrap: nowrap;
+                white-space: nowrap;
+                padding: 0;
+                width: fit-content;
+                padding: 0;
 
                 a,
                 span {
+                    position: relative;
                     min-width: 40px;
-                    padding: 0 10px;
-                    color: $textLocalColor;
+                    text-wrap: nowrap; // padding: 0 10px;
+                    // color: $textLocalColor;
                     text-decoration: none;
-                }
+                    padding: 0;
 
-                .submenu-dropdown-icon {
-                    display: none; // 💡 Also hide the arrows on desktop
-                }
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        width: 100%;
+                        transform: scaleX(0);
+                        height: 1.1px;
+                        left: 0;
+                        top: calc($nav-height - 5px);
+                        background-color: $color-primary-1;
+                        transform-origin: bottom center;
+                        transition: transform 0.3s ease-out;
+                        z-index: 2;
+                    }
 
-                span.toggled+.sub-menu {
-                    max-height: 0px;
-                }
+                    &:hover::after {
+                        transform: scaleX(1);
+                        transform-origin: bottom center;
+                    }
 
-                &:hover .sub-menu,
-                &:hover span.toggled+.sub-menu {
-                    max-height: 300px;
+                    // .submenu-dropdown-icon {
+                    //     display: none; // 💡 Also hide the arrows on desktop
+                    // }
+
+                    // span.toggled+.sub-menu {
+                    //     max-height: 0px;
+                    // }
+
+                    // &:hover .sub-menu,
+                    // &:hover span.toggled+.sub-menu {
+                    //     max-height: 300px;
+                    // }
                 }
 
                 a:hover {
-                    scale: 110%;
+                    transform: scaleX(1.05);
+
                     transition: 0.1s ease-in-out;
+
                 }
 
                 span:hover {
-                    scale: 110%;
+                    transform: scaleX(1.05);
                     transition: 0.1s ease-in-out;
                 }
+
             }
         }
     }

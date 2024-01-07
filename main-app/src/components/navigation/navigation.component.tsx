@@ -37,10 +37,10 @@ const Navigation = ({ items }: NavigationProps) => {
                     onClick={() => {
                         closeMenu(true)
                         navigate(item.url!)
-                    }}>{item.name}
+                    }}>{item.name.toUpperCase()}
                 </span>
                 : <span onClick={toggleSubMenu}>
-                    {item.name}
+                    {item.name.toUpperCase()}
                     <FaAngleDown className='submenu-dropdown-icon' />
                 </span>
             }

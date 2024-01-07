@@ -25,7 +25,7 @@ const FooterHomePage = () => {
                 <p><span><HiOutlinePhone /></span>
                     {isMobile
                         ? <a href='tel:+359876962484'> +359 876 962484</a>
-                        : ' +359 876 962484'}
+                        : <span className='span-primary-color'> +359 876 962484</span>}
                 </p>
             </div>
         </div>

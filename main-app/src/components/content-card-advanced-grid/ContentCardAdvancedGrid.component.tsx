@@ -3,6 +3,8 @@ import IMAGES from '../../assets/images/content-cards/images';
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink, scroller } from 'react-scroll';
 import RenderIfVisible from 'react-render-if-visible';
+import { FaAngleRight } from "react-icons/fa6";
+
 // import { Button } from 'primereact/button';
 
 import { useState } from 'react';
@@ -34,10 +36,13 @@ const ContentCardAdvancedGrid = ({ topTitle, content, buttonPageLink, buttonScro
     //     border: isHovered ? '0px solid transparent' : `1px solid ${accentColor}`
     // };
     const divStyles = {
-        color: isHovered ? `${accentColor}` : `white`,
-        background: isHovered ? 'white' : accentColor,
-        border: isHovered ? `1px solid ${accentColor}` : `1px solid white`,
-        transition: 'all 0.1s ease-in-out'
+        background: `${accentColor}`,
+        color: `white`,
+        border: 'none',
+        // color: isHovered ? `${accentColor}` : `white`,
+        // background: isHovered ? 'white' : accentColor,
+        // transform: isHovered ? `50%` : `43%`,
+        // transition: 'all 0.1s ease-in-out'
     };
 
     const renderContent = () => {
@@ -88,7 +93,7 @@ const ContentCardAdvancedGrid = ({ topTitle, content, buttonPageLink, buttonScro
         <RenderIfVisible defaultHeight={300} visibleOffset={50}>
             <div>
                 <div className="content-card-advanced-grid"
-                    style={{ backgroundColor: 'transparent' }}
+                    // style={{ backgroundColor: 'transparent' }}
                     data-aos="fade-up"
                     data-aos-easing="ease-in"
                     data-aos-duration="250"
@@ -99,6 +104,14 @@ const ContentCardAdvancedGrid = ({ topTitle, content, buttonPageLink, buttonScro
                     <div className="content-card-advanced-grid__content">
                         {renderContent()}
                     </div>
+                    <div style={{
+                        position: 'absolute',
+                        bottom: '0',
+                        left: '0',
+                        width: '100%',
+                        height: '6px',
+                        background: `${accentColor}`
+                    }}></div>
 
                     {buttonScrollLink
                         ? <div>
@@ -109,7 +122,7 @@ const ContentCardAdvancedGrid = ({ topTitle, content, buttonPageLink, buttonScro
                                 onMouseEnter={() => setIsHovered(true)}
                                 onMouseLeave={() => setIsHovered(false)}
                                 onClick={() => scroller.scrollTo(buttonScrollLink, { smooth: true, duration: 100 })}
-                            >{buttonText}</button>
+                            >{buttonText} <span><FaAngleRight /></span></button>
                         </div> : ''
                     }
                     {
@@ -120,10 +133,9 @@ const ContentCardAdvancedGrid = ({ topTitle, content, buttonPageLink, buttonScro
                                     style={divStyles}
                                     onMouseEnter={() => setIsHovered(true)}
                                     onMouseLeave={() => setIsHovered(false)}
-                                >{buttonText}</button>
+                                >{buttonText} <span><FaAngleRight /></span></button>
                             </Link> : ''
                     }
-
                 </div >
             </div>
         </RenderIfVisible>
