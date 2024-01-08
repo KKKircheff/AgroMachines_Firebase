@@ -1,6 +1,7 @@
 import './GalleryItemPageHero.styles.scss'
 import Button from '../ui/button/button.component'
 import { useNavigate } from 'react-router-dom'
+import { TfiAngleLeft } from "react-icons/tfi";
 
 type GalleryItemPageHeroProps = {
     imageUrl: string;
@@ -20,7 +21,7 @@ const GalleryItemPageHero = ({ imageUrl }: GalleryItemPageHeroProps) => {
                 <h2>ПОДРОБНА ИНФОРМАЦИЯ</h2>
                 <h3>снимки | описание | предназначение </h3>
                 <Button buttonType='primary' onClick={handleClick}>
-                    <span><i className="pi pi-chevron-left" style={{ color: 'white', fontSize: '.8rem', marginRight: '10px' }}></i></span>
+                    <span><TfiAngleLeft /></span>
                     <span> галерия</span>
                 </Button>
             </div>

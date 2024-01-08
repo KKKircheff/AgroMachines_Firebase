@@ -37,7 +37,9 @@ function App() {
         AOS.init({
             easing: 'ease-in',
             delay: 50,
-            duration: 300
+            duration: 300,
+            offset: 50,
+            anchorPlacement: 'bottom-center',
         })
     }, []);
 

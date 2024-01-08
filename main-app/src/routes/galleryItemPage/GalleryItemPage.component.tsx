@@ -3,15 +3,12 @@ import ResponsiveContainer from '../../components/layout/responsiveContainer/Res
 import FooterHomePage from '../../components/footer-home-page/footer-home-page.component';
 import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import { Image } from 'primereact/image';
 
 import { db, getFirebaseStorageImageUrl } from "../../utils/firebase-utils";
 import { getDocs, collection, query, where } from 'firebase/firestore'
-import PrimeGallery from '../../components/ui/prime-image-gallery/PrimeGallery.component';
 import UnderNavBar from '../../components/ui/underNavBar/UnderNavBar.component';
 import SectionLoadSpinner from '../../components/ui/sectionLoadSpinner/SectionLoadSpinner.component';
 import GalleryItemPageCard from '../../components/gallery-item-page-card/GalleryItemPageCard.component';
-import GalleryCardsContainer from '../../components/layout/galleryCardsContainer/GalleryCardsContainer.component';
 import GalleryItemPageHero from '../../components/gallery-item-page-hero/GalleryItemPageHero.component';
 // import GalleryHero from '../../components/gallery-hero/GalleryHero.component';
 
@@ -70,7 +67,6 @@ const GalleryItemPage = () => {
         fetchData();
     }, [id, navigate]);
 
-    const icon = (<i className="pi pi-search"></i>)
     return (
         <div className='gallery-item-page'>
             <UnderNavBar />

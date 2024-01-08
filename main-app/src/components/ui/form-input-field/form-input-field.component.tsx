@@ -9,11 +9,13 @@ const FormInputField: React.FC<FormInputFieldProps> = ({ label, ...otherProps })
     const isRequired = otherProps.hasOwnProperty('required');
     return (
         <div className='form-input'>
-            <input className="form-input__field" {...otherProps} />
+            <input className="form-input__field" {...otherProps} id={label} />
             {label &&
                 <label
+                    htmlFor={label}
                     className={`${otherProps.value?.toString().length ? 'form-input--shrink' : ''
-                        } form-input__label`}>
+                        } form-input__label`}
+                >
                     {label}
                     {isRequired && <span>*</span>}
                 </label>}

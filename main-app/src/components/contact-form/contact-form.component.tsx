@@ -1,12 +1,11 @@
-import FormInputField from '../ui/form-input-field/form-input-field.component'
-import FormTextArea from "../ui/form-text-area-field/form-text-area.component";
-// import Button from "../button/button.component"
-import { Button } from 'primereact/button';
+import './contact-form.style.scss'
 import { useState } from "react";
 
-import { IoIosBarcode } from "react-icons/io";
+import FormInputField from '../ui/form-input-field/form-input-field.component'
+import FormTextArea from "../ui/form-text-area-field/form-text-area.component";
+import Button from '../ui/button/button.component'
 
-import './contact-form.style.scss'
+import { IoIosBarcode } from "react-icons/io";
 
 type ContactInfo = {
     name: string
@@ -152,7 +151,7 @@ const ContatForm = () => {
                 />
 
                 <FormInputField
-                    label='Компния /опция/'
+                    label='Компaния /опция/'
                     type='text'
                     name='company'
                     autoComplete='off'
@@ -191,8 +190,7 @@ const ContatForm = () => {
                     value={formValues.message}
                 />
                 <div className="buttons-container">
-                    <Button label="изпрати" onClick={() => handleSubmit()} />
-
+                    <Button buttonType='primary' onClick={() => handleSubmit()}>изпрати</Button>
                 </div>
                 {!isFormValid && <div className="form-error-message">{errorMessage}</div>}
             </div>

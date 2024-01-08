@@ -46,7 +46,6 @@ $background-color: white;
             font-weight: 400;
             color: $gray-40;
             padding: 0 0 0 0;
-            // padding: 0 0 0 clamp(36px, calc(25px + 2.5vw), 45px);
             font-size: 16px;
             letter-spacing: 0px;
 
@@ -54,7 +53,12 @@ $background-color: white;
 
             // line-height: 1px;
             >a {
-                color: $color-primary-0;
+                color: $gray-40;
+                font-weight: 400;
+
+                :first-child {
+                    color: $color-primary-0;
+                }
             }
 
             >span {

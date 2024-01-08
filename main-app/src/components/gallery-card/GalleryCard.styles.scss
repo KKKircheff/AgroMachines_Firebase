@@ -1,7 +1,7 @@
 @import '../../sass/variables.scss';
 @import '../../sass/mixins.scss';
 $cardTextLocalColor: white;
-$animation-duration: 0.3s;
+$animation-duration: 0.2s;
 
 .gallery-card {
     width: 100%;
@@ -25,7 +25,7 @@ $animation-duration: 0.3s;
         position: absolute;
         bottom: 0;
         left: 0;
-        margin: 0 0 20px 20px;
+        margin: 0 0 clamp(20px, 1.5vw, 60px) 1.5vw;
 
         &__title {
             width: 250px;
@@ -36,7 +36,7 @@ $animation-duration: 0.3s;
             letter-spacing: -2px;
             line-height: 2.2rem;
             font-weight: 700;
-
+            @include textShadow;
         }
 
         &__subtitle {
@@ -45,6 +45,7 @@ $animation-duration: 0.3s;
             font-size: .8rem;
             font-weight: 500;
             margin: 0;
+            @include textShadow;
         }
     }
 
@@ -52,12 +53,10 @@ $animation-duration: 0.3s;
         position: absolute;
         bottom: 0;
         right: 0;
-        width: 50px;
-        height: 35px;
         background-color: $color-secondary-1-0;
         clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
         transition: all $animation-duration;
-        padding-left: 20px;
+        padding: 4px 20px 4px 30px;
 
         >svg {
             color: $cardTextLocalColor;
@@ -86,13 +85,8 @@ $animation-duration: 0.3s;
         max-width: 1200px;
 
         &__more {
-
-            width: 60px;
-            height: 40px;
-
-            >svg {
-                margin-left: 8px;
-            }
+            padding: 5px 30px 5px 40px;
+            clip-path: polygon(12% 0%, 100% 0, 100% 100%, 0% 100%);
         }
 
         &__content {
@@ -117,11 +111,7 @@ $animation-duration: 0.3s;
             @include hoverCardShadow;
 
             .gallery-card__more {
-                width: 100px;
-
-                >svg {
-                    margin-left: 8px;
-                }
+                padding: 5px 50px 5px 60px;
             }
 
             .gallery-card__overlay {

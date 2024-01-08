@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './ContactInfoBottomCard.styles.scss';
 import { AiOutlineForm } from "react-icons/ai";
-import { MdOutlineTapAndPlay } from "react-icons/md";
 import { VscVmConnect } from "react-icons/vsc";
 import { BsTelephone } from "react-icons/bs";
 import { MdOutlineMail } from "react-icons/md";
 import { TbBrandFacebook } from "react-icons/tb";
 import { LiaViber } from "react-icons/lia";
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { isMobile } from 'react-device-detect';
 
 const ContactInfoBottomCard = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -35,7 +34,11 @@ const ContactInfoBottomCard = () => {
             <div className="contact-info-bottom-card__block">
                 <h2><span><AiOutlineForm /></span>ДИРЕКТЕН КОНТАКТ:</h2>
 
-                <p>телефон: <span className='icon-center' ><BsTelephone /></span>+359 876 962484</p>
+                <p>телефон: <span className='icon-center' ><BsTelephone /></span>
+                    {isMobile
+                        ? <a href='tel:+359876962484'> +359 876 962484</a>
+                        : ' +359 876 962484'}
+                </p>
 
                 {windowWidth > 400 ? (
                     <p>емайл: <span className='icon-center'><MdOutlineMail /></span>office@agro-machines.nl</p>

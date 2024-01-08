@@ -36,6 +36,11 @@ $textLocalColor: white;
 
         button {
             margin: clamp(60px, 4vw, 70px) 0 0 2px;
+
+            svg {
+                margin-right: 10px;
+                transform: translateY(3px);
+            }
         }
     }
 

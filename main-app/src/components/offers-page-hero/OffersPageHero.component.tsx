@@ -1,6 +1,5 @@
 import './OffersPageHero.styles.scss'
 
-import Button from '../ui/button/button.component'
 import { useNavigate } from 'react-router-dom'
 import heroImage from '/hero-images/offersHero.webp'
 
@@ -23,10 +22,6 @@ const OffersPageHero = () => {
                 <p>към {today}</p>
                 <h2>АКТУАЛНИ ОФЕРТИ</h2>
                 <h3>изгодни оферти налични в момента</h3>
-                {/* <Button buttonType='primary' onClick={handleClick}>
-                    <span><i className="pi pi-chevron-left" style={{ color: 'white', fontSize: '.8rem', marginRight: '10px' }}></i></span>
-                    <span> галерия</span>
-                </Button> */}
             </div>
             <div className='offers-page-hero__image'>
                 <img src={heroImage} alt="Доставена поливна макара шириокоформатна снимка снимка" />

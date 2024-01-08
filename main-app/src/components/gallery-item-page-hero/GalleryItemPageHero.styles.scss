@@ -31,11 +31,18 @@ $textLocalColor: white;
             font-weight: 400;
             font-size: clamp(14px, 3vw, 20px);
             font-family: $content-font;
+
+
         }
 
 
         button {
             margin: clamp(60px, 4vw, 70px) 0 0 2px;
+
+            svg {
+                margin-right: 10px;
+                transform: translateY(3px);
+            }
         }
     }
 

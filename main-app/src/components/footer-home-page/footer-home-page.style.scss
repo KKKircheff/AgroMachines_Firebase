@@ -54,8 +54,23 @@ $footerTextColor: $gray-90;
                 margin-right: 5px;
                 color: $color-primary-0;
                 font-size: 1rem;
+
+                &.span-primary-color {
+                    color: $color-primary-0;
+                    font-size: 0.8rem;
+                    font-weight: 500;
+                }
             }
+
         }
+
+        a {
+            font-weight: 500;
+            font-size: 0.8rem;
+            color: $color-primary-0;
+            cursor: pointer;
+        }
+
 
     }
 }

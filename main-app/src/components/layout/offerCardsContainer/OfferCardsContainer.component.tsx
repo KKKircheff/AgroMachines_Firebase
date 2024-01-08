@@ -34,10 +34,12 @@ const OfferCardsContainer = () => {
         <div className='offer-cards-container' >
             {cardsData ? cardsData.map((cardData: OfferCardProps, index) => {
                 return (
-                    <OfferCard
+
+                    cardData.active ? <OfferCard
                         key={index}
                         {...cardData}
                     />
+                        : null
                 )
             }) :
                 <SectionLoadSpinner />

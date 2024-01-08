@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import './GalleryCard.styles.scss'
-import { TfiAngleRight } from "react-icons/tfi";
 import { FaAngleRight } from "react-icons/fa6";
 
 interface GalleryCardProps {
@@ -19,8 +18,8 @@ const GalleryCard = ({ name, title, subtitle, cardImgUrl }: GalleryCardProps) =>
         <div className='gallery-card' onClick={handleClick}
             data-aos="fade-in"
             data-aos-easing="ease-in"
-            data-aos-duration="250"
-            data-aos-delay="250"
+            data-aos-duration="200"
+            data-aos-delay="10"
         >
             <img className='gallery-card__image' src={cardImgUrl} alt='Поливна макара внос' />
             <div className="gallery-card__overlay"></div>
