@@ -18,12 +18,16 @@ const OfferCard = ({ name, title, subtitle, cardImgUrl, price }: OfferCardProps)
         >
             <img className='offer-card__image' src={cardImgUrl} alt='Поливна макара внос' />
             <div className="offer-card__overlay"></div>
-            <p className='offer-card__price'>цена: {price} лв.</p>
             <div className='offer-card__content'>
                 <h2 className='offer-card__content__title'>{title}</h2>
                 <h3 className='offer-card__content__subtitle'>{subtitle}</h3>
             </div>
-            <div className='offer-card__more'><FaAngleRight /></div>
+            <div className='offer-card__price'>
+                <p >цена: {price} лв.</p>
+            </div>
+            <div className='offer-card__angle-button'><FaAngleRight /></div>
+            {/* <div className='offer-card__top-line'></div> */}
+            <div className='offer-card__bottom-line'></div>
         </div>
     )
 }

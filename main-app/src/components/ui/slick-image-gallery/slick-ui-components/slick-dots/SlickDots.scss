@@ -7,6 +7,7 @@
     overflow: hidden;
 }
 
+
 .slick-dots ul li button:before {
     background-color: $color-primary-0;
     border: 1px solid white;
@@ -14,7 +15,14 @@
     width: 8px;
     text-indent: -9999px;
     overflow: hidden;
+    opacity: .6 !important;
+
 }
+
+.slick-dots li.slick-active button:before {
+    opacity: 1 !important;
+}
+
 
 //  !!!!! ---touchscreen zoom activate
 .slick-slider {

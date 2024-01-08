@@ -10,15 +10,11 @@ import './SlickImageGallery.styles.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// only needed for when using Prime React
-import 'primereact/resources/primereact.min.css'; //core css
-// import 'primeicons/primeicons.css'; //icons
-// import 'primeflex/primeflex.css'; // flex
-
-import { Image } from 'primereact/image';
+import PopUpImageV2 from '../pop-up-image-v2/PopUpImageV2.component';
 import { GoSearch } from 'react-icons/go';
+// import { set } from 'firebase/database';
 
-interface PrimeGalleryProps {
+interface SlickGalleryProps {
     imgUrls: string[];
 }
 
@@ -26,12 +22,13 @@ const breakPoint = 992;
 const slidesMobile = 3;
 const slidesDesktop = 5;
 
-const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
+const slickImageGallery = ({ imgUrls }: SlickGalleryProps) => {
 
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
     const [clickedIndex, setClickedIndex] = useState(0);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [isDesktop, setIsDesktop] = useState(window.innerWidth >= breakPoint);
+    const [isPopUpActive, setIsPopUpActive] = useState(false);
 
     const sliderRef = useRef<Slider>(null);
 
@@ -67,6 +64,7 @@ const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
         prevArrow: <SlickPreviousArrow />,
         cssEase: "linear",
         appendDots: (dots: any) => SlickDots(dots),
+        afterChange: (current: number) => { setCurrentSlideIndex(current) },
     };
 
     const thumbSliderSettings = {
@@ -85,8 +83,6 @@ const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
         prevArrow: <SlickPreviousArrow />,
         cssEase: "linear",
         centerMode: false,
-
-        afterChange: (current: number) => { setCurrentSlideIndex(current) },
     };
 
     const icon = (<GoSearch />)
@@ -94,21 +90,30 @@ const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
     const renderMain = () => {
         return imgUrls.map((imageUrl, index) => {
             return (
-                <Image key={index} className='prime-gallery__main' src={imageUrl} indicatorIcon={icon} alt="Image" preview />
+                <div key={index} className='slick-image-gallery__image-main' onClick={handleMainClick} data-index={index}>
+                    <img src={imageUrl} alt="Image" />
+                    {isDesktop && <div className='slick-image-gallery__image-main__icon'>{icon}</div>}
+                </div>
             )
         })
     }
     const renderThumb = () => {
         return imgUrls.map((imageUrl, index) => {
             return (
-                <Image key={index} className='prime-gallery__main' src={imageUrl} alt="Image" data-index={index} onClick={handleClick} />
+                <div key={index} className='slick-image-gallery__bottom-slider__image-thumb' onClick={handleThumbClick} data-index={index}>
+                    <img src={imageUrl} alt="Image" />
+                </div>
             )
         })
     }
 
-    const handleClick = (event: React.MouseEvent<HTMLImageElement>) => {
+    const handleThumbClick = (event: React.MouseEvent<HTMLImageElement>) => {
         const dataIndex = event.currentTarget.getAttribute('data-index');
         dataIndex ? setClickedIndex(+dataIndex) : setClickedIndex(0);
+    }
+    const handleMainClick = (event: React.MouseEvent<HTMLImageElement>) => {
+        const dataIndex = event.currentTarget.getAttribute('data-index');
+        setIsPopUpActive(true);
     }
 
     return (
@@ -123,6 +128,12 @@ const slickImageGallery = ({ imgUrls }: PrimeGalleryProps) => {
                     {renderThumb()}
                 </Slider>
             </div>
+            {isPopUpActive &&
+                <PopUpImageV2
+                    url={imgUrls[currentSlideIndex]}
+                    imgUrls={imgUrls}
+                    isPopUpActive={isPopUpActive}
+                    setIsPopUpActive={setIsPopUpActive} />}
         </div>
     )
 }

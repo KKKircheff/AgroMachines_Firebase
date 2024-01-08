@@ -2,7 +2,6 @@ import './ContentCard.styles.scss'
 import IMAGES from '../../assets/images/content-cards/images';
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink, scroller } from 'react-scroll';
-import { Button } from 'primereact/button';
 
 import { useState } from 'react';
 

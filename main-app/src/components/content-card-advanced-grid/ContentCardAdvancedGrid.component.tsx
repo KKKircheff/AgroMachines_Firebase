@@ -5,7 +5,6 @@ import { Link as ScrollLink, scroller } from 'react-scroll';
 import RenderIfVisible from 'react-render-if-visible';
 import { FaAngleRight } from "react-icons/fa6";
 
-// import { Button } from 'primereact/button';
 
 import { useState } from 'react';
 

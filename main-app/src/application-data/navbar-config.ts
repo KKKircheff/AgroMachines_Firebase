@@ -38,22 +38,3 @@ export const items: Item[] = [
         contentPosition: 5,
     },
 ];
-
-export const itemsPrime = [
-    {
-        label: 'Videos',
-        icon: 'pi pi-fw pi-video',
-    },
-    {
-        label: 'Users',
-        icon: 'pi pi-fw pi-users',
-    },
-    {
-        label: 'Events',
-        icon: 'pi pi-fw pi-calendar',
-    },
-    {
-        label: 'Settings',
-        icon: 'pi pi-fw pi-cog',
-    },
-];

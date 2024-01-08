@@ -1,4 +1,3 @@
-// import { Button } from 'primereact/button'
 import Button from '../ui/button/button.component'
 import heroImage from '/hero-images/homeHero.webp'
 import './HomePageHero.style.scss'
