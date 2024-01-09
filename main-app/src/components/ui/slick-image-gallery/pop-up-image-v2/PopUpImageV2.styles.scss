@@ -1,3 +1,5 @@
+@import '../../../../sass/mixins';
+
 @mixin popUpIcons {
     position: fixed;
     font-size: 2rem;
@@ -23,11 +25,13 @@
     opacity: 0;
     transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
     background-color: rgba(0, 0, 0, 0.8);
-    touch-action: pan-x pan-y;
 
     &__img {
-        width: 90%;
-        height: 90%;
+        width: 100%;
+        height: 100%;
+        touch-action: none;
+
+
 
         img {
             width: 100%;
@@ -37,6 +41,12 @@
             // object-fit: none;
             object-fit: contain;
             margin: 0;
+            touch-action: none;
+        }
+
+        @include mdMinBreakPoint {
+            width: 90%;
+            height: 90%;
         }
 
     }
@@ -59,7 +69,7 @@
             width: 100%;
             height: 100%;
             transform: scale(100%);
-            transition: transform 0.3s ease-in-out;
+            // transition: transform 0.3s ease-in-out;
             object-fit: contain;
             z-index: 1;
         }

@@ -113,14 +113,15 @@ $imgBorderRadius: 5px;
                     object-fit: cover;
                     width: 100%;
                     aspect-ratio: 1/1;
-                    margin: 0 0 0 0;
+                    margin: 0;
+                    transform: translateY(-.08vw);
 
                     cursor: pointer;
-                    transition: transform .2s ease-in-out;
+                    // transition: transform .2s ease-in-out;
 
 
                     &:hover {
-                        transform: scale(1.05);
+                        // transform: scale(1.05);
                     }
                 }
             }
@@ -128,7 +129,6 @@ $imgBorderRadius: 5px;
             span {
                 &:focus {
                     outline: none !important;
-                    // border: 0px solid transparent;
                 }
             }
 
