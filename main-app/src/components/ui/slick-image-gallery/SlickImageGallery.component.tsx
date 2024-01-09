@@ -10,7 +10,7 @@ import './SlickImageGallery.styles.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import PopUpImageV2 from '../pop-up-image-v2/PopUpImageV2.component';
+import PopUpImageV2 from './pop-up-image-v2/PopUpImageV2.component';
 import { GoSearch } from 'react-icons/go';
 // import { set } from 'firebase/database';
 
@@ -24,7 +24,7 @@ const slidesDesktop = 5;
 
 const slickImageGallery = ({ imgUrls }: SlickGalleryProps) => {
 
-    const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+    const [currentSlideIndex, setCurrentSlideIndex] = useState(1);
     const [clickedIndex, setClickedIndex] = useState(0);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [isDesktop, setIsDesktop] = useState(window.innerWidth >= breakPoint);
@@ -116,7 +116,7 @@ const slickImageGallery = ({ imgUrls }: SlickGalleryProps) => {
         setIsPopUpActive(true);
     }
 
-    return (
+    return (<>
         <div className='slick-image-gallery'>
             <div className='slick-image-gallery__top-slider'>
                 <Slider {...mainSliderSettings} ref={sliderRef}>
@@ -128,13 +128,15 @@ const slickImageGallery = ({ imgUrls }: SlickGalleryProps) => {
                     {renderThumb()}
                 </Slider>
             </div>
-            {isPopUpActive &&
-                <PopUpImageV2
-                    url={imgUrls[currentSlideIndex]}
-                    imgUrls={imgUrls}
-                    isPopUpActive={isPopUpActive}
-                    setIsPopUpActive={setIsPopUpActive} />}
         </div>
+        {/* {isPopUpActive && */}
+        <PopUpImageV2
+            url={imgUrls[currentSlideIndex]}
+            imgUrls={imgUrls}
+            isPopUpActive={isPopUpActive}
+            setIsPopUpActive={setIsPopUpActive} />
+        {/* } */}
+    </>
     )
 }
 

@@ -10,7 +10,7 @@ import Layout from './Layout/Layout.component';
 import PageLoaderSkeleton from "./components/layout/pageLoaderSkeleton/PageLoaderSkeleton.component";
 
 // import Home from './routes/home/home.component';
-const Home = lazy(() => import('./routes/home/home.component'));
+const Home = lazy(() => import('./routes/home/Home.component'));
 const Offers = lazy(() => import('./routes/offers/Offers.component'));
 const Gallery = lazy(() => import('./routes/gallery/Gallery.component'));
 const Contact = lazy(() => import('./routes/contact/Contact.component'));

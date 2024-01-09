@@ -15,6 +15,7 @@ $imgBorderRadius: 5px;
     padding: 0;
     gap: 0;
     width: 100%;
+    position: relative;
 
     &__top-slider {
         width: 100%;
@@ -84,6 +85,7 @@ $imgBorderRadius: 5px;
         background: transparent;
         height: 100%;
         gap: .6vw;
+        // position: relative;
 
         &__top-slider {
             width: 82%;

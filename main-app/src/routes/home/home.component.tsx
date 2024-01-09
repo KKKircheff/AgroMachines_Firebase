@@ -10,12 +10,14 @@ import CountersContainer from '../../components/layout/countersContainer/Counter
 import LogoCarouselContainer from '../../components/layout/logoCarouselContainer/LogoCarouselContainer.component';
 import IrrigationLogos from '../../components/irrigationLogos/IrrigationLogos.component';
 import UnderNavBar from '../../components/ui/underNavBar/UnderNavBar.component';
+import HomeHelmet from './Home.helmet';
 
 const Home = () => {
 
     return (
         <div className='home-wrapper'>
             <UnderNavBar />
+            <HomeHelmet />
             <HomePageHero />
             <LogoCarouselContainer backgroundColor='#fff'>
                 <IrrigationLogos backgroundColor='#fff' />

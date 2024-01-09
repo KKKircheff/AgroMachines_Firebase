@@ -79,3 +79,7 @@ pnpm add react-swipeable
 pnpm add -S react-helmet
 pnpm add -S @types/react-helmet
 
+pnpm add -S react-map-interaction
+
+pnpm add lodash
+pnpm add @types/lodash

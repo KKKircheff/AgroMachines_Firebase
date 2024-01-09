@@ -65,7 +65,7 @@ const ContactInfoBottomCard = () => {
                 <p className="contact-info-bottom-card__block-p">последвайте ни във:
                     <Link to='https://www.facebook.com/AgroMachinesNL'>
                         <span className='icon-center' style={{ color: '#3870e1', verticalAlign: 'middle' }}>
-                            <TbBrandFacebook /></span>
+                            <TbBrandFacebook style={{ color: '#3870e1' }} /></span>
                         <span style={{ color: '#3870e1' }}>facebook</span>
                     </Link>
                 </p>
