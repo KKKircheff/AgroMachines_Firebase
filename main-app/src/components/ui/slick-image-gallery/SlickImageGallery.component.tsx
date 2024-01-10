@@ -24,7 +24,7 @@ const slidesDesktop = 5;
 
 const slickImageGallery = ({ imgUrls }: SlickGalleryProps) => {
 
-    const [currentSlideIndex, setCurrentSlideIndex] = useState(1);
+    const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
     const [clickedIndex, setClickedIndex] = useState(0);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [isDesktop, setIsDesktop] = useState(window.innerWidth >= breakPoint);
@@ -129,13 +129,13 @@ const slickImageGallery = ({ imgUrls }: SlickGalleryProps) => {
                 </Slider>
             </div>
         </div>
-        {/* {isPopUpActive && */}
         <PopUpImageV2
             url={imgUrls[currentSlideIndex]}
             imgUrls={imgUrls}
             isPopUpActive={isPopUpActive}
+            clickedIndex={clickedIndex}
+            setClickedIndex={setClickedIndex}
             setIsPopUpActive={setIsPopUpActive} />
-        {/* } */}
     </>
     )
 }

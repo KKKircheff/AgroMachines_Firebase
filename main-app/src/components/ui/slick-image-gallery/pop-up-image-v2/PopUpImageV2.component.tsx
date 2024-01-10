@@ -1,29 +1,30 @@
 import './PopUpImageV2.styles.scss';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 import { FaChevronLeft, FaChevronRight, FaTimes } from 'react-icons/fa';
 
 import { isMobile } from 'react-device-detect';
 import { useSwipeable } from 'react-swipeable';
 import { useLockBodyScroll } from "@uidotdev/usehooks"
-import { debounce } from 'lodash';
 
 type PopUpProps = {
     url: string;
     imgUrls: string[];
     isPopUpActive: boolean;
+    clickedIndex: number;
+    setClickedIndex: (newValue: number) => void;
     setIsPopUpActive: (newValue: boolean) => void;
 };
 
-const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive }: PopUpProps) => {
+const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, clickedIndex, setClickedIndex }: PopUpProps) => {
     const [offsetX, setOffsetX] = useState(0);
     const [offsetY, setOffsetY] = useState(0);
 
     const [initX, setInitX] = useState(0);
     const [initY, setInitY] = useState(0);
 
-    // const [storedScale, setStoredScale] = useState(1);
+    const [storedScale, setStoredScale] = useState(1);
 
     const [imageState, setImageState] = useState({
         currentImgUrl: url,
@@ -33,14 +34,15 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive }: PopUpPr
     });
 
     const { currentImgUrl, top, left, scale } = imageState;
+
     const configSwipeable = {
-        delta: 30, // min distance(px) before a swipe starts
+        delta: 50, // min distance(px) before a swipe starts
         preventDefaultTouchmoveEvent: true, // preventDefault on touchmove, *See Details*
         trackTouch: true, // track touch input
         trackMouse: false, // track mouse input
         rotationAngle: 0, // set a rotation angle
         preventScrollOnSwipe: true,
-        swipeDuration: 100,
+        swipeDuration: 300,
         onSwipedLeft: () => handleSwipeLeft(),
         onSwipedRight: () => handleSwipeRight(),
     };
@@ -51,8 +53,6 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive }: PopUpPr
     });
 
     useEffect(() => {
-        setImageState((prev) => ({ ...prev, currentImgUrl: url }));
-
         return () => {
         };
     }, []);
@@ -69,54 +69,55 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive }: PopUpPr
         };
         document.addEventListener("keydown", handleKeyDown);
         setImageState((prev) => ({ ...prev, scale: 1, top: 0, left: 0 }));
+        resetValues();
         return () => {
             document.removeEventListener("keydown", handleKeyDown);
         };
     }, [currentImgUrl]);
 
+    function clamp(value: number, min: number, max: number) {
+        console.log('result:', Math.max(min, Math.min(max, value)));
+        return Math.max(min, Math.min(max, value));
+    }
+
+    const resetValues = () => {
+        setOffsetX(0);
+        setOffsetY(0);
+        setInitX(0);
+        setInitY(0);
+        setStoredScale(1);
+    }
+
     const handleClick = () => {
+        resetValues();
         setIsPopUpActive(false);
     };
 
     const handleClickPrevious = (event: React.MouseEvent | KeyboardEvent) => {
         event.stopPropagation();
         const index = imgUrls.indexOf(currentImgUrl!) === 0 ? (imgUrls.length) : imgUrls.indexOf(currentImgUrl!);
+        setClickedIndex(index - 1);
         setImageState((prev) => ({ ...prev, scale: 1, top: 0, left: 0, currentImgUrl: imgUrls[index - 1] }));
     };
 
     const handleClickNext = (event: React.MouseEvent | KeyboardEvent) => {
         event.stopPropagation();
         const index = imgUrls.indexOf(currentImgUrl!) === imgUrls.length - 1 ? -1 : imgUrls.indexOf(currentImgUrl!);
+        setClickedIndex(index + 1);
         setImageState((prev) => ({ ...prev, scale: 1, top: 0, left: 0, currentImgUrl: imgUrls[index + 1] }));
 
     };
 
     const handleSwipeLeft = () => {
         const index = imgUrls.indexOf(currentImgUrl!) === imgUrls.length - 1 ? -1 : imgUrls.indexOf(currentImgUrl!);
-
-        setTimeout(() => {
-            setImageState(prev => ({
-                ...prev,
-                currentImgUrl: imgUrls[index + 1],
-                scale: 1,
-                top: 0,
-                left: 0,
-            }));
-        }, 100);
+        setClickedIndex(index + 1);
+        setImageState(prev => ({ ...prev, currentImgUrl: imgUrls[index + 1], scale: 1, top: 0, left: 0 }));
     };
 
     const handleSwipeRight = () => {
         const index = imgUrls.indexOf(currentImgUrl!) === 0 ? (imgUrls.length) : imgUrls.indexOf(currentImgUrl!);
-        // setImageState((prev) => ({ ...prev, currentImgUrl: imgUrls[index - 1], scale: 1, imgTranslatePosition: { x: 0, y: 0 } }));
-        setTimeout(() => {
-            setImageState(prev => ({
-                ...prev,
-                currentImgUrl: imgUrls[index - 1],
-                scale: 1,
-                top: 0,
-                left: 0,
-            }));
-        }, 100);
+        setImageState(prev => ({ ...prev, currentImgUrl: imgUrls[index - 1], scale: 1, top: 0, left: 0 }));
+        setClickedIndex(index - 1);
     };
 
     const handleStart = (event: React.TouchEvent<HTMLDivElement>) => {
@@ -125,14 +126,24 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive }: PopUpPr
             const touch1 = event.touches[0];
             setInitX(touch1.clientX);
             setInitY(touch1.clientY);
+            return
+        }
+
+        if (event.touches.length === 2) {
+            const touch1 = event.touches[0];
+            const touch2 = event.touches[1];
+            let positionX = (touch1.clientX + touch2.clientX) / 2;
+            let positionY = (touch1.clientY + touch2.clientY) / 2;
+            setInitX(positionX);
+            setInitY(positionY);
+            return
         }
     }
     const handleEnd = (event: React.TouchEvent<HTMLDivElement>) => {
         event.stopPropagation();
-        setOffsetX((prev) => imageState.left);
-        setOffsetY((prev) => imageState.top);
+        setOffsetX(imageState.left);
+        setOffsetY(imageState.top);
     }
-
     const handlePinch = (event: React.TouchEvent<HTMLDivElement>) => {
         event.stopPropagation();
 
@@ -143,63 +154,46 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive }: PopUpPr
             let positionX = touch1.clientX - initX + offsetX;
             let positionY = touch1.clientY - initY + offsetY;
 
-            if (positionX > maxOffset && positionX > 0) positionX = maxOffset
-            if (positionX < -maxOffset && positionX < 0) positionX = -maxOffset;
-            if (positionY > maxOffset && positionY > 0) positionY = maxOffset;
-            if (positionY < -maxOffset && positionY < 0) positionY = -maxOffset;
+            positionX = clamp(positionX, -maxOffset, maxOffset);
+            positionY = clamp(positionY, -maxOffset, maxOffset);
 
-            setImageState((prev) => ({ ...prev, left: positionX, top: positionY }));
+            setImageState((prev) => ({ ...prev, scale: storedScale, left: positionX, top: positionY }));
             return
         }
+
         if (event.touches.length === 2) {
             const maxOffset = window.innerWidth * (imageState.scale - 1) / 2;
 
             const touch1 = event.touches[0];
             const touch2 = event.touches[1];
 
-            let positionX = (touch1.clientX < touch2.clientX)
-                ? touch1.clientX + (touch2.clientX - touch1.clientX) / 2 - initX + offsetX
-                : touch2.clientX + (touch1.clientX - touch2.clientX) / 2 - initX + offsetX;
+            let positionX = (touch1.clientX + touch2.clientX) / 2 - initX + offsetX;
+            let positionY = (touch1.clientY + touch2.clientY) / 2 - initY + offsetY;
 
-
-            let positionY = (touch1.clientY < touch2.clientY)
-                ? touch1.clientY + (touch2.clientY - touch1.clientY) / 2 - initY + offsetY
-                : touch2.clientY + (touch1.clientY - touch2.clientY) / 2 - initY + offsetY
-
-            if (positionX > maxOffset && positionX > 0) positionX = maxOffset
-            if (positionX < -maxOffset && positionX < 0) positionX = -maxOffset;
-            if (positionY > maxOffset && positionY > 0) positionY = maxOffset;
-            if (positionY < -maxOffset && positionY < 0) positionY = -maxOffset;
-
-
-            console.log('touchX:', positionX, ' touchY:', positionY)
+            positionX = clamp(positionX, -maxOffset, maxOffset);
+            positionY = clamp(positionY, -maxOffset, maxOffset);
 
             const distance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
-            let newScale = Math.round(imageState.scale + (distance / 100) * 10) / 10;
+            let newScale = storedScale * Math.round(imageState.scale + (distance / 100) * 10) / 10;
 
-            if (newScale < 1) newScale = 1;
-            if (newScale > 3) newScale = 3;
-            // setStoredScale((prev) => newScale);
-            setImageState((prev) => ({ ...prev, scale: newScale, left: (positionX), top: (positionY) }));
+            setStoredScale(clamp(newScale, 1, 3));
+            setImageState((prev) => ({ ...prev, scale: clamp(newScale, 1, 3), left: (positionX), top: (positionY) }));
+            // setImageState((prev) => ({ ...prev, scale: newScale }));
             return
         }
 
 
     }
-
-
     return (
         <div
             className={`${isPopUpActive ? 'pop-up-image-v2 pop-up-image-v2--active' : 'pop-up-image-v2'}`}
             onClick={() => { handleClick }}>
             {isPopUpActive && currentImgUrl &&
-                <div
-                    className='pop-up-image-v2__img'
+                <div className='pop-up-image-v2__img'
                     style={{
                         overflow: 'hidden',
                         touchAction: 'none',
-                    }}
-                >
+                    }}>
                     <img
                         src={currentImgUrl}
                         onTouchStart={handleStart}
@@ -212,8 +206,6 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive }: PopUpPr
                             left: `${imageState.left}px`,
                             transform: `scale(${scale})`,
                             transformOrigin: `50% 50%`,
-                            // transform: `scale(${scale}) translate(${storedTX - diffX / 2}% , ${storedTY - diffY / 2}%)`,
-                            // transformOrigin: `${50 - storedTX}% ${50 - storedTY}%`,
                         }}
                         alt="изображение на поливна макара"
                         {...swipeHandlers}
