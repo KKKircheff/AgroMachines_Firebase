@@ -1,6 +1,6 @@
 import './PopUpImageV2.styles.scss';
 
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 import { FaChevronLeft, FaChevronRight, FaTimes } from 'react-icons/fa';
 
@@ -17,17 +17,22 @@ type PopUpProps = {
 };
 
 const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive }: PopUpProps) => {
-    // const storedDX = sessionStorage.getItem('deltaX') ?? '0';
-    // const storedDY = sessionStorage.getItem('deltaY') ?? '0';
+    const [offsetX, setOffsetX] = useState(0);
+    const [offsetY, setOffsetY] = useState(0);
+
+    const [initX, setInitX] = useState(0);
+    const [initY, setInitY] = useState(0);
+
+    // const [storedScale, setStoredScale] = useState(1);
+
     const [imageState, setImageState] = useState({
         currentImgUrl: url,
-        // imgTranslatePosition: { x: +storedDX, y: +storedDY },
-        imgTranslatePosition: { x: 0, y: 0 },
-        scale: 1,
+        top: 0,
+        left: 0,
+        scale: 0,
     });
 
-    const { currentImgUrl, imgTranslatePosition, scale } = imageState;
-
+    const { currentImgUrl, top, left, scale } = imageState;
     const configSwipeable = {
         delta: 30, // min distance(px) before a swipe starts
         preventDefaultTouchmoveEvent: true, // preventDefault on touchmove, *See Details*
@@ -47,8 +52,8 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive }: PopUpPr
 
     useEffect(() => {
         setImageState((prev) => ({ ...prev, currentImgUrl: url }));
+
         return () => {
-            debouncedHandlePinch.cancel();
         };
     }, []);
 
@@ -63,43 +68,39 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive }: PopUpPr
             }
         };
         document.addEventListener("keydown", handleKeyDown);
-        setImageState((prev) => ({ ...prev, scale: 1, imgTranslatePosition: { x: 0, y: 0 } }));
-
+        setImageState((prev) => ({ ...prev, scale: 1, top: 0, left: 0 }));
         return () => {
             document.removeEventListener("keydown", handleKeyDown);
-            sessionStorage.removeItem('deltaX');
-            sessionStorage.removeItem('deltaY');
         };
     }, [currentImgUrl]);
 
     const handleClick = () => {
         setIsPopUpActive(false);
-        setImageState((prev) => ({ ...prev, scale: 1, imgTranslatePosition: { x: 0, y: 0 } }));
     };
 
     const handleClickPrevious = (event: React.MouseEvent | KeyboardEvent) => {
         event.stopPropagation();
         const index = imgUrls.indexOf(currentImgUrl!) === 0 ? (imgUrls.length) : imgUrls.indexOf(currentImgUrl!);
-        setImageState((prev) => ({ ...prev, currentImgUrl: imgUrls[index - 1] }));
+        setImageState((prev) => ({ ...prev, scale: 1, top: 0, left: 0, currentImgUrl: imgUrls[index - 1] }));
     };
 
     const handleClickNext = (event: React.MouseEvent | KeyboardEvent) => {
         event.stopPropagation();
         const index = imgUrls.indexOf(currentImgUrl!) === imgUrls.length - 1 ? -1 : imgUrls.indexOf(currentImgUrl!);
-        setImageState((prev) => ({ ...prev, currentImgUrl: imgUrls[index + 1] }));
+        setImageState((prev) => ({ ...prev, scale: 1, top: 0, left: 0, currentImgUrl: imgUrls[index + 1] }));
 
     };
 
     const handleSwipeLeft = () => {
         const index = imgUrls.indexOf(currentImgUrl!) === imgUrls.length - 1 ? -1 : imgUrls.indexOf(currentImgUrl!);
-        // setImageState((prev) => ({ ...prev, currentImgUrl: imgUrls[index + 1], scale: 1, imgTranslatePosition: { x: 0, y: 0 } }));
 
         setTimeout(() => {
             setImageState(prev => ({
                 ...prev,
                 currentImgUrl: imgUrls[index + 1],
                 scale: 1,
-                imgTranslatePosition: { x: 0, y: 0 }
+                top: 0,
+                left: 0,
             }));
         }, 100);
     };
@@ -112,53 +113,80 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive }: PopUpPr
                 ...prev,
                 currentImgUrl: imgUrls[index - 1],
                 scale: 1,
-                imgTranslatePosition: { x: 0, y: 0 }
+                top: 0,
+                left: 0,
             }));
         }, 100);
     };
 
+    const handleStart = (event: React.TouchEvent<HTMLDivElement>) => {
+        event.stopPropagation();
+        if (event.touches.length === 1) {
+            const touch1 = event.touches[0];
+            setInitX(touch1.clientX);
+            setInitY(touch1.clientY);
+        }
+    }
+    const handleEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+        event.stopPropagation();
+        setOffsetX((prev) => imageState.left);
+        setOffsetY((prev) => imageState.top);
+    }
+
     const handlePinch = (event: React.TouchEvent<HTMLDivElement>) => {
         event.stopPropagation();
-        event.preventDefault();
 
+        if (event.touches.length === 1) {
+            const touch1 = event.touches[0];
+            const maxOffset = window.innerWidth * (imageState.scale - 1) / 2;
+
+            let positionX = touch1.clientX - initX + offsetX;
+            let positionY = touch1.clientY - initY + offsetY;
+
+            if (positionX > maxOffset && positionX > 0) positionX = maxOffset
+            if (positionX < -maxOffset && positionX < 0) positionX = -maxOffset;
+            if (positionY > maxOffset && positionY > 0) positionY = maxOffset;
+            if (positionY < -maxOffset && positionY < 0) positionY = -maxOffset;
+
+            setImageState((prev) => ({ ...prev, left: positionX, top: positionY }));
+            return
+        }
         if (event.touches.length === 2) {
+            const maxOffset = window.innerWidth * (imageState.scale - 1) / 2;
 
             const touch1 = event.touches[0];
             const touch2 = event.touches[1];
 
+            let positionX = (touch1.clientX < touch2.clientX)
+                ? touch1.clientX + (touch2.clientX - touch1.clientX) / 2 - initX + offsetX
+                : touch2.clientX + (touch1.clientX - touch2.clientX) / 2 - initX + offsetX;
+
+
+            let positionY = (touch1.clientY < touch2.clientY)
+                ? touch1.clientY + (touch2.clientY - touch1.clientY) / 2 - initY + offsetY
+                : touch2.clientY + (touch1.clientY - touch2.clientY) / 2 - initY + offsetY
+
+            if (positionX > maxOffset && positionX > 0) positionX = maxOffset
+            if (positionX < -maxOffset && positionX < 0) positionX = -maxOffset;
+            if (positionY > maxOffset && positionY > 0) positionY = maxOffset;
+            if (positionY < -maxOffset && positionY < 0) positionY = -maxOffset;
+
+
+            console.log('touchX:', positionX, ' touchY:', positionY)
+
             const distance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
-            let newScale = Math.round((distance / 100) * 10) / 10;
+            let newScale = Math.round(imageState.scale + (distance / 100) * 10) / 10;
 
             if (newScale < 1) newScale = 1;
-            if (newScale > 5) newScale = 5;
-            setImageState((prev) => ({ ...prev, scale: newScale, imgTranslatePosition: { x: 0, y: 0 } }));
+            if (newScale > 3) newScale = 3;
+            // setStoredScale((prev) => newScale);
+            setImageState((prev) => ({ ...prev, scale: newScale, left: (positionX), top: (positionY) }));
             return
         }
 
-        if (event.touches.length === 1) {
-            const touch1 = event.touches[0];
-            const storedDeltaX = sessionStorage.getItem('deltaX') ?? '0';
-            const storedDeltaY = sessionStorage.getItem('deltaY') ?? '0';
 
-
-            let deltaX = 50 + +storedDeltaX / 2 - Math.round((1 - (touch1.clientX) / window.innerWidth) * (100));
-            let deltaY = 50 + +storedDeltaY / 2 - Math.round((1 - touch1.clientY / window.innerHeight) * (100));
-
-
-            deltaX = deltaX > 25 ? 25 : deltaX < -25 ? -25 : deltaX;
-            deltaY = deltaY > 25 ? 25 : deltaY < -25 ? -25 : deltaY;
-
-            sessionStorage.setItem('deltaX', deltaX.toString());
-            sessionStorage.setItem('deltaY', deltaX.toString());
-
-            setImageState((prev) => ({ ...prev, imgTranslatePosition: { x: deltaX, y: deltaY } }));
-
-            return
-        }
     }
 
-    const debouncedHandlePinch = useMemo(() => debounce(handlePinch, 30), []);
-    // const debouncedHandlePinch = useCallback(debounce(handlePinch, 50), [])
 
     return (
         <div
@@ -169,15 +197,23 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive }: PopUpPr
                     className='pop-up-image-v2__img'
                     style={{
                         overflow: 'hidden',
-                        touchAction: 'pan-x pan-y',
+                        touchAction: 'none',
                     }}
-                    // onTouchMove={debouncedHandlePinch}
-                    onTouchMove={handlePinch}
                 >
                     <img
                         src={currentImgUrl}
+                        onTouchStart={handleStart}
+                        onTouchMove={handlePinch}
+                        onTouchEnd={handleEnd}
                         style={{
-                            transform: `scale(${scale}) translate(${imgTranslatePosition.x}%, ${imgTranslatePosition.y}%)`,
+                            touchAction: 'none',
+                            position: 'fixed',
+                            top: `${imageState.top}px`,
+                            left: `${imageState.left}px`,
+                            transform: `scale(${scale})`,
+                            transformOrigin: `50% 50%`,
+                            // transform: `scale(${scale}) translate(${storedTX - diffX / 2}% , ${storedTY - diffY / 2}%)`,
+                            // transformOrigin: `${50 - storedTX}% ${50 - storedTY}%`,
                         }}
                         alt="изображение на поливна макара"
                         {...swipeHandlers}
