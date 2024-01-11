@@ -7,6 +7,7 @@ import { FaChevronLeft, FaChevronRight, FaTimes } from 'react-icons/fa';
 import { isMobile } from 'react-device-detect';
 import { useSwipeable } from 'react-swipeable';
 import { useLockBodyScroll } from "@uidotdev/usehooks"
+import { set } from 'lodash';
 
 type PopUpProps = {
     url: string;
@@ -23,6 +24,8 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, clickedIn
 
     const [initX, setInitX] = useState(0);
     const [initY, setInitY] = useState(0);
+
+    const [transformOrigin, setTransformOrigin] = useState('50% 50%');
 
     const [storedScale, setStoredScale] = useState(1);
 
@@ -42,7 +45,7 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, clickedIn
         trackMouse: false, // track mouse input
         rotationAngle: 0, // set a rotation angle
         preventScrollOnSwipe: true,
-        swipeDuration: 300,
+        swipeDuration: 120,
         onSwipedLeft: () => handleSwipeLeft(),
         onSwipedRight: () => handleSwipeRight(),
     };
@@ -76,7 +79,6 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, clickedIn
     }, [currentImgUrl]);
 
     function clamp(value: number, min: number, max: number) {
-        console.log('result:', Math.max(min, Math.min(max, value)));
         return Math.max(min, Math.min(max, value));
     }
 
@@ -141,8 +143,14 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, clickedIn
     }
     const handleEnd = (event: React.TouchEvent<HTMLDivElement>) => {
         event.stopPropagation();
-        setOffsetX(imageState.left);
-        setOffsetY(imageState.top);
+        // const maxOffset = window.innerWidth * (imageState.scale - 1) / 2;
+        // const percentX = 100 - Math.round((imageState.left + maxOffset) / (maxOffset * 2) * 100);
+        // const percentY = 100 - Math.round((imageState.top + maxOffset) / (maxOffset * 2) * 100);
+        // console.log('maxOffset', maxOffset, ' scale', imageState.scale, ' left:', imageState.left, ' percentX:', percentX);
+        setOffsetX(Math.trunc(imageState.left));
+        setOffsetY(Math.trunc(imageState.top));
+        setStoredScale(imageState.scale);
+        // setTransformOrigin(`${percentX}% ${percentY}%`);
     }
     const handlePinch = (event: React.TouchEvent<HTMLDivElement>) => {
         event.stopPropagation();
@@ -167,22 +175,27 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, clickedIn
             const touch1 = event.touches[0];
             const touch2 = event.touches[1];
 
-            let positionX = (touch1.clientX + touch2.clientX) / 2 - initX + offsetX;
-            let positionY = (touch1.clientY + touch2.clientY) / 2 - initY + offsetY;
+            const windowX = window.innerWidth;
+            const windowY = window.innerHeight;
+
+            const percentDX = -Math.trunc((windowX / 2 - windowX + initX) * 100 / windowX);
+            const percentDY = -Math.trunc((windowY / 2 - windowY + initY) * 100 / windowY);
+            // const percentDY = -(windowX / 2 - windowX + initY) * 100 / windowX;
+
+            console.log('window:', window.innerWidth, ' initX:', initX, 'percentDX:', percentDX, ' percentDY:', percentDY);
+
+            let positionX = ((touch1.clientX + touch2.clientX) / 2 - initX + offsetX + percentDX * 10);
+            let positionY = (touch1.clientY + touch2.clientY) / 2 - initY + offsetY + percentDY * 10;
 
             positionX = clamp(positionX, -maxOffset, maxOffset);
             positionY = clamp(positionY, -maxOffset, maxOffset);
 
             const distance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
-            let newScale = storedScale * Math.round(imageState.scale + (distance / 100) * 10) / 10;
-
-            setStoredScale(clamp(newScale, 1, 3));
-            setImageState((prev) => ({ ...prev, scale: clamp(newScale, 1, 3), left: (positionX), top: (positionY) }));
+            let newScale = (storedScale * 2 + distance) / 50;
+            setImageState((prev) => ({ ...prev, scale: clamp(newScale, 1, 5), left: (positionX), top: (positionY) }));
             // setImageState((prev) => ({ ...prev, scale: newScale }));
             return
         }
-
-
     }
     return (
         <div
@@ -205,6 +218,7 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, clickedIn
                             top: `${imageState.top}px`,
                             left: `${imageState.left}px`,
                             transform: `scale(${scale})`,
+                            // transformOrigin: transformOrigin,
                             transformOrigin: `50% 50%`,
                         }}
                         alt="изображение на поливна макара"
