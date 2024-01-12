@@ -25,6 +25,7 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
 
     const [initX, setInitX] = useState(0);
     const [initY, setInitY] = useState(0);
+    const [initDistance, setInitDistance] = useState(0);
 
     const [touchEvent, setTouchEvent] = useState(0);
 
@@ -55,7 +56,6 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
         // onSwiped: (eventData) => console.log("User Swiped!", eventData),
         ...configSwipeable,
     });
-
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
@@ -126,10 +126,13 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
             setTouchEvent(2);
             const touch1 = event.touches[0];
             const touch2 = event.touches[1];
-            let positionX = (touch1.clientX + touch2.clientX) / 2;
-            let positionY = (touch1.clientY + touch2.clientY) / 2;
+            const positionX = (touch1.clientX + touch2.clientX) / 2;
+            const positionY = (touch1.clientY + touch2.clientY) / 2;
+            const distance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
+
             setInitX(positionX);
             setInitY(positionY);
+            setInitDistance(distance);
             return
         }
         if (event.touches.length === 1) {
@@ -141,6 +144,7 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
 
         }
     }
+
     const handleEnd = (event: React.TouchEvent<HTMLDivElement>) => {
         event.stopPropagation();
 
@@ -148,7 +152,7 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
             setTouchEvent(0);
             setOffsetX(Math.trunc(imageState.left));
             setOffsetY(Math.trunc(imageState.top));
-            setStoredScale(imageState.scale);
+            setStoredScale(clamp(imageState.scale, 1, 4.5));
             return
         }
         if (touchEvent === 1) {
@@ -160,7 +164,6 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
             return
         }
     }
-
 
     const handlePinch = (event: React.TouchEvent<HTMLDivElement>) => {
         event.stopPropagation();
@@ -182,6 +185,7 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
         if (touchEvent === 2 && event.touches.length === 2) {
 
             const { scale } = imageState;
+            const screenRatio = 330 / window.innerWidth;
             const maxOffsetX = window.innerWidth * (scale - 1) / 2;
             const maxOffsetY = window.innerHeight * (scale - 1) / 2;
             const touch1 = event.touches[0];
@@ -189,16 +193,21 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
 
             let positionX = (touch1.clientX + touch2.clientX) / 2 - initX + offsetX;
             let positionY = (touch1.clientY + touch2.clientY) / 2 - initY + offsetY;
+            console.log(' positionX:', positionX, '   initX', initX)
+
+            const distance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
+            let newScale = clamp((storedScale - 1) + (scale + (distance - initDistance) / 30) / 2, 1, maxZoom);
 
             const windowX = window.innerWidth;
             const windowY = window.innerHeight;
 
-            const imgX = scale * (windowX / 2 - initX) / windowX;
-            const imgY = scale * (windowY / 2 - initY) / windowY;
+            const imgX = (windowX / 2 - initX) / windowX;
+            const imgY = (windowY / 2 - initY) / windowY;
 
-            positionX = positionX + imgX * windowX / 2;
-            positionY = positionY + imgY * windowY / 2;
-
+            positionX = positionX + windowX * scale * imgX / 2;
+            positionY = positionY + windowY * scale * imgY / 2;
+            console.log(' positionX:', positionX, ' imgX:', imgX)
+            // console.log('Scale:', scale, '   newScale:', newScale, '  :storedScale:', storedScale);
             if (positionX > maxOffsetX) {
                 positionX = maxOffsetX;
             }
@@ -212,14 +221,11 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
                 positionY = -maxOffsetY;
             }
 
-
-            const distance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
-
-            let newScale = clamp((1 + distance / 30) / 2, 1, maxZoom);
             setImageState({ ...imageState, scale: newScale, left: positionX, top: positionY });
             return
         }
     }
+
     return (
         <div
             className={`${isPopUpActive ? 'pop-up-image-v2 pop-up-image-v2--active' : 'pop-up-image-v2'}`}
