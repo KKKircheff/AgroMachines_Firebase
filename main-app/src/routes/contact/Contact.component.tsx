@@ -13,7 +13,7 @@ const Contact = () => {
     return (
         <div>
             <UnderNavBar />
-            <ContactHelmet />
+            {/* <ContactHelmet /> */}
             <ContactPageHero />
             <ResponsiveContainerTwoSections
                 gradientColor1='#f5f5f5'

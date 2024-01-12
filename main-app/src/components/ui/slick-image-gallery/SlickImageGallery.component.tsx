@@ -116,27 +116,28 @@ const slickImageGallery = ({ imgUrls }: SlickGalleryProps) => {
         setIsPopUpActive(true);
     }
 
-    return (<>
-        <div className='slick-image-gallery'>
-            <div className='slick-image-gallery__top-slider'>
-                <Slider {...mainSliderSettings} ref={sliderRef}>
-                    {renderMain()}
-                </Slider>
+    return (
+        <>
+            {isPopUpActive ? <PopUpImageV2
+                url={imgUrls[currentSlideIndex]}
+                imgUrls={imgUrls}
+                isPopUpActive={isPopUpActive}
+                setClickedIndex={setClickedIndex}
+                setIsPopUpActive={setIsPopUpActive} />
+                : null}
+            <div className='slick-image-gallery'>
+                <div className='slick-image-gallery__top-slider'>
+                    <Slider {...mainSliderSettings} ref={sliderRef}>
+                        {renderMain()}
+                    </Slider>
+                </div>
+                <div className='slick-image-gallery__bottom-slider'>
+                    <Slider {...thumbSliderSettings}>
+                        {renderThumb()}
+                    </Slider>
+                </div>
             </div>
-            <div className='slick-image-gallery__bottom-slider'>
-                <Slider {...thumbSliderSettings}>
-                    {renderThumb()}
-                </Slider>
-            </div>
-        </div>
-        <PopUpImageV2
-            url={imgUrls[currentSlideIndex]}
-            imgUrls={imgUrls}
-            isPopUpActive={isPopUpActive}
-            clickedIndex={clickedIndex}
-            setClickedIndex={setClickedIndex}
-            setIsPopUpActive={setIsPopUpActive} />
-    </>
+        </>
     )
 }
 

@@ -22,7 +22,7 @@ const Offers = () => {
     return (
         <div>
             <UnderNavBar />
-            <OffersHelmet />
+            {/* <OffersHelmet /> */}
             <OffersPageHero />
             <ResponsiveContainer>
                 <OfferCardsContainer />
