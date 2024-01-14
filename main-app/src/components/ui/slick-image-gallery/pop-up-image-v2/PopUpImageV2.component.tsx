@@ -8,6 +8,7 @@ import { isMobile } from 'react-device-detect';
 import { useSwipeable } from 'react-swipeable';
 import { useLockBodyScroll } from "@uidotdev/usehooks"
 import { init } from 'aos';
+import { set, transform } from 'lodash';
 
 type PopUpProps = {
     url: string;
@@ -27,14 +28,19 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
     const [initY, setInitY] = useState(0);
     const [initDistance, setInitDistance] = useState(0);
 
+    const [storedZoomCenterX, setStoredZoomCenterX] = useState(0);
+    const [storedZoomCenterY, setStoredZoomCenterY] = useState(0);
+    const [storedScale, setStoredScale] = useState(1);
+
     const [touchEvent, setTouchEvent] = useState(0);
 
-    const [storedScale, setStoredScale] = useState(1);
 
     const [imageState, setImageState] = useState({
         currentImgUrl: url,
         top: 0,
         left: 0,
+        zoomCenterX: 50,
+        zoomCenterY: 50,
         scale: 1,
     });
 
@@ -90,6 +96,8 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
         setInitX(0);
         setInitY(0);
         setStoredScale(1);
+        setStoredZoomCenterX(0);
+        setStoredZoomCenterY(0);
     }
 
     const handleClick = () => {
@@ -154,19 +162,17 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
 
         if (touchEvent === 2) {
             setTouchEvent(0);
-            setOffsetX(Math.trunc(imageState.left));
-            setOffsetY(Math.trunc(imageState.top));
+            setOffsetX(imageState.left);
+            setOffsetY(imageState.top);
+            setStoredZoomCenterX(imageState.zoomCenterX);
+            setStoredZoomCenterY(imageState.zoomCenterY);
             setStoredScale(clamp(imageState.scale, 1, 4.5));
-            console.log('offsetX', Math.trunc(imageState.left), '  offsetY:', Math.trunc(imageState.top));
-
             return
         }
         if (touchEvent === 1) {
-
-            console.log('offsetX', Math.trunc(imageState.left), '  offsetY:', Math.trunc(imageState.top));
             setTouchEvent(0);
-            setOffsetX(Math.trunc(imageState.left));
-            setOffsetY(Math.trunc(imageState.top));
+            setOffsetX(imageState.left);
+            setOffsetY(imageState.top);
             setStoredScale(clamp(imageState.scale, 1, 4.5));
             return
         }
@@ -180,8 +186,8 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
             const maxOffset = window.innerWidth * (imageState.scale - 1) / 2;
             const touch1 = event.touches[0];
 
-            let positionX = touch1.clientX - initX + offsetX;
-            let positionY = touch1.clientY - initY + offsetY;
+            let positionX = (touch1.clientX - initX + offsetX);
+            let positionY = (touch1.clientY - initY + offsetY);
 
             positionX = clamp(positionX, -maxOffset, maxOffset);
             positionY = clamp(positionY, -maxOffset, maxOffset);
@@ -199,22 +205,29 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
             const windowY = window.innerHeight;
 
             const distance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
-            const newScale = clamp((storedScale * (1 + (distance - initDistance) / 100)), 1, maxZoom);
+            const newScale = clamp(((storedScale + (distance - initDistance) / 100)), 1, maxZoom);
 
             const maxOffsetX = windowX * (newScale - 1) / 2;
             const maxOffsetY = windowY * (newScale - 1) / 2;
 
-            let positionX = ((touch1.clientX + touch2.clientX) / 2 - initX + offsetX);
-            let positionY = ((touch1.clientY + touch2.clientY) / 2 - initY + offsetY);
+            const zoomCenterX = 50 - (initX / windowX) * 100
+            const zoomCenterY = 50 - (initY / windowY) * 100
 
-            const zoomCenterX = (initX / windowX)
-            const zoomCenterY = (initY / windowY)
+            const deltaX = (50 - storedZoomCenterX - initX / windowX * 100) * (storedScale - 1)
+            const deltaY = (50 - storedZoomCenterY - initY / windowY * 100) * (storedScale - 1)
 
-            console.log('pxX,', rnd(positionX), ' zoomCenterX:', rnd(zoomCenterX))
-            positionX = positionX - windowX * (zoomCenterX - 0.5) * newScale;
-            positionY = positionY - windowX * (zoomCenterY - 0.5) * newScale;
+            let positionX = ((touch1.clientX + touch2.clientX) / 2 - initX + offsetX) - deltaX * windowX / 100;
+            let positionY = ((touch1.clientY + touch2.clientY) / 2 - initY + offsetY) - deltaY * windowY / 100;;
 
 
+            // console.log(
+            //     'deltaX:', rnd(deltaX),
+            //     '  zoomCenterX:', rnd(zoomCenterX),
+            //     // '  zoomCenterY:', rnd(zoomCenterY),
+            //     ' storedcenterX:', rnd(storedZoomCenterX),
+            //     ' initXPercen:', rnd(initX / windowX * 100),
+            //     ' initX:', rnd(initX),
+            // );
             if (positionX > maxOffsetX) {
                 positionX = maxOffsetX;
             }
@@ -227,9 +240,18 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
             if (positionY < -maxOffsetY) {
                 positionY = -maxOffsetY;
             }
-            // positionX = imageState.left;
-            // positionY = imageState.top;
-            setImageState({ ...imageState, scale: newScale, left: positionX, top: positionY });
+
+            // let positionX = imageState.left;
+            // let positionY = imageState.top;
+            // setImageState({ ...imageState, scale: newScale, left: positionX, top: positionY, transformCenterX: zoomCenterX, transformCenterY: zoomCenterY });
+            setImageState({
+                ...imageState,
+                scale: newScale,
+                left: positionX,
+                top: positionY,
+                zoomCenterX: zoomCenterX,
+                zoomCenterY: zoomCenterY
+            });
             return
         }
     }
@@ -255,6 +277,7 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
                             transform: `scale(${scale})`,
                             top: `${imageState.top}px`,
                             left: `${imageState.left}px`,
+                            transformOrigin: `${50 - imageState.zoomCenterX}% ${50 - imageState.zoomCenterY}%`,
                         }}
                         alt="изображение на поливна макара"
                         {...swipeHandlers}
