@@ -14,17 +14,10 @@
     top: 0;
     left: 0;
     z-index: -1;
-    width: 100vw;
-    height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     background-color: transparent;
     opacity: 0;
     transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    background-color: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.8);
 
     &__img {
         width: 100%;
@@ -37,7 +30,6 @@
             height: 100%;
             transform: scale(1%);
             z-index: -1;
-            // object-fit: none;
             object-fit: contain;
             margin: 0;
             touch-action: none;
@@ -56,16 +48,16 @@
 
     &--active {
         position: fixed;
+        width: 100vw;
+        height: 100vh;
         top: 0;
         left: 0;
+        transform-origin: center center;
         opacity: 1;
         z-index: 1110;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         overflow: hidden;
         touch-action: none;
-        padding: 0 auto;
+        margin: 0;
 
         img {
             transform: scale(100%);
