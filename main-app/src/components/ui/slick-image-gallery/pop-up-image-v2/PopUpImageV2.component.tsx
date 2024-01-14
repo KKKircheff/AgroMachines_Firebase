@@ -9,6 +9,7 @@ import { useSwipeable } from 'react-swipeable';
 import { useLockBodyScroll } from "@uidotdev/usehooks"
 import { init } from 'aos';
 import { set, transform } from 'lodash';
+import { sign } from 'crypto';
 
 type PopUpProps = {
     url: string;
@@ -44,7 +45,7 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
         scale: 1,
     });
 
-    const { currentImgUrl, top, left, scale } = imageState;
+    const { currentImgUrl, top, left, scale, zoomCenterX, zoomCenterY } = imageState;
 
     const configSwipeable = {
         delta: 50, // min distance(px) before a swipe starts
@@ -74,7 +75,7 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
             }
         };
         document.addEventListener("keydown", handleKeyDown);
-        setImageState((prev) => ({ ...prev, scale: 1, top: 0, left: 0 }));
+        setImageState((prev) => ({ ...prev, scale: 1, top: 0, left: 0, zoomCenterX: 50, zoomCenterY: 50 }));
         resetValues();
         return () => {
             document.removeEventListener("keydown", handleKeyDown);
@@ -183,16 +184,23 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
 
         if (touchEvent === 1 && event.touches.length === 1) {
 
-            const maxOffset = window.innerWidth * (imageState.scale - 1) / 2;
             const touch1 = event.touches[0];
 
             let positionX = (touch1.clientX - initX + offsetX);
             let positionY = (touch1.clientY - initY + offsetY);
 
-            positionX = clamp(positionX, -maxOffset, maxOffset);
-            positionY = clamp(positionY, -maxOffset, maxOffset);
-            // console.log('pxX,', rnd(positionX), ' offsetX', rnd(offsetX), '  initX:', initX, '  :storedScale:', rnd(storedScale), '   scale:', rnd(scale));
-            setImageState({ ...imageState, left: positionX, top: positionY });
+            const limiterX = window.innerWidth * (storedScale - 1) * zoomCenterX / 100
+            const limiterY = window.innerHeight * (storedScale - 1) * zoomCenterY / 100
+
+            const maxOffset = window.innerWidth * (imageState.scale - 1) / 2;
+
+            positionX = clamp(positionX, -maxOffset - limiterX, maxOffset - limiterX);
+            positionY = clamp(positionY, -maxOffset - limiterY, maxOffset - limiterY);
+            setImageState({
+                ...imageState,
+                left: positionX,
+                top: positionY,
+            });
             return
         }
 
@@ -207,9 +215,6 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
             const distance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY);
             const newScale = clamp(((storedScale + (distance - initDistance) / 100)), 1, maxZoom);
 
-            const maxOffsetX = windowX * (newScale - 1) / 2;
-            const maxOffsetY = windowY * (newScale - 1) / 2;
-
             const zoomCenterX = 50 - (initX / windowX) * 100
             const zoomCenterY = 50 - (initY / windowY) * 100
 
@@ -217,33 +222,15 @@ const PopUpImageV2 = ({ url, imgUrls, isPopUpActive, setIsPopUpActive, setClicke
             const deltaY = (50 - storedZoomCenterY - initY / windowY * 100) * (storedScale - 1)
 
             let positionX = ((touch1.clientX + touch2.clientX) / 2 - initX + offsetX) - deltaX * windowX / 100;
-            let positionY = ((touch1.clientY + touch2.clientY) / 2 - initY + offsetY) - deltaY * windowY / 100;;
+            let positionY = ((touch1.clientY + touch2.clientY) / 2 - initY + offsetY) - deltaY * windowY / 100;
+
+            const maxOffsetX = 300 * (newScale - 1);
+            const maxOffsetY = 300 * (newScale - 1);
+
+            positionX = clamp(positionX, -maxOffsetX, maxOffsetX);
+            positionY = clamp(positionY, -maxOffsetY, maxOffsetY);
 
 
-            // console.log(
-            //     'deltaX:', rnd(deltaX),
-            //     '  zoomCenterX:', rnd(zoomCenterX),
-            //     // '  zoomCenterY:', rnd(zoomCenterY),
-            //     ' storedcenterX:', rnd(storedZoomCenterX),
-            //     ' initXPercen:', rnd(initX / windowX * 100),
-            //     ' initX:', rnd(initX),
-            // );
-            if (positionX > maxOffsetX) {
-                positionX = maxOffsetX;
-            }
-            if (positionX < -maxOffsetX) {
-                positionX = -maxOffsetX;
-            }
-            if (positionY > maxOffsetY) {
-                positionY = maxOffsetY;
-            }
-            if (positionY < -maxOffsetY) {
-                positionY = -maxOffsetY;
-            }
-
-            // let positionX = imageState.left;
-            // let positionY = imageState.top;
-            // setImageState({ ...imageState, scale: newScale, left: positionX, top: positionY, transformCenterX: zoomCenterX, transformCenterY: zoomCenterY });
             setImageState({
                 ...imageState,
                 scale: newScale,
