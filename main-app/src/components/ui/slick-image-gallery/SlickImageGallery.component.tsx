@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { isMobile } from 'react-device-detect';
 
 import Slider from "react-slick";
@@ -117,27 +118,28 @@ const slickImageGallery = ({ imgUrls }: SlickGalleryProps) => {
     }
 
     return (
-        <>
-            {isPopUpActive ? <PopUpImageV2
-                url={imgUrls[currentSlideIndex]}
-                imgUrls={imgUrls}
-                isPopUpActive={isPopUpActive}
-                setClickedIndex={setClickedIndex}
-                setIsPopUpActive={setIsPopUpActive} />
-                : null}
-            <div className='slick-image-gallery'>
-                <div className='slick-image-gallery__top-slider'>
-                    <Slider {...mainSliderSettings} ref={sliderRef}>
-                        {renderMain()}
-                    </Slider>
-                </div>
-                <div className='slick-image-gallery__bottom-slider'>
-                    <Slider {...thumbSliderSettings}>
-                        {renderThumb()}
-                    </Slider>
-                </div>
+
+        <div className='slick-image-gallery'>
+            {
+                createPortal(<PopUpImageV2
+                    url={imgUrls[currentSlideIndex]}
+                    imgUrls={imgUrls}
+                    isPopUpActive={isPopUpActive}
+                    setClickedIndex={setClickedIndex}
+                    setIsPopUpActive={setIsPopUpActive} />, document.getElementById("root") ?? document.body)
+
+            }
+            <div className='slick-image-gallery__top-slider'>
+                <Slider {...mainSliderSettings} ref={sliderRef}>
+                    {renderMain()}
+                </Slider>
             </div>
-        </>
+            <div className='slick-image-gallery__bottom-slider'>
+                <Slider {...thumbSliderSettings}>
+                    {renderThumb()}
+                </Slider>
+            </div>
+        </div>
     )
 }
 

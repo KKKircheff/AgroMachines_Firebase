@@ -24,7 +24,6 @@ const OfferItemPage = () => {
     const firestoreCollection = 'offerCards';
     const storageFolder = 'offers';
 
-
     useEffect(() => {
         const fetchData = async () => {
 
