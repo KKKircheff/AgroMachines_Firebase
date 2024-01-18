@@ -21,8 +21,8 @@ export interface OfferCardProps {
 const Offers = () => {
     return (
         <div>
+            <OffersHelmet />
             <UnderNavBar />
-            {/* <OffersHelmet /> */}
             <OffersPageHero />
             <ResponsiveContainer>
                 <OfferCardsContainer />

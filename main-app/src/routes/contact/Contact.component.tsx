@@ -12,8 +12,8 @@ import ContactHelmet from './Contact.helmet'
 const Contact = () => {
     return (
         <div>
+            <ContactHelmet />
             <UnderNavBar />
-            {/* <ContactHelmet /> */}
             <ContactPageHero />
             <ResponsiveContainerTwoSections
                 gradientColor1='#f5f5f5'

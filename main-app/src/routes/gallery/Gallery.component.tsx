@@ -12,8 +12,8 @@ const Gallery = () => {
 
     return (
         <div className="gallery-page">
+            <GalleryHelmet />
             <UnderNavBar />
-            {/* <GalleryHelmet /> */}
             <GalleryHero />
             <ResponsiveContainer gradientColor1='#f5f5f5' gradientColor='#f5f5f5'>
                 <GalleryCardsContainer />

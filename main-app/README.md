@@ -39,6 +39,32 @@ pnpm add -D terser  /* roll up build plug-in
 pnpm add @uidotdev/usehooks  /* blocks UI under pop up https://usehooks.com/uselockbodyscroll ### other interesting react hooks there 
 pnpm add react-swipeable
 
+
+When using react-helmet for better positioning meta tags in head the Helmet.js in es folder must be modified following:
+# appendChild(tag) -> headElement.insertBefore(tag, thirdChild);
+    prepends the element after the 6th child. Unique for every app. just check which child is <title>
+# from: 
+ oldTags.forEach(function (tag) {
+        return tag.parentNode.removeChild(tag);
+    });
+    newTags.forEach(function (tag) {
+        return headElement.appendChild(tag);
+    });
+
+# to: 
+ oldTags.forEach(function (tag) {
+        return tag.parentNode.removeChild(tag);
+    });
+   newTags.forEach(function (tag) {
+        var thirdChild = headElement.children[6];
+        headElement.insertBefore(tag, thirdChild);
+    }); 
+
+
+
+
+    
+
 # commands no comments
 pnpm create vite main-app --template react-ts
 pnpm add react-router-dom localforage match-sorter sort-by

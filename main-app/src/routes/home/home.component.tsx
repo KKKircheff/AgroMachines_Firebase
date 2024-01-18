@@ -18,6 +18,7 @@ const Home = () => {
         <>
             {/* <HomeHelmet /> */}
             <div className='home-wrapper'>
+                <HomeHelmet />
                 <UnderNavBar />
                 <HomePageHero />
                 <LogoCarouselContainer backgroundColor='#fff'>
