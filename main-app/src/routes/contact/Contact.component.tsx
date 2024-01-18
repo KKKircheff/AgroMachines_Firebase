@@ -7,12 +7,10 @@ import ResponsiveContainerTwoSections from '../../components/layout/responsiveCo
 import ColumnCardsContainer from '../../components/layout/columnCardsContainer/ColumnCardsContainer.component'
 import ContactInfoTopCard from '../../components/contact-info-top-card/ContactInfoTopCard.component'
 import ContactInfoBottomCard from '../../components/contact-info-bottom-card/ContactInfoBottomCard.component'
-import ContactHelmet from './Contact.helmet'
 
 const Contact = () => {
     return (
         <div>
-            <ContactHelmet />
             <UnderNavBar />
             <ContactPageHero />
             <ResponsiveContainerTwoSections
