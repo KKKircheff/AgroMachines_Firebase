@@ -4,7 +4,6 @@ import OffersPageHero from '../../components/offers-page-hero/OffersPageHero.com
 import ResponsiveContainer from '../../components/layout/responsiveContainer/ResponsiveContainer'
 import FooterHomePage from '../../components/footer-home-page/footer-home-page.component'
 import OfferCardsContainer from '../../components/layout/offerCardsContainer/OfferCardsContainer.component'
-import OffersHelmet from './Offers.helmet'
 
 export interface OfferCardProps {
     name: string;
@@ -21,7 +20,6 @@ export interface OfferCardProps {
 const Offers = () => {
     return (
         <div>
-            <OffersHelmet />
             <UnderNavBar />
             <OffersPageHero />
             <ResponsiveContainer>

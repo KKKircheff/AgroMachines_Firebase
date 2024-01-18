@@ -39,31 +39,50 @@ pnpm add -D terser  /* roll up build plug-in
 pnpm add @uidotdev/usehooks  /* blocks UI under pop up https://usehooks.com/uselockbodyscroll ### other interesting react hooks there 
 pnpm add react-swipeable
 
+firebase init functions
 
-When using react-helmet for better positioning meta tags in head the Helmet.js in es folder must be modified following:
-# appendChild(tag) -> headElement.insertBefore(tag, thirdChild);
-    prepends the element after the 6th child. Unique for every app. just check which child is <title>
-# from: 
- oldTags.forEach(function (tag) {
-        return tag.parentNode.removeChild(tag);
-    });
-    newTags.forEach(function (tag) {
-        return headElement.appendChild(tag);
-    });
+    /* allow npm installation 
+    /* in package.json change "build" like below to move index.html to function's folder:
+     "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build && cp dist/index.html functions/dynamicIndex/index.html && rm dist/index.html",
+        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "preview": "vite preview"
+    },
 
-# to: 
- oldTags.forEach(function (tag) {
-        return tag.parentNode.removeChild(tag);
-    });
-   newTags.forEach(function (tag) {
-        var thirdChild = headElement.children[6];
-        headElement.insertBefore(tag, thirdChild);
-    }); 
+    /*in Firebase.json add:
+    {
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "dynamicIndex"
+      }
+    ]
+} 
 
+When ready update index.ts with the new function:
 
+# go in the functions folder and: 
 
+    firebase logout     /* logout if needed from the current logged account
+    firebase login      /* log to ai.reddigit@gmail.com
+    npm run lint -- --fix
+    npm run build
 
-    
+    /* disable eslint line length if needed:
+
+    add in .eslintrc.js:
+     rules: {
+            .... other rules
+            "max-len": "off",
+            },
+
+# deploy the new functions from functions folder:
+    firebase deploy --only functions
+
+# deploy project on preview link from main-app folder:
+
+firebase hosting:channel:deploy --expires 10m preview2
 
 # commands no comments
 pnpm create vite main-app --template react-ts

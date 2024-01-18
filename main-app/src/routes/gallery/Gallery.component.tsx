@@ -6,13 +6,11 @@ import ResponsiveContainer from '../../components/layout/responsiveContainer/Res
 import UnderNavBar from '../../components/ui/underNavBar/UnderNavBar.component';
 import GalleryCardsContainer from '../../components/layout/galleryCardsContainer/GalleryCardsContainer.component';
 import GalleryHero from '../../components/gallery-hero/GalleryHero.component';
-import GalleryHelmet from './Gallery.helmet';
 
 const Gallery = () => {
 
     return (
         <div className="gallery-page">
-            <GalleryHelmet />
             <UnderNavBar />
             <GalleryHero />
             <ResponsiveContainer gradientColor1='#f5f5f5' gradientColor='#f5f5f5'>
