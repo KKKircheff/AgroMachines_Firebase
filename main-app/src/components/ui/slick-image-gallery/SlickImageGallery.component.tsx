@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { isMobile } from 'react-device-detect';
 
 import Slider from "react-slick";
@@ -10,7 +11,7 @@ import './SlickImageGallery.styles.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import PopUpImageV2 from '../pop-up-image-v2/PopUpImageV2.component';
+import PopUpImageV2 from './pop-up-image-v2/PopUpImageV2.component';
 import { GoSearch } from 'react-icons/go';
 // import { set } from 'firebase/database';
 
@@ -117,7 +118,17 @@ const slickImageGallery = ({ imgUrls }: SlickGalleryProps) => {
     }
 
     return (
+
         <div className='slick-image-gallery'>
+            {
+                createPortal(<PopUpImageV2
+                    url={imgUrls[currentSlideIndex]}
+                    imgUrls={imgUrls}
+                    isPopUpActive={isPopUpActive}
+                    setClickedIndex={setClickedIndex}
+                    setIsPopUpActive={setIsPopUpActive} />, document.getElementById("root") ?? document.body)
+
+            }
             <div className='slick-image-gallery__top-slider'>
                 <Slider {...mainSliderSettings} ref={sliderRef}>
                     {renderMain()}
@@ -128,12 +139,6 @@ const slickImageGallery = ({ imgUrls }: SlickGalleryProps) => {
                     {renderThumb()}
                 </Slider>
             </div>
-            {isPopUpActive &&
-                <PopUpImageV2
-                    url={imgUrls[currentSlideIndex]}
-                    imgUrls={imgUrls}
-                    isPopUpActive={isPopUpActive}
-                    setIsPopUpActive={setIsPopUpActive} />}
         </div>
     )
 }

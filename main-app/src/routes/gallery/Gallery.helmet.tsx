@@ -1,9 +1,9 @@
-import { Helmet } from 'react-helmet'
+import { Helmet } from "react-helmet";
 
 const GalleryHelmet = () => {
     return (
         <Helmet>
-            <title>Галерия</title>
+            <title>Галерия доставени машини</title>
             <meta
                 name="description"
                 content="Галерия снимки на поливни макари, високонапорни помпи и земеделска техника втора употреба налични в Холандия." />

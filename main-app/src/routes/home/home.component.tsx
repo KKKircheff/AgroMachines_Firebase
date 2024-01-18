@@ -10,25 +10,30 @@ import CountersContainer from '../../components/layout/countersContainer/Counter
 import LogoCarouselContainer from '../../components/layout/logoCarouselContainer/LogoCarouselContainer.component';
 import IrrigationLogos from '../../components/irrigationLogos/IrrigationLogos.component';
 import UnderNavBar from '../../components/ui/underNavBar/UnderNavBar.component';
+import HomeHelmet from './Home.helmet';
 
 const Home = () => {
 
     return (
-        <div className='home-wrapper'>
-            <UnderNavBar />
-            <HomePageHero />
-            <LogoCarouselContainer backgroundColor='#fff'>
-                <IrrigationLogos backgroundColor='#fff' />
-            </LogoCarouselContainer>
-            <ResponsiveContainer gradientColor='#f5f5f5' gradientColor1='#f5f5f5'>
-                <CountersContainer />
-                <InfoCardsContainer />
-            </ResponsiveContainer>
-            <LogoCarouselContainer backgroundColor='#f5f5f5'>
-                <IrrigationLogos backgroundColor='#f5f5f5' />
-            </LogoCarouselContainer>
-            <FooterHomePage />
-        </div>
+        <>
+            {/* <HomeHelmet /> */}
+            <div className='home-wrapper'>
+                <HomeHelmet />
+                <UnderNavBar />
+                <HomePageHero />
+                <LogoCarouselContainer backgroundColor='#fff'>
+                    <IrrigationLogos backgroundColor='#fff' />
+                </LogoCarouselContainer>
+                <ResponsiveContainer gradientColor='#f5f5f5' gradientColor1='#f5f5f5'>
+                    <CountersContainer />
+                    <InfoCardsContainer />
+                </ResponsiveContainer>
+                <LogoCarouselContainer backgroundColor='#f5f5f5'>
+                    <IrrigationLogos backgroundColor='#f5f5f5' />
+                </LogoCarouselContainer>
+                <FooterHomePage />
+            </div>
+        </>
     )
 }
 

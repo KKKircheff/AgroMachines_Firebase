@@ -9,8 +9,8 @@ const GalleryHero = () => {
                 data-aos-easing="ease-in"
                 data-aos-duration="450"
                 data-aos-delay="250">
-                <p>доставени</p>
-                <h2>ГАЛЕРИЯ МАШИНИ</h2>
+                <p>ГАЛЕРИЯ</p>
+                <h2>ДОСТАВЕНИ МАШИНИ</h2>
                 <h3>някои от успешно доставените машини в България със съдействието на Agro Machines Nederland</h3>
             </div>
             <div className='gallery-hero__image'>
